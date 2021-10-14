@@ -1,7 +1,7 @@
 public class Staff extends Person {
 
 	private int employeeID;
-	private jobTItle jobTitle;
+	private jobTitle jobTitle;
 	private gender gender;
 
 	public int getEmployeeID() {

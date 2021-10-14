@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class SetMenu {
 
 	private ArrayList<SetMenu> setMenuList;

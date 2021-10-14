@@ -1,6 +1,9 @@
+
+import java.util.ArrayList;
+
 public class TableList {
 
-	private ArrayList<tableList> tableList;
+	private ArrayList<TableList> tableList;
 	private int totalTables;
 
 	public void createTable() {
