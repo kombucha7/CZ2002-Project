@@ -1,8 +1,12 @@
+import java.time.Clock;
+
 public class Restaurant {
 
 	private int restaurantID;
 	private String location;
 	private int currentPax;
+	private Clock timehandler; 
+
 
 	public int getRestaurantID() {
 		return this.restaurantID;
