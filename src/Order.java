@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.time.Instant;
 
 public class Order extends Table {
 
 	private int orderID;
 	private ArrayList<Menu> orderList;
 	private int staffID;
-	private dateTime date;
+	private Instant date;
 	private int pax;
 	private orderType orderType;
 	private int itemQty;
@@ -49,7 +50,7 @@ public class Order extends Table {
 		this.staffID = staffID;
 	}
 
-	public dateTime getDate() {
+	public Instant getDate() {
 		return this.date;
 	}
 
@@ -57,7 +58,7 @@ public class Order extends Table {
 	 * 
 	 * @param date
 	 */
-	public void setDate(dateTime date) {
+	public void setDate(Instant date) {
 		this.date = date;
 	}
 

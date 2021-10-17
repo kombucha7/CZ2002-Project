@@ -1,12 +1,14 @@
+import java.time.Instant;
+
 public class Reservation {
 
-	private dateTime date;
+	private Instant date;
 	private int pax;
 	private int reservationID;
 	private boolean occupied;
 	private int tableNum;
 
-	public dateTime getDate() {
+	public Instant getDate() {
 		return this.date;
 	}
 
@@ -14,7 +16,7 @@ public class Reservation {
 	 * 
 	 * @param date
 	 */
-	public void setDate(dateTime date) {
+	public void setDate(Instant date) {
 		this.date = date;
 	}
 
@@ -58,7 +60,7 @@ public class Reservation {
 	 * 
 	 * @param arrival
 	 */
-	public boolean isExpired(dateTime arrival) {
+	public boolean isExpired(Instant arrival) {
 		// TODO - implement Reservation.isExpired
 		throw new UnsupportedOperationException();
 	}
