@@ -59,7 +59,7 @@ public class Reservation {
 	 * 
 	 * @param arrival
 	 */
-	public boolean isExpired(dateTime arrival) {
+	public boolean isExpired(Instant arrival) {
 		// TODO - implement Reservation.isExpired
 		throw new UnsupportedOperationException();
 	}
