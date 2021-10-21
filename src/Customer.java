@@ -9,8 +9,8 @@ public class Customer extends Person {
 	 * @param membership
 	 */
 	public Customer(String name, int phoneNum, boolean membership) {
-		// TODO - implement Customer.Customer
-		throw new UnsupportedOperationException();
+		super(name, phoneNum);
+		this.membership = membership;
 	}
 
 	public boolean getMembership() {
