@@ -6,8 +6,7 @@ public class TableList {
 	private int totalTables;
 
 	public TableList() {
-		// TODO - implement TableList.TableList
-		throw new UnsupportedOperationException();
+		ArrayList<Table> tableList = new ArrayList<Table>(totalTables); 
 	}
 
 	public void createTable() {
