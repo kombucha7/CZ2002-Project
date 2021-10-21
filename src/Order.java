@@ -1,7 +1,7 @@
 import java.time.Instant;
 import java.util.ArrayList;
 
-public class Order extends Table {
+public class Order {
 
 	private int orderID;
 	private int staffID;
