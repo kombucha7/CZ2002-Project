@@ -10,7 +10,8 @@ public class Person {
 	 */
 	public Person(String name, int phoneNum) {
 		// TODO - implement Person.Person
-		throw new UnsupportedOperationException();
+		this.name = name;
+		this.phoneNum = phoneNum;
 	}
 
 	public String getName() {
