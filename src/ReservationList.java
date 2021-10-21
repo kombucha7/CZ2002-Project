@@ -1,8 +1,11 @@
-import java.util.ArrayList;
-
 public class ReservationList {
 
 	private ArrayList<Reservation> reservationList;
+
+	public ReservationList() {
+		// TODO - implement ReservationList.ReservationList
+		throw new UnsupportedOperationException();
+	}
 
 	public void createReservation() {
 		// TODO - implement ReservationList.createReservation

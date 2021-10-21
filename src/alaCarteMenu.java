@@ -6,6 +6,19 @@ public class alaCarteMenu {
 	private foodType foodType;
 	private int foodID;
 
+	/**
+	 * 
+	 * @param name
+	 * @param price
+	 * @param description
+	 * @param foodtype
+	 * @param foodID
+	 */
+	public alaCarteMenu(String name, float price, string description, foodType foodtype, int foodID) {
+		// TODO - implement alaCarteMenu.alaCarteMenu
+		throw new UnsupportedOperationException();
+	}
+
 	public String getName() {
 		return this.name;
 	}

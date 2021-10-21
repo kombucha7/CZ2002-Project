@@ -1,12 +1,21 @@
-import java.time.Instant;
-
 public class Reservation {
 
 	private Instant date;
 	private int pax;
 	private int reservationID;
-	private boolean occupied;
 	private int tableNum;
+
+	/**
+	 * 
+	 * @param date
+	 * @param pax
+	 * @param occupied
+	 * @param tableNum
+	 */
+	public Reservation(Instant date, int pax, boolean occupied, int tableNum) {
+		// TODO - implement Reservation.Reservation
+		throw new UnsupportedOperationException();
+	}
 
 	public Instant getDate() {
 		return this.date;
@@ -44,23 +53,11 @@ public class Reservation {
 		this.reservationID = reservationID;
 	}
 
-	public boolean getOccupied() {
-		return this.occupied;
-	}
-
-	/**
-	 * 
-	 * @param occupied
-	 */
-	public void setOccupied(boolean occupied) {
-		this.occupied = occupied;
-	}
-
 	/**
 	 * 
 	 * @param arrival
 	 */
-	public boolean isExpired(Instant arrival) {
+	public boolean isExpired(dateTime arrival) {
 		// TODO - implement Reservation.isExpired
 		throw new UnsupportedOperationException();
 	}

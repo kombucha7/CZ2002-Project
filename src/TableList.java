@@ -1,10 +1,12 @@
-
-import java.util.ArrayList;
-
 public class TableList {
 
-	private ArrayList<TableList> tableList;
+	private ArrayList<Table> tableList;
 	private int totalTables;
+
+	public TableList() {
+		// TODO - implement TableList.TableList
+		throw new UnsupportedOperationException();
+	}
 
 	public void createTable() {
 		// TODO - implement TableList.createTable

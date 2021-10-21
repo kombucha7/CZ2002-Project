@@ -1,10 +1,6 @@
-import java.util.ArrayList;
-import java.time.Instant;
-
 public class Order extends Table {
 
 	private int orderID;
-	private ArrayList<Menu> orderList;
 	private int staffID;
 	private Instant date;
 	private int pax;
@@ -13,6 +9,19 @@ public class Order extends Table {
 	private ArrayList<alaCarteMenu> alaCarteMenuOrder;
 	private ArrayList<SetMenu> setMenuOrder;
 	private boolean orderCompleted;
+
+	/**
+	 * 
+	 * @param orderID
+	 * @param staffID
+	 * @param date
+	 * @param pax
+	 * @param orderType
+	 */
+	public Order(int orderID, int staffID, Instant date, int pax, orderType orderType) {
+		// TODO - implement Order.Order
+		throw new UnsupportedOperationException();
+	}
 
 	public int getorderID() {
 		return this.orderID;
@@ -24,18 +33,6 @@ public class Order extends Table {
 	 */
 	public void setorderID(int OrderID) {
 		this.orderID = OrderID;
-	}
-
-	public ArrayList<Menu> getorderList() {
-		return this.orderList;
-	}
-
-	/**
-	 * 
-	 * @param orderList
-	 */
-	public void setorderList(ArrayList<Menu> orderList) {
-		this.orderList = orderList;
 	}
 
 	public int getStaffID() {

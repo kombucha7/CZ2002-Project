@@ -3,6 +3,16 @@ public class Person {
 	private String name;
 	private int phoneNum;
 
+	/**
+	 * 
+	 * @param name
+	 * @param phoneNum
+	 */
+	public Person(String name, int phoneNum) {
+		// TODO - implement Person.Person
+		throw new UnsupportedOperationException();
+	}
+
 	public String getName() {
 		return this.name;
 	}

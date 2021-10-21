@@ -1,21 +1,18 @@
-import java.util.ArrayList;
-
 public class SetMenu {
 
-	private ArrayList<SetMenu> setMenuList;
 	private String name;
 	private float price;
-
-	public ArrayList<SetMenu> getSetMenuList() {
-		return this.setMenuList;
-	}
+	private ArrayList<alaCarteMenu> alaCarteMenuList;
 
 	/**
 	 * 
-	 * @param setMenuList
+	 * @param AlaCarteMenu
+	 * @param name
+	 * @param price
 	 */
-	public void setSetMenuList(ArrayList<SetMenu> setMenuList) {
-		this.setMenuList = setMenuList;
+	public void setMenu(int[] AlaCarteMenu, string name, float price) {
+		// TODO - implement SetMenu.setMenu
+		throw new UnsupportedOperationException();
 	}
 
 	public String getName() {
@@ -40,6 +37,18 @@ public class SetMenu {
 	 */
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public ArrayList<alaCarteMenu> getAlaCarteMenuList() {
+		return this.alaCarteMenuList;
+	}
+
+	/**
+	 * 
+	 * @param alaCarteMenuList
+	 */
+	public void setAlaCarteMenuList(ArrayList<alaCarteMenu> alaCarteMenuList) {
+		this.alaCarteMenuList = alaCarteMenuList;
 	}
 
 }

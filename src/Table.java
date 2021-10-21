@@ -2,8 +2,20 @@ public class Table {
 
 	private int tableID;
 	private int numSeat;
-	private boolean tableOccupied;
+	private booelean tableOccupied;
 	private boolean reservationOccupied;
+
+	/**
+	 * 
+	 * @param tableID
+	 * @param numSeat
+	 * @param tableOccupied
+	 * @param reservationOccupied
+	 */
+	public Table(int tableID, int numSeat, boolean tableOccupied, boolean reservationOccupied) {
+		// TODO - implement Table.Table
+		throw new UnsupportedOperationException();
+	}
 
 	public int getTableID() {
 		return this.tableID;
@@ -29,7 +41,7 @@ public class Table {
 		this.numSeat = numSeat;
 	}
 
-	public boolean getTableOccupied() {
+	public booelean getTableOccupied() {
 		return this.tableOccupied;
 	}
 
@@ -37,7 +49,7 @@ public class Table {
 	 * 
 	 * @param tableOccupied
 	 */
-	public void setTableOccupied(boolean tableOccupied) {
+	public void setTableOccupied(booelean tableOccupied) {
 		this.tableOccupied = tableOccupied;
 	}
 
