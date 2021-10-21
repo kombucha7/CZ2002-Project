@@ -14,7 +14,7 @@ public class alaCarteMenu {
 	 * @param foodtype
 	 * @param foodID
 	 */
-	public alaCarteMenu(String name, float price, string description, foodType foodtype, int foodID) {
+	public alaCarteMenu(String name, float price, String description, foodType foodtype, int foodID) {
 		// TODO - implement alaCarteMenu.alaCarteMenu
 		throw new UnsupportedOperationException();
 	}

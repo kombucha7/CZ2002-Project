@@ -1,3 +1,5 @@
+import java.time.Instant;
+
 public class Reservation {
 
 	private Instant date;

@@ -1,3 +1,6 @@
+import java.time.Instant;
+import java.util.ArrayList;
+
 public class RevenueReport {
 
 	private ArrayList<Order> orderList;

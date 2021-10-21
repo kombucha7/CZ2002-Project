@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class SetMenu {
 
 	private String name;
@@ -10,7 +12,7 @@ public class SetMenu {
 	 * @param name
 	 * @param price
 	 */
-	public void setMenu(int[] AlaCarteMenu, string name, float price) {
+	public void setMenu(int[] AlaCarteMenu, String name, float price) {
 		// TODO - implement SetMenu.setMenu
 		throw new UnsupportedOperationException();
 	}

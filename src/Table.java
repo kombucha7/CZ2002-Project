@@ -2,7 +2,7 @@ public class Table {
 
 	private int tableID;
 	private int numSeat;
-	private booelean tableOccupied;
+	private boolean tableOccupied;
 	private boolean reservationOccupied;
 
 	/**
@@ -41,7 +41,7 @@ public class Table {
 		this.numSeat = numSeat;
 	}
 
-	public booelean getTableOccupied() {
+	public boolean getTableOccupied() {
 		return this.tableOccupied;
 	}
 
@@ -49,7 +49,7 @@ public class Table {
 	 * 
 	 * @param tableOccupied
 	 */
-	public void setTableOccupied(booelean tableOccupied) {
+	public void setTableOccupied(boolean tableOccupied) {
 		this.tableOccupied = tableOccupied;
 	}
 
