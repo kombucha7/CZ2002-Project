@@ -4,6 +4,7 @@ public class SetMenu {
 
 	private String name;
 	private float price;
+	private int setID; // sorry i added this -Elliot
 	private ArrayList<alaCarteMenu> alaCarteMenuList;
 
 	/**
@@ -27,6 +28,18 @@ public class SetMenu {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getSetID() {				// added setID setter
+		return this.setID;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setSetID(int setID) {		// added setID gettter
+		this.setID = setID;
 	}
 
 	public float getPrice() {
