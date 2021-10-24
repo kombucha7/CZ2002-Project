@@ -113,14 +113,12 @@ public class OrderList {
 	}
 
 	public boolean updateArchive(RevenueReport revport, int orderID) {
-		for (int orderparse = 0; orderparse < orderList.size(); orderparse++) {
-			if (orderList.get(orderparse).getorderID() == orderID) {
-				Order toarchive = orderList.remove(orderparse);
-				revport.addToArchive(toarchive);
-				return true;
-			}
-		}
-		return false;
+		Order temporder = getOrder(orderID);
+		if (temporder != null) {
+			revport.addToArchive(temporder);
+			return true;
+		} else
+			return false;
 	}
 
 	public void showOrderList() {
@@ -134,41 +132,37 @@ public class OrderList {
 
 	public boolean generateInvoice(int orderID, boolean member) {
 		Order temporder = getOrder(orderID);
-		if(temporder == null) return false;
-		else
-		{
+		if (temporder == null)
+			return false;
+		else {
 			System.out.printf("Order ID: %d\n", temporder.getorderID());
 			System.out.printf("Staff ID: %d\n", temporder.getStaffID());
-			
+
 			System.out.println("AlaCarte items: ");
-			for(int i = 0 ; i<temporder.getAlaCarteMenuOrder().size(); i++)
-			{
-				System.out.printf("%s                     %d\n", temporder.getAlaCarteMenuOrder().get(i).getName(), temporder.getAlaCarteMenuOrder().get(i).getPrice());
+			for (int i = 0; i < temporder.getAlaCarteMenuOrder().size(); i++) {
+				System.out.printf("%s                     %d\n", temporder.getAlaCarteMenuOrder().get(i).getName(),
+						temporder.getAlaCarteMenuOrder().get(i).getPrice());
 			}
 
 			System.out.println("Set items: ");
-			for(int i = 0 ; i<temporder.getSetMenuOrder().size(); i++)
-			{
-				System.out.printf("%s                     %d\n", temporder.getSetMenuOrder().get(i).getName(), temporder.getSetMenuOrder().get(i).getPrice());
+			for (int i = 0; i < temporder.getSetMenuOrder().size(); i++) {
+				System.out.printf("%s                     %d\n", temporder.getSetMenuOrder().get(i).getName(),
+						temporder.getSetMenuOrder().get(i).getPrice());
 			}
-			
+
 			System.out.printf("Total Price: %d\n", temporder.getTotalPrice());
 
-			if(member)
-			{
-				System.out.printf("Member Price: %d\n", temporder.getTotalPrice()*0.9);
+			if (member) {
+				System.out.printf("Member Price: %d\n", temporder.getTotalPrice() * 0.9);
 			}
-
+			temporder.setOrderCompleted(true);
 			return true;
 		}
 	}
 
-	public Order getOrder(int orderID)
-	{
-		for(int i = 0; i<orderList.size(); i++)
-		{
-			if(orderList.get(i).getorderID()==orderID)
-			{
+	public Order getOrder(int orderID) {
+		for (int i = 0; i < orderList.size(); i++) {
+			if (orderList.get(i).getorderID() == orderID) {
 				return orderList.get(i);
 			}
 		}
