@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.time.Clock;
+import java.time.Instant;
 
 public class OrderList {
 
 	private ArrayList<Order> orderList;
-	private static int orderID = 0;
+	private static int orderID = 0; // changed
 
 	public OrderList() {
 		orderList = new ArrayList<Order>();
@@ -104,7 +104,7 @@ public class OrderList {
 		return true;
 	}
 
-	public boolean addOrder(int staffID, Clock date, int pax, orderType ordertype) {
+	public boolean addOrder(int staffID, Instant date, int pax, orderType ordertype) {
 		Order tempOrder = new Order(orderID++, staffID, date, pax, ordertype);
 		if (orderList.add(tempOrder))
 			return true;
@@ -125,7 +125,7 @@ public class OrderList {
 		System.out.println("Active Order:");
 		for (int i = 0; i < orderList.size(); i++) {
 			if (orderList.get(i) != null) {
-				System.out.printf("Order Number: %d\n", i);
+				System.out.printf("Order Number: %d\n", orderList.get(i).getorderID());
 			}
 		}
 	}

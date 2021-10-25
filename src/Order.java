@@ -1,6 +1,5 @@
 import java.time.Instant;
 import java.util.ArrayList;
-import java.time.Clock;
 
 public class Order {
 
@@ -24,10 +23,10 @@ public class Order {
 	 * @param pax
 	 * @param orderType
 	 */
-	public Order(int orderID, int staffID, Clock date, int pax, orderType ordertype) {
+	public Order(int orderID, int staffID, Instant date, int pax, orderType ordertype) {
 		this.orderID = orderID;
 		this.staffID = staffID;
-		this.date = Instant.now(date);
+		this.date = date;
 		this.pax = pax;
 		this.ordertype = ordertype;
 		this.itemQty = 0;
