@@ -9,15 +9,35 @@ public class Table {
 	 * 
 	 * @param tableID
 	 * @param numSeat
-	 * @param tableOccupied
-	 * @param reservationOccupied
+	 //		* @param tableOccupied		//
+	 //		* @param reservationOccupied		//
 	 */
-	public Table(int tableID, int numSeat, boolean tableOccupied, boolean reservationOccupied) {
+	// change constructor -- remove tableOccupied and reservationOccupied
+	public Table(int tableID, int numSeat) {
 		// TODO - implement Table.Table
-		throw new UnsupportedOperationException();
+		this.tableID = tableID;
+		this.numSeat = numSeat;
+		this.tableOccupied = false;
+
+		//throw new UnsupportedOperationException();
 	}
 
-	// test
+	// add 3 new methods
+	// for new customers to occupy table
+	public void occupy() {
+		tableOccupied = true;
+	}
+
+	// when customers are leaving
+	public void empty() {
+		tableOccupied = false;
+	}
+
+	// to see if the table is occupied
+	public boolean isOccupied() {
+		return tableOccupied;
+	}
+
 	public int getTableID() {
 		return this.tableID;
 	}
