@@ -1,25 +1,20 @@
-import java.time.Instant;
-
 public class Reservation {
 
 	private Instant date;
 	private int pax;
 	private int reservationID;
 	private int tableNum;
-	//parameter to count how long late and if need be can cancel their reservation
-	//private Instant
 
 	/**
 	 * 
 	 * @param date
 	 * @param pax
+	 * @param occupied
 	 * @param tableNum
 	 */
-
-	public Reservation(Instant date, int pax, int tableNum) {
-		this.date = date;
-		this.pax = pax;
-		this.tableNum = tableNum;
+	public Reservation(Instant date, int pax, boolean occupied, int tableNum) {
+		// TODO - implement Reservation.Reservation
+		throw new UnsupportedOperationException();
 	}
 
 	public Instant getDate() {
@@ -62,11 +57,9 @@ public class Reservation {
 	 * 
 	 * @param arrival
 	 */
-	public boolean isExpired(Instant arrival) {
+	public boolean isExpired(dateTime arrival) {
 		// TODO - implement Reservation.isExpired
 		throw new UnsupportedOperationException();
 	}
-
-
 
 }

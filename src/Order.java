@@ -1,19 +1,17 @@
-import java.time.Instant;
-import java.util.ArrayList;
-
-public class Order {
+public class Order extends Table {
 
 	private int orderID;
 	private int staffID;
 	private Instant date;
 	private int pax;
-	private orderType ordertype;
+	private orderType orderType;
 	private int itemQty;
-	private int setqty; // add to vpp
-	private ArrayList<alaCarteMenu> alaCarteMenuOrder;
-	private ArrayList<SetMenu> setMenuOrder;
+	private ArrayList<AlaCarteItem> alaCarteMenuOrder;
+	private ArrayList<SetItem> setMenuOrder;
 	private boolean orderCompleted;
-	private double totalprice; // add to vpp
+	private int setqty;
+	private double totalprice;
+	private int tableID;
 
 	/**
 	 * 
@@ -23,83 +21,13 @@ public class Order {
 	 * @param pax
 	 * @param orderType
 	 */
-	public Order(int orderID, int staffID, Instant date, int pax, orderType ordertype) {
-		this.orderID = orderID;
-		this.staffID = staffID;
-		this.date = date;
-		this.pax = pax;
-		this.ordertype = ordertype;
-		this.itemQty = 0;
-		this.setqty = 0;
-		this.alaCarteMenuOrder = new ArrayList<alaCarteMenu>();
-		this.setMenuOrder = new ArrayList<SetMenu>();
-		this.orderCompleted = false;
-		this.totalprice = 0;
-	}
-
-	// add to VPP
-	public void addFood(alaCarteMenu fooditem, int qty)
-	{
-		for(int i=0; i<qty; i++, itemQty++) {
-		alaCarteMenuOrder.add(fooditem);
-		this.totalprice += fooditem.getPrice();
-		}
-	}
-
-	public void addFood(SetMenu fooditem, int qty)
-	{
-		for(int i=0; i<qty; i++, setqty++) 
-		{setMenuOrder.add(fooditem); this.totalprice += fooditem.getPrice();}
+	public Order(int orderID, int staffID, Instant date, int pax, orderType orderType) {
+		// TODO - implement Order.Order
+		throw new UnsupportedOperationException();
 	}
 
 	public int getorderID() {
 		return this.orderID;
-	}
-
-	public boolean deleteAlaFood(int foodID)
-	{
-		for(int i =0; i<alaCarteMenuOrder.size(); i++)
-		{
-			if(alaCarteMenuOrder.get(i).getFoodID()==foodID)
-			{
-				alaCarteMenuOrder.remove(i);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean deleteSetFood(int foodID)
-	{
-		for(int i =0; i<setMenuOrder.size(); i++)
-		{
-			if(setMenuOrder.get(i).getSetID()==foodID)
-			{
-				setMenuOrder.remove(i);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	// add to vpp
-	public void printOrder()
-	{
-		System.out.printf("Order ID: %d\n", this.getorderID());
-		System.out.println("-------------------------------------------------");
-		System.out.println("AlaCarte Items Ordered: ");
-		for(int i = 0; i<alaCarteMenuOrder.size(); i++)
-		{
-			System.out.println(alaCarteMenuOrder.get(i).getName());
-		}
-		System.out.println("-------------------------------------------------");
-		System.out.println("Set Items Ordered: ");
-		for(int j = 0; j<setMenuOrder.size(); j++)
-		{
-			System.out.println(setMenuOrder.get(j).getName());
-		}
-		System.out.println("-------------------------------------------------");
-		System.out.printf("Total cost: %d\n", this.getTotalPrice());
 	}
 
 	/**
@@ -147,15 +75,15 @@ public class Order {
 	}
 
 	public orderType getOrderType() {
-		return this.ordertype;
+		return this.orderType;
 	}
 
 	/**
 	 * 
 	 * @param orderType
 	 */
-	public void setOrderType(orderType ordertype) {
-		this.ordertype = ordertype;
+	public void setOrderType(orderType orderType) {
+		this.orderType = orderType;
 	}
 
 	public int getItemQty() {
@@ -170,19 +98,7 @@ public class Order {
 		this.itemQty = itemQty;
 	}
 
-	public int getSetQty() {
-		return this.setqty;
-	}
-
-	/**
-	 * 
-	 * @param itemQty
-	 */
-	public void setSetQty(int setqty) {
-		this.setqty = setqty;
-	}
-
-	public ArrayList<alaCarteMenu> getAlaCarteMenuOrder() {
+	public ArrayList<AlaCarteItem> getAlaCarteMenuOrder() {
 		return this.alaCarteMenuOrder;
 	}
 
@@ -190,11 +106,11 @@ public class Order {
 	 * 
 	 * @param alaCarteMenuOrder
 	 */
-	public void setAlaCarteMenuOrder(ArrayList<alaCarteMenu> alaCarteMenuOrder) {
+	public void setAlaCarteMenuOrder(ArrayList<AlaCarteItem> alaCarteMenuOrder) {
 		this.alaCarteMenuOrder = alaCarteMenuOrder;
 	}
 
-	public ArrayList<SetMenu> getSetMenuOrder() {
+	public ArrayList<SetItem> getSetMenuOrder() {
 		return this.setMenuOrder;
 	}
 
@@ -202,7 +118,7 @@ public class Order {
 	 * 
 	 * @param setMenuOrder
 	 */
-	public void setSetMenuOrder(ArrayList<SetMenu> setMenuOrder) {
+	public void setSetMenuOrder(ArrayList<SetItem> setMenuOrder) {
 		this.setMenuOrder = setMenuOrder;
 	}
 
@@ -218,17 +134,83 @@ public class Order {
 		this.orderCompleted = orderCompleted;
 	}
 
+	public int getSetqty() {
+		return this.setqty;
+	}
 
-	// add to vpp
-	public double getTotalPrice() {
+	/**
+	 * 
+	 * @param setqty
+	 */
+	public void setSetqty(int setqty) {
+		this.setqty = setqty;
+	}
+
+	public double getTotalprice() {
 		return this.totalprice;
 	}
-	
+
 	/**
-	 * add to vpp
+	 * 
 	 * @param totalprice
 	 */
-	public void setTotalPrice(double totalprice) {
+	public void setTotalprice(double totalprice) {
 		this.totalprice = totalprice;
 	}
+
+	/**
+	 * 
+	 * @param fooditem
+	 * @param qty
+	 */
+	public void add_OrderFood(SetItem fooditem, int qty) {
+		// TODO - implement Order.add_OrderFood
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param fooditem
+	 * @param qty
+	 */
+	public void add_OrderFood(AlaCarteItem fooditem, int qty) {
+		// TODO - implement Order.add_OrderFood
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param foodID
+	 */
+	public boolean deleteAlaFood(int foodID) {
+		// TODO - implement Order.deleteAlaFood
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param foodID
+	 */
+	public boolean deleteSetFood(int foodID) {
+		// TODO - implement Order.deleteSetFood
+		throw new UnsupportedOperationException();
+	}
+
+	public void printOrder() {
+		// TODO - implement Order.printOrder
+		throw new UnsupportedOperationException();
+	}
+
+	public int getTableID() {
+		return this.tableID;
+	}
+
+	/**
+	 * 
+	 * @param tableID
+	 */
+	public void setTableID(int tableID) {
+		this.tableID = tableID;
+	}
+
 }

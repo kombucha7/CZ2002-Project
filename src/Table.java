@@ -2,40 +2,17 @@ public class Table {
 
 	private int tableID;
 	private int numSeat;
-	private boolean tableOccupied;
+	private booelean tableOccupied;
 	private boolean reservationOccupied;
 
 	/**
 	 * 
 	 * @param tableID
 	 * @param numSeat
-	 //		* @param tableOccupied		//
-	 //		* @param reservationOccupied		//
 	 */
-	// change constructor -- remove tableOccupied and reservationOccupied
 	public Table(int tableID, int numSeat) {
 		// TODO - implement Table.Table
-		this.tableID = tableID;
-		this.numSeat = numSeat;
-		this.tableOccupied = false;
-
-		//throw new UnsupportedOperationException();
-	}
-
-	// add 3 new methods
-	// for new customers to occupy table
-	public void occupy() {
-		tableOccupied = true;
-	}
-
-	// when customers are leaving
-	public void empty() {
-		tableOccupied = false;
-	}
-
-	// to see if the table is occupied
-	public boolean isOccupied() {
-		return tableOccupied;
+		throw new UnsupportedOperationException();
 	}
 
 	public int getTableID() {
@@ -62,28 +39,19 @@ public class Table {
 		this.numSeat = numSeat;
 	}
 
-	public boolean getTableOccupied() {
-		return this.tableOccupied;
+	public void occupy() {
+		// TODO - implement Table.occupy
+		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param tableOccupied
-	 */
-	public void setTableOccupied(boolean tableOccupied) {
-		this.tableOccupied = tableOccupied;
+	public void empty() {
+		// TODO - implement Table.empty
+		throw new UnsupportedOperationException();
 	}
 
-	public boolean getReservationOccupied() {
-		return this.reservationOccupied;
-	}
-
-	/**
-	 * 
-	 * @param reservationOccupied
-	 */
-	public void setReservationOccupied(boolean reservationOccupied) {
-		this.reservationOccupied = reservationOccupied;
+	public boolean isOccupied() {
+		// TODO - implement Table.isOccupied
+		throw new UnsupportedOperationException();
 	}
 
 }

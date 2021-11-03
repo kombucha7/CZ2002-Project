@@ -1,16 +1,14 @@
-import java.util.ArrayList;
+public class Menu implements CustPrintable {
 
-public class Menu {
-
-	private ArrayList<alaCarteMenu> alaCarteList;
-	private ArrayList<SetMenu> setMenuList;
+	private ArrayList<AlaCarteItem> alaCarteList;
+	private ArrayList<SetItem> setMenuList;
 
 	public Menu() {
 		// TODO - implement Menu.Menu
 		throw new UnsupportedOperationException();
 	}
 
-	public ArrayList<alaCarteMenu> getAlaCarteList() {
+	public ArrayList<AlaCarteItem> getAlaCarteList() {
 		return this.alaCarteList;
 	}
 
@@ -18,11 +16,11 @@ public class Menu {
 	 * 
 	 * @param alaCarteList
 	 */
-	public void setAlaCarteList(ArrayList<alaCarteMenu> alaCarteList) {
+	public void setAlaCarteList(ArrayList<AlaCarteItem> alaCarteList) {
 		this.alaCarteList = alaCarteList;
 	}
 
-	public ArrayList<SetMenu> getSetMenuList() {
+	public ArrayList<SetItem> getSetMenuList() {
 		return this.setMenuList;
 	}
 
@@ -30,30 +28,108 @@ public class Menu {
 	 * 
 	 * @param setMenuList
 	 */
-	public void setSetMenuList(ArrayList<SetMenu> setMenuList) {
+	public void setSetMenuList(ArrayList<SetItem> setMenuList) {
 		this.setMenuList = setMenuList;
 	}
 
 	/**
 	 * 
-	 * @param name
-	 * @param price
-	 * @param description
-	 * @param foodType
 	 * @param foodID
+	 * @param name
 	 */
-	public void add_alaCarteMenu(String name, float price, String description, foodType foodType, int foodID) {
-		// TODO - implement Menu.add_alaCarteMenu
+	public void update_alaCarteName(int foodID, String name) {
+		// TODO - implement Menu.update_alaCarteName
 		throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * 
-	 * @param name
+	 * @param foodID
 	 * @param price
 	 */
-	public boolean createSetMenu(String name, float price) {
-		// TODO - implement Menu.createSetMenu
+	public void update_alaCartePrice(int foodID, float price) {
+		// TODO - implement Menu.update_alaCartePrice
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param foodID
+	 * @param description
+	 */
+	public void update_alaCarteDescription(int foodID, String description) {
+		// TODO - implement Menu.update_alaCarteDescription
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param setID
+	 * @param name
+	 */
+	public void update_setMenuName(int setID, String name) {
+		// TODO - implement Menu.update_setMenuName
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param setID
+	 * @param price
+	 */
+	public void update_setMenuPrice(int setID, float price) {
+		// TODO - implement Menu.update_setMenuPrice
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param setID
+	 * @param description
+	 */
+	public void update_setMenuDescription(int setID, String description) {
+		// TODO - implement Menu.update_setMenuDescription
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param foodID
+	 */
+	public void removeAlaCarteItem(int foodID) {
+		// TODO - implement Menu.removeAlaCarteItem
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param setID
+	 */
+	public void removeMenuItem(int setID) {
+		// TODO - implement Menu.removeMenuItem
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param item
+	 */
+	public void addAlaCarteItem(AlaCarteItem item) {
+		// TODO - implement Menu.addAlaCarteItem
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param item
+	 */
+	public void addSetMenuItem(SetItem item) {
+		// TODO - implement Menu.addSetMenuItem
+		throw new UnsupportedOperationException();
+	}
+
+	public void printer() {
+		// TODO - implement Menu.printer
 		throw new UnsupportedOperationException();
 	}
 

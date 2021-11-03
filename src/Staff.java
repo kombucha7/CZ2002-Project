@@ -1,7 +1,7 @@
 public class Staff extends Person {
 
 	private int employeeID;
-	private jobTitle jobTitle;
+	private jobTItle jobTitle;
 	private gender gender;
 
 	/**
@@ -14,10 +14,7 @@ public class Staff extends Person {
 	 */
 	public Staff(String name, int phoneNum, int employeeID, jobTitle jobTitle, gender gender) {
 		// TODO - implement Staff.Staff
-		super(name, phoneNum);
-		this.employeeID = employeeID;
-		this.jobTitle = jobTitle;
-		this.gender = gender;
+		throw new UnsupportedOperationException();
 	}
 
 	public int getEmployeeID() {
@@ -33,7 +30,8 @@ public class Staff extends Person {
 	}
 
 	public jobTitle getJobTitle() {
-		return jobTitle;
+		// TODO - implement Staff.getJobTitle
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -41,7 +39,8 @@ public class Staff extends Person {
 	 * @param jobTitle
 	 */
 	public void setJobTitle(jobTitle jobTitle) {
-		this.jobTitle = jobTitle;
+		// TODO - implement Staff.setJobTitle
+		throw new UnsupportedOperationException();
 	}
 
 	public gender getGender() {

@@ -1,4 +1,4 @@
-public class Person {
+public abstract class Person {
 
 	private String name;
 	private int phoneNum;
@@ -10,8 +10,7 @@ public class Person {
 	 */
 	public Person(String name, int phoneNum) {
 		// TODO - implement Person.Person
-		this.name = name;
-		this.phoneNum = phoneNum;
+		throw new UnsupportedOperationException();
 	}
 
 	public String getName() {
