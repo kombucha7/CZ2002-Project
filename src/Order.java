@@ -1,4 +1,7 @@
-public class Order extends Table {
+import java.util.ArrayList;
+import java.time.Instant;
+
+public class Order implements ListPrinter {
 
 	private int orderID;
 	private int staffID;
@@ -6,8 +9,8 @@ public class Order extends Table {
 	private int pax;
 	private orderType orderType;
 	private int itemQty;
-	private ArrayList<AlaCarteItem> alaCarteMenuOrder;
-	private ArrayList<SetItem> setMenuOrder;
+	private ArrayList<AlaCarteItem> alaCarteItemOrder;
+	private ArrayList<SetItem> setItemOrder;
 	private boolean orderCompleted;
 	private int setqty;
 	private double totalprice;
@@ -21,9 +24,19 @@ public class Order extends Table {
 	 * @param pax
 	 * @param orderType
 	 */
-	public Order(int orderID, int staffID, Instant date, int pax, orderType orderType) {
-		// TODO - implement Order.Order
-		throw new UnsupportedOperationException();
+	public Order(int orderID, int staffID, Instant date, int pax, orderType ordertype, int tableID) {
+		this.orderID = orderID;
+		this.staffID = staffID;
+		this.date = date;
+		this.pax = pax;
+		this.orderType = ordertype;
+		this.itemQty = 0;
+		this.setqty = 0;
+		this.alaCarteItemOrder = new ArrayList<AlaCarteItem>();
+		this.setItemOrder = new ArrayList<SetItem>();
+		this.orderCompleted = false;
+		this.totalprice = 0;
+		this.tableID = tableID;
 	}
 
 	public int getorderID() {
@@ -98,28 +111,28 @@ public class Order extends Table {
 		this.itemQty = itemQty;
 	}
 
-	public ArrayList<AlaCarteItem> getAlaCarteMenuOrder() {
-		return this.alaCarteMenuOrder;
+	public ArrayList<AlaCarteItem> getAlaCarteItemOrder() {
+		return this.alaCarteItemOrder;
 	}
 
 	/**
 	 * 
-	 * @param alaCarteMenuOrder
+	 * @param alaCarteItemOrder
 	 */
-	public void setAlaCarteMenuOrder(ArrayList<AlaCarteItem> alaCarteMenuOrder) {
-		this.alaCarteMenuOrder = alaCarteMenuOrder;
+	public void setAlaCarteItemOrder(ArrayList<AlaCarteItem> alaCarteItemOrder) {
+		this.alaCarteItemOrder = alaCarteItemOrder;
 	}
 
-	public ArrayList<SetItem> getSetMenuOrder() {
-		return this.setMenuOrder;
+	public ArrayList<SetItem> getSetItemOrder() {
+		return this.setItemOrder;
 	}
 
 	/**
 	 * 
-	 * @param setMenuOrder
+	 * @param setItemOrder
 	 */
-	public void setSetMenuOrder(ArrayList<SetItem> setMenuOrder) {
-		this.setMenuOrder = setMenuOrder;
+	public void setSetItemOrder(ArrayList<SetItem> setItemOrder) {
+		this.setItemOrder = setItemOrder;
 	}
 
 	public boolean getOrderCompleted() {
@@ -158,14 +171,32 @@ public class Order extends Table {
 		this.totalprice = totalprice;
 	}
 
+	public void printList() {
+		System.out.printf("Order ID: %d\n", this.getorderID());
+		System.out.println("-------------------------------------------------");
+		System.out.println("AlaCarte Items Ordered: ");
+		for (int i = 0; i < alaCarteItemOrder.size(); i++) {
+			System.out.println(alaCarteItemOrder.get(i).getName());
+		}
+		System.out.println("-------------------------------------------------");
+		System.out.println("Set Items Ordered: ");
+		for (int j = 0; j < setItemOrder.size(); j++) {
+			System.out.println(setItemOrder.get(j).getName());
+		}
+		System.out.println("-------------------------------------------------");
+		System.out.printf("Total cost: %d\n", this.getTotalPrice());
+	}
+
 	/**
 	 * 
 	 * @param fooditem
 	 * @param qty
 	 */
 	public void add_OrderFood(SetItem fooditem, int qty) {
-		// TODO - implement Order.add_OrderFood
-		throw new UnsupportedOperationException();
+		for (int i = 0; i < qty; i++, setqty++) {
+			setItemOrder.add(fooditem);
+			this.totalprice += fooditem.getPrice();
+		}
 	}
 
 	/**
@@ -174,8 +205,10 @@ public class Order extends Table {
 	 * @param qty
 	 */
 	public void add_OrderFood(AlaCarteItem fooditem, int qty) {
-		// TODO - implement Order.add_OrderFood
-		throw new UnsupportedOperationException();
+		for (int i = 0; i < qty; i++, itemQty++) {
+			alaCarteItemOrder.add(fooditem);
+			this.totalprice += fooditem.getPrice();
+		}
 	}
 
 	/**
@@ -183,8 +216,13 @@ public class Order extends Table {
 	 * @param foodID
 	 */
 	public boolean deleteAlaFood(int foodID) {
-		// TODO - implement Order.deleteAlaFood
-		throw new UnsupportedOperationException();
+		for (int i = 0; i < alaCarteItemOrder.size(); i++) {
+			if (alaCarteItemOrder.get(i).getFoodID() == foodID) {
+				alaCarteItemOrder.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -192,13 +230,13 @@ public class Order extends Table {
 	 * @param foodID
 	 */
 	public boolean deleteSetFood(int foodID) {
-		// TODO - implement Order.deleteSetFood
-		throw new UnsupportedOperationException();
-	}
-
-	public void printOrder() {
-		// TODO - implement Order.printOrder
-		throw new UnsupportedOperationException();
+		for (int i = 0; i < setItemOrder.size(); i++) {
+			if (setItemOrder.get(i).getSetID() == foodID) {
+				setItemOrder.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public int getTableID() {
@@ -213,4 +251,17 @@ public class Order extends Table {
 		this.tableID = tableID;
 	}
 
+	// add to vpp
+	public double getTotalPrice() {
+		return this.totalprice;
+	}
+
+	/**
+	 * add to vpp
+	 * 
+	 * @param totalprice
+	 */
+	public void setTotalPrice(double totalprice) {
+		this.totalprice = totalprice;
+	}
 }
