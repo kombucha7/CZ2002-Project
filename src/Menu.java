@@ -108,6 +108,24 @@ public class Menu implements CustPrintable {
 	 */
 	public void update_setMenuName(int setID, String name) {
 		// TODO - implement Menu.update_setMenuName
+		boolean search = false;
+
+		for(int i =0 ; i <setMenuList.size();i++)
+		{
+			if(setMenuList.get(i).getSetID() == setID)
+			{
+				setMenuList.get(i).setName(name);
+				search = true;
+			}
+		}
+		if(search)
+		{
+			System.out.println("Successfully updated set name for SetID: "+setID);
+		}
+		else
+		{
+			System.out.println("No such SetID to be Updated.");
+		}
 		throw new UnsupportedOperationException();
 	}
 
@@ -118,6 +136,23 @@ public class Menu implements CustPrintable {
 	 */
 	public void update_setMenuPrice(int setID, float price) {
 		// TODO - implement Menu.update_setMenuPrice
+		boolean search = false;
+		for(int i =0 ; i <setMenuList.size();i++)
+		{
+			if(setMenuList.get(i).getSetID() == setID)
+			{
+				setMenuList.get(i).setPrice(price);
+				search = true;
+			}
+		}
+		if(search)
+		{
+			System.out.println("Successfully updated price for SetID: "+setID);
+		}
+		else
+		{
+			System.out.println("No such SetID to be Updated.");
+		}
 		throw new UnsupportedOperationException();
 	}
 
@@ -128,6 +163,23 @@ public class Menu implements CustPrintable {
 	 */
 	public void update_setMenuDescription(int setID, String description) {
 		// TODO - implement Menu.update_setMenuDescription
+		boolean search = false;
+		for(int i =0 ; i <setMenuList.size();i++)
+		{
+			if(setMenuList.get(i).getSetID() == setID)
+			{
+				setMenuList.get(i).setDescription(description);
+				search = true;
+			}
+		}
+		if(search)
+		{
+			System.out.println("Successfully updated description for SetID: "+setID);
+		}
+		else
+		{
+			System.out.println("No such SetID to be Updated.");
+		}
 		throw new UnsupportedOperationException();
 	}
 
@@ -159,6 +211,23 @@ public class Menu implements CustPrintable {
 	 */
 	public void removeMenuItem(int setID) {
 		// TODO - implement Menu.removeMenuItem
+		boolean search = false;
+		for(int i =0 ; i <setMenuList.size();i++)
+		{
+			if(setMenuList.get(i).getSetID() == setID)
+			{
+				setMenuList.get(i).setAvailability(false);
+				search = true;
+			}
+		}
+		if(search)
+		{
+			System.out.println("Successfully remove SetID : "+setID+"from the Menu.");
+		}
+		else
+		{
+			System.out.println("No such SetID found to be removed.");
+		}
 		throw new UnsupportedOperationException();
 	}
 
@@ -192,11 +261,48 @@ public class Menu implements CustPrintable {
 	 */
 	public void addSetMenuItem(SetItem item) {
 		// TODO - implement Menu.addSetMenuItem
+		boolean search = false;
+		for(int i = 0 ; i <setMenuList.size();i++)
+		{
+			if(setMenuList.get(i).getSetID() == item.getSetID())
+			{
+				System.out.println("Duplicated Set item is found inside set menu");
+				search = true;
+			}
+		}
+		if(!search)
+		{
+			setMenuList.add(item);
+		}
 		throw new UnsupportedOperationException();
 	}
 
 	public void printer() {
 		// TODO - implement Menu.printer
+		System.out.println("Set Menu:");
+		for(int i = 0;i<setMenuList.size();i++)
+		{
+			if(setMenuList.get(i).getAvailability())
+			{
+				System.out.println(setMenuList.get(i).getSetID()+"Name: "+setMenuList.get(i).getName());
+				System.out.println("Price: "+setMenuList.get(i).getPrice());
+				System.out.println("Description: "+setMenuList.get(i).getDescription());
+				System.out.println("");
+			}
+		}
+
+		System.out.println("Alacarte Menu:");
+		for(int i = 0;i<alaCarteList.size();i++)
+		{
+			if(setMenuList.get(i).getAvailability())
+			{
+				
+				System.out.println(alaCarteList.get(i).getFoodID()+"Name: "+alaCarteList.get(i).getName());
+				System.out.println("Price: "+alaCarteList.get(i).getPrice());
+				System.out.println("Description: "+alaCarteList.get(i).getDescription());
+				System.out.println("");
+			}
+		}
 		throw new UnsupportedOperationException();
 	}
 
