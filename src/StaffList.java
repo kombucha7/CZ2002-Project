@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class StaffList {
 
-	private ArrayList<Staff> staffList;
+	private ArrayList<Staff> staffList = new ArrayList<Staff>();
 	private int numStaff;
 
 	public StaffList() {
