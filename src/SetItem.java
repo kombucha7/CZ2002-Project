@@ -2,7 +2,7 @@ import java.util.ArrayList;
 public class SetItem {
 
 	private String name;
-	private float price;
+	private double price;
 	private ArrayList<AlaCarteItem> alaCarteMenuList  ;
 	private int setID;
 	private String description;
@@ -15,13 +15,14 @@ public class SetItem {
 	 * @param price
 	 * @param description
 	 */
-	public SetItem(int setID, String name, float price, String description) {
+	public SetItem(int setID, String name, double price, String description) {
 		this.setID = setID;
 		this.name = name;
 		this.price = price;
 		this.description = description;
 		this.alaCarteMenuList = new ArrayList<AlaCarteItem>();
 		this.availability = true;
+
 	}
 
 	/**
@@ -53,7 +54,7 @@ public class SetItem {
 		this.name = name;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
@@ -61,7 +62,7 @@ public class SetItem {
 	 * 
 	 * @param price
 	 */
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

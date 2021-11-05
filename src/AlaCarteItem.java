@@ -1,7 +1,7 @@
 public class AlaCarteItem {
 
 	private String name;
-	private float price;
+	private double price;
 	private String description;
 	private foodType foodType;
 	private int foodID;
@@ -16,7 +16,9 @@ public class AlaCarteItem {
 	 * @param foodID
 	 * @param availability
 	 */
-	public AlaCarteItem(String name, float price, String description, foodType foodtype, int foodID,
+	public AlaCarteItem() { }
+
+	public AlaCarteItem(String name, double price, String description, foodType foodtype, int foodID,
 			boolean availability) {
 		// TODO - implement AlaCarteItem.AlaCarteItem
 		this.name = name;
@@ -40,7 +42,7 @@ public class AlaCarteItem {
 		this.name = name;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
@@ -48,7 +50,7 @@ public class AlaCarteItem {
 	 * 
 	 * @param price
 	 */
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
