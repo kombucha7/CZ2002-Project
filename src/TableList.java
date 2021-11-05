@@ -2,12 +2,10 @@ import java.util.ArrayList;
 
 public class TableList implements ListPrinter {
 
-	private ArrayList<Table> tableList;
+	private ArrayList<Table> tableList = new ArrayList<>();
 	private static int totalTables = 15;
 
-
 	public TableList() {
-		ArrayList<Table> tableList = new ArrayList<Table>();
 
 		Table table1 = new Table(0, 2);
 		tableList.add(table1);
@@ -64,26 +62,25 @@ public class TableList implements ListPrinter {
 	 * 
 	 * @param pax
 	 */
-	public int matchTable(int pax) {
-		/*
-		int first_half, sec_half;
-		if (pax > 10) {
-			first_half = 10;
-			sec_half = pax - 10;
-		} */
+	// returns array of tables that are not occupied
+	// if full or if there is no available table with the required seating, array is full of -1
+	public int[] matchTable(int pax) {
+		int[] availableTables = new int[totalTables];
+		int numAvailable = 0;
 
-		// restaurant is full
-		if (getEmpty() == 0)
-			return -1;
+		for (int i=0; i<totalTables; i++) {
+			availableTables[i] = -1;
+		}
 
 		for (int i=0; i<totalTables; i++) {
 			if (!tableList.get(i).isOccupied() && tableList.get(i).getNumSeat() >= pax) {
-				occupyTable(i);
-				return tableList.get(i).getTableID();
+//				occupyTable(i);
+//				return tableList.get(i).getTableID();
+				availableTables[numAvailable] = i;
+				numAvailable++;
 			}
 		}
-		// have empty table but not big enough for current group size
-		return -2;
+		return availableTables;
 	}
 
 	/**
