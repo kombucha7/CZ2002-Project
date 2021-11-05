@@ -10,7 +10,9 @@ public class Restaurant {
 
 		int option;
 		Scanner sc = new Scanner(System.in);
-
+		
+		//Data List
+		
 		while (true) {
 			System.out.println("SELECT OPTION: ");
 			System.out.println("1. Create/Update/Remove menu item\n" +
@@ -49,6 +51,7 @@ public class Restaurant {
 
 				case 3:		// Create order
 					System.out.println("\n");
+
 					break;
 
 				case 4:		// View order
