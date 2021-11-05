@@ -9,7 +9,7 @@ public class ReservationList {
 	int customerNum;
 	Instant instantTest;
 
-	private ArrayList<Reservation> reservationList;
+	private ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
 
 	public ReservationList() {
 
