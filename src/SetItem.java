@@ -7,7 +7,7 @@ public class SetItem {
 	private int setID;
 	private String description;
 	private boolean availability;
-
+	
 	/**
 	 * 
 	 * @param setID
