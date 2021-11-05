@@ -7,13 +7,20 @@ public class Restaurant {
 	public static void main(String[] args) {
 		// TODO - implement Restaurant.main
 		TableList table_list = new TableList();
+		Menu restaMenu = new Menu();
+		OrderList restaOrderList = new OrderList();
+		StaffList restaStaffList = new StaffList();
+		MemberList restaMember = new MemberList();
+		TimeHandler handler = new TimeHandler();
+		RevenueReport restaReport = new RevenueReport();
 
 		int option;
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {
 			System.out.println("SELECT OPTION: ");
-			System.out.println("1. Create/Update/Remove menu item\n" +
+			System.out.println(
+					"1. Create/Update/Remove menu item\n" +
 					"2. Create/Update/Remove promotion\n" +
 					"3. Create order\n" +
 					"4. View order\n" +
