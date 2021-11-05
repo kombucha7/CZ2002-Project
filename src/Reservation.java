@@ -1,4 +1,7 @@
+import java.sql.Time;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+
 
 public class Reservation {
 
@@ -56,15 +59,18 @@ public class Reservation {
 	 */
 	public void setReservationID(int reservationID) {
 		this.reservationID = reservationID;
-	}
+	}	//reservationID just be phone number
 
 	/**
 	 *
 	 * @param arrival
 	 */
-	public boolean isExpired(Instant arrival) {
-		// TODO - implement Reservation.isExpired
-		throw new UnsupportedOperationException();
+	public boolean isExpired() {
+		if (Instant.now().isAfter(date.plus(1, ChronoUnit.HOURS))){
+			return true;
+		}
+
+		return false;
 	}
 
 

@@ -37,6 +37,21 @@ public class ReservationList {
 
 	}
 
+	public void removeExpired() {		//if they miss their reservation
+		for (int i = 0; i < reservationList.size(); i++) {
+			if (reservationList.get(i).isExpired()){
+				reservationList.remove(i);
+			}
+		}
+	}
+
+	/*public void checkUpcomingReserved(int[] tableArray) {
+		for (int i = 0; i < tableArray.length; i++){
+			for (int j = 0; j < reservationList.size(); j++) {
+			}
+		}
+	}*/
+
 	public void removeReservation() {
 		//need to implement in the main function?
 		//https://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ScheduledExecutorService.html
