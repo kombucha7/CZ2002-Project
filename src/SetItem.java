@@ -21,6 +21,7 @@ public class SetItem {
 		this.price = price;
 		this.description = description;
 		this.alaCarteMenuList = new ArrayList<AlaCarteItem>();
+		this.availability = true;
 	}
 
 	/**
