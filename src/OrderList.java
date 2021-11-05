@@ -113,7 +113,7 @@ public class OrderList implements ListPrinter {
 	}
 
 	public boolean updateArchive(RevenueReport revport, int orderID) {
-		Order temporder = getOrder(orderID);
+		Order temporder = getOrderByOrderID(orderID);
 		if (temporder != null) {
 			revport.addToArchive(temporder);
 			return true;
@@ -136,7 +136,7 @@ public class OrderList implements ListPrinter {
 	 * @param member
 	 */
 	public void generateInvoice(int orderID, boolean member) {
-		Invoice newinvoice = new Invoice(getOrder(orderID), member);
+		Invoice newinvoice = new Invoice(getOrderByOrderID(orderID), member);
 		newinvoice.printer();
 	}
 
@@ -144,10 +144,26 @@ public class OrderList implements ListPrinter {
 	 * 
 	 * @param orderID
 	 */
-	public Order getOrder(int orderID) {
+	public Order getOrderByOrderID(int orderID) {
 		for (int i = 0; i < orderList.size(); i++) {
 			if (orderList.get(i).getorderID() == orderID) {
 				return orderList.get(i);
+			}
+		}
+		return null;
+	}
+
+	public Order getOrderByTableID(int tableID)
+	{
+		for(int i = 0; i<orderList.size(); i++)
+		{
+			if(orderList.get(i).getTableID()==tableID)
+			{
+				if(orderList.get(i).getOrderCompleted()==false) return orderList.get(i);
+				else
+				{
+					break;
+				}
 			}
 		}
 		return null;
