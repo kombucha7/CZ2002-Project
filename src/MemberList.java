@@ -1,16 +1,15 @@
-public class MemberList implements ListPrinter {
+import java.util.ArrayList;
 
-	private ArrayList<Member> MemberIDList;
+public class MemberList {
+	//ArrayList<String> cars = new ArrayList<String>();
+	private ArrayList<Member> memberList = new ArrayList<Member>();
 	private int totalmembers;
 
 	public void MemberIDList() {
-		// TODO - implement MemberList.MemberIDList
-		throw new UnsupportedOperationException();
 	}
 
-	public void add_Member() {
-		// TODO - implement MemberList.add_Member
-		throw new UnsupportedOperationException();
+	public void add_Member(Member member) {
+		memberList.add(member);
 	}
 
 	/**
@@ -18,39 +17,31 @@ public class MemberList implements ListPrinter {
 	 * @param memberID
 	 */
 	public void delete_Member(int memberID) {
-		// TODO - implement MemberList.delete_Member
-		throw new UnsupportedOperationException();
+		for (int i = 0; i < memberList.size(); i++){
+			if (memberList.get(i).getPhoneNum() == memberID){
+				memberList.remove(i);
+				System.out.println("Member removed");
+				return;
+			}
+		}
+
+		System.out.println("Member not found");
 	}
 
 	public ArrayList<Member> getMemberIDList() {
-		// TODO - implement MemberList.getMemberIDList
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param MemberIDList
-	 */
-	public void setMemberIDList(ArrayList<Member> MemberIDList) {
-		// TODO - implement MemberList.setMemberIDList
-		throw new UnsupportedOperationException();
+		return this.memberList;
 	}
 
 	public int getTotalmembers() {
-		return this.totalmembers;
+		return this.memberList.size();
 	}
 
-	/**
-	 * 
-	 * @param totalmembers
-	 */
-	public void setTotalmembers(int totalmembers) {
-		this.totalmembers = totalmembers;
-	}
 
 	public void printList() {
-		// TODO - implement MemberList.printList
-		throw new UnsupportedOperationException();
+		for (int i = 0; i < memberList.size(); i++) {
+			System.out.println(memberList.get(i).getName() + " " +
+					memberList.get(i).getPhoneNum());
+		}
 	}
 
 }
