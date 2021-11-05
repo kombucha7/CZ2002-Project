@@ -18,7 +18,8 @@ public class Restaurant {
 		Scanner sc = new Scanner(System.in);
 		
 		//Data List
-		
+		restaMenu.printer();
+
 		while (true) {
 			System.out.println("SELECT OPTION: ");
 			System.out.println(

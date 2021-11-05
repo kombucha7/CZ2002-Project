@@ -6,6 +6,8 @@ public class Menu implements CustPrintable {
 	private ArrayList<SetItem> setMenuList;
 
 	public Menu() {
+		alaCarteList = new ArrayList<AlaCarteItem>();
+		setMenuList = new ArrayList<SetItem>();
 		AlaCarteItem FilletOFish = new AlaCarteItem("FilletOFish",2.00,"Fish Burger",foodType.Main,1000,true);
 		alaCarteList.add(FilletOFish);
 
@@ -66,8 +68,31 @@ public class Menu implements CustPrintable {
 		AlaCarteItem CrabCakes = new AlaCarteItem("CrabCakes",3.0,"Crab Cakes",foodType.Appetizer,4004,true);
 		alaCarteList.add(CrabCakes);
 
-		SetItem FilletoFishSet = new SetItem(01, "Filet o Fish Set", 5.00, "Filet o fish set");
-		FilletoFishSet.addAlaCarteItem(FilletOFish);
+		SetItem FilletoFishSet = new SetItem(01, "Filet o Fish Set", 5.00, "Contains : Filet o fish burger, CocaCola, Fries");
+		FilletoFishSet.addItem(FilletOFish);
+		FilletoFishSet.addItem(CocaCola);
+		FilletoFishSet.addItem(Fries);
+		setMenuList.add(FilletoFishSet);
+
+		SetItem McWrapSet = new SetItem(02, "McWrap Set", 7.90, "Contains : McWrap, Cocacola, Spam");
+		McWrapSet.addItem(McWrap);
+		McWrapSet.addItem(CocaCola);
+		McWrapSet.addItem(Spam);
+		setMenuList.add(McWrapSet);
+
+		SetItem McSpicySet = new SetItem(03, "McSpicy Set", 7.50, "Contains : McSpicy, Sprite, CornCup");
+		McSpicySet.addItem(McSpicy);
+		McSpicySet.addItem(Sprite);
+		McSpicySet.addItem(CornCup);
+		setMenuList.add(McSpicySet);
+
+		SetItem McPepperSet = new SetItem(04, "McPepper Set", 8.50, "Contains : McPepper, LemonTea, MilkShake");
+		McPepperSet.addItem(McPepper);
+		McPepperSet.addItem(LemonTea);
+		McPepperSet.addItem(MilkShake);
+		setMenuList.add(McPepperSet);
+
+
 
 	}
 
@@ -339,13 +364,12 @@ public class Menu implements CustPrintable {
 	}
 
 	public void printer() {
-		// TODO - implement Menu.printer
 		System.out.println("Set Menu:");
 		for(int i = 0;i<setMenuList.size();i++)
 		{
 			if(setMenuList.get(i).getAvailability())
 			{
-				System.out.println(setMenuList.get(i).getSetID()+"Name: "+setMenuList.get(i).getName());
+				System.out.println(setMenuList.get(i).getSetID() + ") Name: "+setMenuList.get(i).getName());
 				System.out.println("Price: "+setMenuList.get(i).getPrice());
 				System.out.println("Description: "+setMenuList.get(i).getDescription());
 				System.out.println("");
@@ -355,16 +379,15 @@ public class Menu implements CustPrintable {
 		System.out.println("Alacarte Menu:");
 		for(int i = 0;i<alaCarteList.size();i++)
 		{
-			if(setMenuList.get(i).getAvailability())
+			if(alaCarteList.get(i).getAvailability())
 			{
 				
-				System.out.println(alaCarteList.get(i).getFoodID()+"Name: "+alaCarteList.get(i).getName());
+				System.out.println(alaCarteList.get(i).getFoodID() + ") Name: "+alaCarteList.get(i).getName());
 				System.out.println("Price: "+alaCarteList.get(i).getPrice());
 				System.out.println("Description: "+alaCarteList.get(i).getDescription());
 				System.out.println("");
 			}
 		}
-		throw new UnsupportedOperationException();
 	}
 
 }

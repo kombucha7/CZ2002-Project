@@ -27,7 +27,6 @@ public class AlaCarteItem {
 		this.foodType = foodtype;
 		this.foodID = foodID;
 		this.availability = availability;
-		throw new UnsupportedOperationException();
 	}
 
 	public String getName() {
