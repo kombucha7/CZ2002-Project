@@ -16,12 +16,8 @@ public class AlaCarteItem {
 	 * @param foodID
 	 * @param availability
 	 */
-<<<<<<< HEAD
 	public AlaCarteItem(String name, float price, String description, foodType foodtype, int foodID,
 			boolean availability) {
-=======
-	public AlaCarteItem(String name, float price, String description, foodType foodtype, int foodID, boolean availability) {
->>>>>>> 54964d2203f8866ff0a1458d434eb7cea15f1175
 		// TODO - implement AlaCarteItem.AlaCarteItem
 		this.name = name;
 		this.price = price;
