@@ -4,16 +4,25 @@ public class Restaurant {
 
 //<<<<<<< Updated upstream
 
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		// TODO - implement Restaurant.main
 		TableList table_list = new TableList();
+		Menu restaMenu = new Menu();
+		OrderList restaOrderList = new OrderList();
+		StaffList restaStaffList = new StaffList();
+		MemberList restaMember = new MemberList();
+		TimeHandler handler = new TimeHandler();
+		RevenueReport restaReport = new RevenueReport();
 
 		int option;
 		Scanner sc = new Scanner(System.in);
-
+		
+		//Data List
+		
 		while (true) {
 			System.out.println("SELECT OPTION: ");
-			System.out.println("1. Create/Update/Remove menu item\n" +
+			System.out.println(
+					"1. Create/Update/Remove menu item\n" +
 					"2. Create/Update/Remove promotion\n" +
 					"3. Create order\n" +
 					"4. View order\n" +
@@ -49,6 +58,7 @@ public class Restaurant {
 
 				case 3:		// Create order
 					System.out.println("\n");
+
 					break;
 
 				case 4:		// View order
