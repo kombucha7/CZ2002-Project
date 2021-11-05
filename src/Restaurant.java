@@ -4,7 +4,7 @@ public class Restaurant {
 
 //<<<<<<< Updated upstream
 
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		// TODO - implement Restaurant.main
 		TableList table_list = new TableList();
 
