@@ -365,6 +365,7 @@ public class Menu implements CustPrintable {
 
 	public void printer() {
 		System.out.println("Set Menu:");
+		System.out.println("===========================================================================");
 		for(int i = 0;i<setMenuList.size();i++)
 		{
 			if(setMenuList.get(i).getAvailability())
@@ -372,11 +373,12 @@ public class Menu implements CustPrintable {
 				System.out.println(setMenuList.get(i).getSetID() + ") Name: "+setMenuList.get(i).getName());
 				System.out.println("Price: "+setMenuList.get(i).getPrice());
 				System.out.println("Description: "+setMenuList.get(i).getDescription());
-				System.out.println("");
+				System.out.println("============================================================================");
 			}
 		}
 
 		System.out.println("Alacarte Menu:");
+		System.out.println("===========================================================================");
 		for(int i = 0;i<alaCarteList.size();i++)
 		{
 			if(alaCarteList.get(i).getAvailability())
@@ -385,7 +387,7 @@ public class Menu implements CustPrintable {
 				System.out.println(alaCarteList.get(i).getFoodID() + ") Name: "+alaCarteList.get(i).getName());
 				System.out.println("Price: "+alaCarteList.get(i).getPrice());
 				System.out.println("Description: "+alaCarteList.get(i).getDescription());
-				System.out.println("");
+				System.out.println("===========================================================================");
 			}
 		}
 	}
