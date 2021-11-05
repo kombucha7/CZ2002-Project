@@ -2,6 +2,8 @@ public class Invoice implements CustPrintable {
 
 	private boolean member;
 	private Order order;
+	private final double gst = 1.17;
+	private double finalprice;
 
 	/**
 	 * 
@@ -30,11 +32,15 @@ public class Invoice implements CustPrintable {
 					order.getSetItemOrder().get(i).getPrice());
 		}
 
-		System.out.printf("Total Price: %d\n", order.getTotalPrice());
+		finalprice = order.getTotalPrice();
+		System.out.printf("Total Price: %d\n", finalprice);
 
 		if (member) {
-			System.out.printf("Total price after member discount: %d\n", order.getTotalPrice() * 0.9);
+			finalprice *= 0.9;
+			System.out.printf("Total price after member discount: %d\n", finalprice);		
 		}
+
+		System.out.printf("Total Price after tax: %d\n", finalprice * gst);
 		order.setOrderCompleted(true);
 
 	}

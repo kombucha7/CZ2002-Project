@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 public class SetItem {
 
 	private String name;
 	private float price;
-	private ArrayList<AlaCarteItem> alaCarteMenuList;
+	private ArrayList<AlaCarteItem> alaCarteMenuList  ;
 	private int setID;
 	private String description;
 	private boolean availability;
@@ -14,27 +15,29 @@ public class SetItem {
 	 * @param price
 	 * @param description
 	 */
-	public SetItem(int setID, string name, float price, string description) {
-		// TODO - implement SetItem.SetItem
-		throw new UnsupportedOperationException();
+	public SetItem(int setID, String name, float price, String description) {
+		this.setID = setID;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.alaCarteMenuList = new ArrayList<AlaCarteItem>();
 	}
 
 	/**
 	 * 
 	 * @param alacarteID
 	 */
-	public void addItem(int alacarteID) {
-		// TODO - implement SetItem.addItem
-		throw new UnsupportedOperationException();
+	public void addItem(AlaCarteItem alacarteID) {
+		alaCarteMenuList.add(alacarteID);
 	}
 
 	/**
 	 * 
 	 * @param alacarteID
 	 */
-	public void deleteItem(int alacarteID) {
-		// TODO - implement SetItem.deleteItem
-		throw new UnsupportedOperationException();
+	public void deleteItem(AlaCarteItem alacarteID) {
+		alaCarteMenuList.remove(alacarteID);
+		
 	}
 
 	public String getName() {

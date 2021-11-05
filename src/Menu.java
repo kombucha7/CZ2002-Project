@@ -6,8 +6,8 @@ public class Menu implements CustPrintable {
 	private ArrayList<SetItem> setMenuList;
 
 	public Menu() {
-		// TODO - implement Menu.Menu
-		throw new UnsupportedOperationException();
+		alaCarteList = new ArrayList<AlaCarteItem>();
+		setMenuList = new ArrayList<SetItem>();
 	}
 
 	public ArrayList<AlaCarteItem> getAlaCarteList() {
