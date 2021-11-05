@@ -68,25 +68,25 @@ public class Menu implements CustPrintable {
 		AlaCarteItem CrabCakes = new AlaCarteItem("CrabCakes",3.0,"Crab Cakes",foodType.Appetizer,4004,true);
 		alaCarteList.add(CrabCakes);
 
-		SetItem FilletoFishSet = new SetItem(01, "Filet o Fish Set", 5.00, "Contains : Filet o fish burger, CocaCola, Fries");
+		SetItem FilletoFishSet = new SetItem(01, "Filet o Fish Set", 5.00, "");
 		FilletoFishSet.addItem(FilletOFish);
 		FilletoFishSet.addItem(CocaCola);
 		FilletoFishSet.addItem(Fries);
 		setMenuList.add(FilletoFishSet);
 
-		SetItem McWrapSet = new SetItem(02, "McWrap Set", 7.90, "Contains : McWrap, Cocacola, Spam");
+		SetItem McWrapSet = new SetItem(02, "McWrap Set", 7.90, "");
 		McWrapSet.addItem(McWrap);
 		McWrapSet.addItem(CocaCola);
 		McWrapSet.addItem(Spam);
 		setMenuList.add(McWrapSet);
 
-		SetItem McSpicySet = new SetItem(03, "McSpicy Set", 7.50, "Contains : McSpicy, Sprite, CornCup");
+		SetItem McSpicySet = new SetItem(03, "McSpicy Set", 7.50, "");
 		McSpicySet.addItem(McSpicy);
 		McSpicySet.addItem(Sprite);
 		McSpicySet.addItem(CornCup);
 		setMenuList.add(McSpicySet);
 
-		SetItem McPepperSet = new SetItem(04, "McPepper Set", 8.50, "Contains : McPepper, LemonTea, MilkShake");
+		SetItem McPepperSet = new SetItem(04, "McPepper Set", 8.50, "");
 		McPepperSet.addItem(McPepper);
 		McPepperSet.addItem(LemonTea);
 		McPepperSet.addItem(MilkShake);
@@ -373,6 +373,12 @@ public class Menu implements CustPrintable {
 				System.out.println(setMenuList.get(i).getSetID() + ") Name: "+setMenuList.get(i).getName());
 				System.out.println("Price: "+setMenuList.get(i).getPrice());
 				System.out.println("Description: "+setMenuList.get(i).getDescription());
+				System.out.print("Contains: ");
+				for(int j = 0; j < setMenuList.get(i).getAlaCarteMenuList().size();j++)
+				{
+					System.out.print(setMenuList.get(i).getAlaCarteMenuList().get(j).getName() + " , ");
+				}
+				System.out.println("");
 				System.out.println("============================================================================");
 			}
 		}
