@@ -2,17 +2,18 @@ public class Table {
 
 	private int tableID;
 	private int numSeat;
-	private booelean tableOccupied;
+	private boolean tableOccupied;
 	private boolean reservationOccupied;
 
 	/**
-	 * 
+	 *
 	 * @param tableID
 	 * @param numSeat
 	 */
 	public Table(int tableID, int numSeat) {
-		// TODO - implement Table.Table
-		throw new UnsupportedOperationException();
+		this.tableID = tableID;
+		this.numSeat = numSeat;
+		this.tableOccupied = false;
 	}
 
 	public int getTableID() {
@@ -40,18 +41,29 @@ public class Table {
 	}
 
 	public void occupy() {
-		// TODO - implement Table.occupy
-		throw new UnsupportedOperationException();
+		tableOccupied = true;
 	}
 
+	// when customers are leaving
 	public void empty() {
-		// TODO - implement Table.empty
-		throw new UnsupportedOperationException();
+		tableOccupied = false;
 	}
 
+	// to see if the table is occupied
 	public boolean isOccupied() {
-		// TODO - implement Table.isOccupied
-		throw new UnsupportedOperationException();
+		return tableOccupied;
 	}
+
+//	public boolean getReservationOccupied() {
+//		return this.reservationOccupied;
+//	}
+//
+//	/**
+//	 *
+//	 * @param reservationOccupied
+//	 */
+//	public void setReservationOccupied(boolean reservationOccupied) {
+//		this.reservationOccupied = reservationOccupied;
+//	}
 
 }

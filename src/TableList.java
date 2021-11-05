@@ -1,21 +1,63 @@
-public class TableList {
+import java.util.ArrayList;
+
+public class TableList implements ListPrinter {
 
 	private ArrayList<Table> tableList;
-	private static int totalTables;
+	private static int totalTables = 15;
+
 
 	public TableList() {
-		// TODO - implement TableList.TableList
-		throw new UnsupportedOperationException();
+		ArrayList<Table> tableList = new ArrayList<Table>();
+
+		Table table1 = new Table(0, 2);
+		tableList.add(table1);
+		Table table2 = new Table(1, 2);
+		tableList.add(table2);
+		Table table3 = new Table(2, 2);
+		tableList.add(table3);
+		Table table4 = new Table(3, 4);
+		tableList.add(table4);
+		Table table5 = new Table(4, 4);
+		tableList.add(table5);
+		Table table6 = new Table(5, 4);
+		tableList.add(table6);
+		Table table7 = new Table(6, 6);
+		tableList.add(table7);
+		Table table8 = new Table(7, 6);
+		tableList.add(table8);
+		Table table9 = new Table(8, 6);
+		tableList.add(table9);
+		Table table10 = new Table(9, 8);
+		tableList.add(table10);
+		Table table11 = new Table(10, 8);
+		tableList.add(table11);
+		Table table12 = new Table(11, 8);
+		tableList.add(table12);
+		Table table13 = new Table(12, 10);
+		tableList.add(table13);
+		Table table14 = new Table(13, 10);
+		tableList.add(table14);
+		Table table15 = new Table(14, 10);
+		tableList.add(table15);
 	}
 
 	public void printList() {
-		// TODO - implement TableList.printList
-		throw new UnsupportedOperationException();
+		for (int i=0; i<totalTables; i++) {
+			if (tableList.get(i).isOccupied())
+				System.out.println("Table " + (i+1) + "is occupied.");
+			else
+				System.out.println("Table " + (i+1) + "is not occupied.");
+		}
 	}
 
 	public int getEmpty() {
-		// TODO - implement TableList.getEmpty
-		throw new UnsupportedOperationException();
+		int count=0;
+		for (int i=0; i<totalTables; i++) {
+			if (!tableList.get(i).isOccupied()) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/**
@@ -23,8 +65,25 @@ public class TableList {
 	 * @param pax
 	 */
 	public int matchTable(int pax) {
-		// TODO - implement TableList.matchTable
-		throw new UnsupportedOperationException();
+		/*
+		int first_half, sec_half;
+		if (pax > 10) {
+			first_half = 10;
+			sec_half = pax - 10;
+		} */
+
+		// restaurant is full
+		if (getEmpty() == 0)
+			return -1;
+
+		for (int i=0; i<totalTables; i++) {
+			if (!tableList.get(i).isOccupied() && tableList.get(i).getNumSeat() >= pax) {
+				occupyTable(i);
+				return tableList.get(i).getTableID();
+			}
+		}
+		// have empty table but not big enough for current group size
+		return -2;
 	}
 
 	/**
@@ -32,17 +91,11 @@ public class TableList {
 	 * @param tableID
 	 */
 	public void occupyTable(int tableID) {
-		// TODO - implement TableList.occupyTable
-		throw new UnsupportedOperationException();
+		tableList.get(tableID).occupy();
 	}
 
-	/**
-	 * 
-	 * @param tableID
-	 */
 	public void emptyTable(int tableID) {
-		// TODO - implement TableList.emptyTable
-		throw new UnsupportedOperationException();
+		tableList.get(tableID).empty();
 	}
 
 }
