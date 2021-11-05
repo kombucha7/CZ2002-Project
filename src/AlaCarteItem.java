@@ -16,7 +16,8 @@ public class AlaCarteItem {
 	 * @param foodID
 	 * @param availability
 	 */
-	public AlaCarteItem(String name, float price, string description, foodType foodtype, int foodID, boolean availability) {
+	public AlaCarteItem(String name, float price, String description, foodType foodtype, int foodID,
+			boolean availability) {
 		// TODO - implement AlaCarteItem.AlaCarteItem
 		throw new UnsupportedOperationException();
 	}
