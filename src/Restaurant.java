@@ -24,8 +24,7 @@ public class Restaurant {
 			System.out.println("1. Create/Update/Remove menu item\n" + "2. Create/Update/Remove promotion\n"
 					+ "3. Create order\n" + "4. View order\n" + "5. Add/Remove order item/s to/from order\n"
 					+ "6. Create reservation booking\n" + "7. Check/Remove reservation booking\n"
-					+ "8. Check table availability\n" + "9. Assign customer to table\n"
-					+ "10. Print order invoice\n"
+					+ "8. Check table availability\n" + "9. Assign customer to table\n" + "10. Print order invoice\n"
 					+ "11. Print sale revenue report by period (eg day or month)\n" + "12. Advance time(1 hour)\n"
 					+ "13. Exit");
 
@@ -46,6 +45,105 @@ public class Restaurant {
 			switch (option) {
 			case 1: // Create/Update/Remove menu item
 				System.out.println("\n");
+				int menuOption, choizes;
+
+				String name, description, newfoodname, updateTF;
+				int price, foodID, foodIndex;
+				foodType userFoodType;
+
+				while (true) {
+					System.out.println("SELECT OPTION: ");
+					System.out.println("1. Create menu item\n");
+					System.out.println("2. Update menu item\n");
+					System.out.println("3. Remove menu item\n");
+					System.out.println("4. Go back\n");
+
+					menuOption = sc.nextInt();
+
+					while (menuOption < 0 || menuOption > 4) {
+						System.out.println("Invalid option selected. Re-enter: ");
+						menuOption = sc.nextInt();
+					}
+					if (option == 4) {
+						System.out.println("Returning to previous option...");
+						break;
+					}
+
+					switch (menuOption) {
+					case 1:
+						System.out.println("\n");
+						System.out.println("Enter Food Name to create: ");
+						name = sc.nextLine();
+						System.out.println("Enter Price: ");
+						price = sc.nextInt();
+						System.out.println("Enter Food Description: ");
+						description = sc.nextLine();
+						System.out.println("Enter Food Type: ");
+						userFoodType = foodType.valueOf(sc.nextLine());
+
+						foodIndex = restaMenu.getAlaCarteList().size() - 1;
+						foodID = restaMenu.getAlaCarteList().get(foodIndex).getFoodID() + 1;
+
+						AlaCarteItem newItem = new AlaCarteItem(name, price, description, userFoodType, foodID, true);
+						restaMenu.getAlaCarteList().add(newItem);
+						break;
+					case 2:
+						System.out.println("\n");
+						System.out.println("Enter Food Name to update: ");
+						name = sc.nextLine();
+
+						System.out.println("Enter the information to update:");
+						System.out.println("1. Name");
+						System.out.println("2. Price");
+						System.out.println("3. Description");
+						System.out.println("4. Food Type");
+						System.out.println("5. Availability");
+						choizes = sc.nextInt();
+
+						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
+							if (restaMenu.getAlaCarteList().get(i).getName() == name) {
+								if (choizes == 1) {
+									System.out.println("Enter the new name:");
+									newfoodname = sc.nextLine();
+									restaMenu.getAlaCarteList().get(i).setName(newfoodname);
+								} else if (choizes == 2) {
+									System.out.println("Enter the new price:");
+									price = sc.nextInt();
+									restaMenu.getAlaCarteList().get(i).setPrice(price);
+								} else if (choizes == 3) {
+									System.out.println("Enter the new description:");
+									description = sc.nextLine();
+									restaMenu.getAlaCarteList().get(i).setDescription(description);
+								} else if (choizes == 4) {
+									System.out.println("Enter the new food type:");
+									userFoodType = foodType.valueOf(sc.nextLine());
+									restaMenu.getAlaCarteList().get(i).setFoodType(userFoodType);
+								} else if (choizes == 5) {
+									System.out.println("Current Availability is "
+											+ restaMenu.getAlaCarteList().get(i).getAvailability()
+											+ ". Press Y to make available and N to not available.");
+									updateTF = sc.nextLine();
+									if (updateTF == "Y") {
+										restaMenu.getAlaCarteList().get(i).setAvailability(true);
+									} else if (updateTF == "N") {
+										restaMenu.getAlaCarteList().get(i).setAvailability(false);
+									}
+								}
+							}
+						}
+						break;
+					case 3:
+						System.out.println("\n");
+						System.out.println("Enter Food Name to remove: ");
+						name = sc.nextLine();
+						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
+							if (restaMenu.getAlaCarteList().get(i).getName() == name) {
+								restaMenu.getAlaCarteList().get(i).setAvailability(false);
+							}
+						}
+						break;
+					}
+				}
 				break;
 
 			case 2: // Create/Update/Remove promotion
@@ -254,16 +352,16 @@ public class Restaurant {
 
 			case 6: // Create reservation booking
 				System.out.println("###Creating a new reservation###");
-				System.out.println("Enter Date in the format (DDMMYYYY):");	//truncate D/M/Y
+				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 				String dateInput = sc.next();
-				String day = dateInput.substring(0,2);
-				String month = dateInput.substring(0,2);
-				String year = dateInput.substring(0,4);
+				String day = dateInput.substring(0, 2);
+				String month = dateInput.substring(0, 2);
+				String year = dateInput.substring(0, 4);
 
 				System.out.println("Enter Time in the format (HHmm):");
 				String timeInput = sc.next();
-				String hours = timeInput.substring(0,2);
-				String minute = timeInput.substring(0,2);
+				String hours = timeInput.substring(0, 2);
+				String minute = timeInput.substring(0, 2);
 
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
@@ -271,17 +369,16 @@ public class Restaurant {
 				System.out.println("Enter phone no.:");
 				int phoneNum = sc.nextInt();
 
-				Instant inst1 = Instant.parse(year + "-" + month + "-" + day +"T" + hours +":" + minute + ":00.00Z");
+				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
 				Reservation addNew = new Reservation(inst1, pax, phoneNum);
 
 				int tables[] = restaTable.matchCurrentTable(pax);
 
-				int index = restaReserve.checkUpcomingReserved(tables,addNew);
+				int index = restaReserve.checkUpcomingReserved(tables, addNew);
 				if (index > -1) {
 					addNew.setTableNum(index);
 					restaReserve.createReservation(addNew);
-				}
-				else {
+				} else {
 					System.out.println("Reservation list full");
 				}
 				System.out.println("\n");
