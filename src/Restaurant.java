@@ -412,26 +412,27 @@ public class Restaurant {
 				System.out.println("Please enter order ID: ");
 				int orderid10 = sc.nextInt();
 				Boolean memberstat10 = sc.nextBoolean(); // check for member or ask for member
+				int tableid10 = restaOrderList.getTableIDByOrderID(orderid10);
 				restaOrderList.generateInvoice(orderid10, memberstat10);
+				restaTable.emptyTable(tableid10);
 				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderid10));
 				System.out.println("\n");
 				break;
 
 			case 11: // Print sale revenue report by period (eg day or month)
-				System.out.println("Please enter initial year: (YYYY)");
-				String iniyear = sc.next();
-				System.out.println("Please enter initial month: (MM)");
-				String inimon = sc.next();
-				System.out.println("Please enter initial day: (DD)");
-				String iniday = sc.next();
-				System.out.println("Please enter final year: (YYYY)");
-				String finyear = sc.next();
-				System.out.println("Please enter final month: (MM)");
-				String finmon = sc.next();
-				System.out.println("Please enter final day: (DD)");
-				String finday = sc.next();
-				String ini = iniyear + "-" + inimon + "-" + iniday + "T00:00:00Z";
-				String fin = finyear + "-" + finmon + "-" + finday + "T00:00:00Z";
+				String restday, restmonth, restyear, ini, fin, date11;
+				System.out.println("Enter Date in the format (DDMMYYYY):");
+				date11 = sc.next();
+				restday = date11.substring(0, 2);
+				restmonth = date11.substring(2, 4);
+				restyear = date11.substring(4, 8);
+				ini = restyear + "-" + restmonth + "-" + restday + "T00:00:00Z";
+				System.out.println("Enter Date in the format (DDMMYYYY):");
+				date11 = sc.next();
+				restday = date11.substring(0, 2);
+				restmonth = date11.substring(2, 4);
+				restyear = date11.substring(4, 8);
+				fin = restyear + "-" + restmonth + "-" + restday + "T00:00:00Z";
 				restaReport.periodRevenue(Instant.parse(ini), Instant.parse(fin));
 				System.out.println("\n");
 				break;

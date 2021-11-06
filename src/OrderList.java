@@ -197,4 +197,15 @@ public class OrderList implements ListPrinter {
 		return null;
 	}
 
+	public int getTableIDByOrderID(int orderID)
+	{
+		Order temporder = getOrderByOrderID(orderID);
+		if(temporder!= null)
+		{
+			return temporder.getTableID();
+		}
+		else return -1;
+	}
 }
+
+	
