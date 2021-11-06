@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class OrderList implements ListPrinter {
 
 	private ArrayList<Order> orderList;
-	private static int orderID = 0;
+	private static int orderID = 1;
 
 	public OrderList() {
 		orderList = new ArrayList<Order>();
@@ -52,7 +52,7 @@ public class OrderList implements ListPrinter {
 				ID = sc.nextInt();
 				System.out.println("Please enter number of items");
 				qty = sc.nextInt();
-				temporder = orderList.get(orderID);
+				temporder = getOrderByOrderID(orderID);
 				AlaCarteItem tempfood = menulist.getAlaCarteList().get(ID);
 				temporder.add_OrderFood(tempfood, qty);
 				break;
@@ -62,7 +62,7 @@ public class OrderList implements ListPrinter {
 				ID = sc.nextInt();
 				System.out.println("Please enter number of items");
 				qty = sc.nextInt();
-				temporder = orderList.get(orderID);
+				temporder = getOrderByOrderID(orderID);
 				SetItem tempset = menulist.getSetMenuList().get(ID);
 				temporder.add_OrderFood(tempset, qty);
 				break;
@@ -81,13 +81,13 @@ public class OrderList implements ListPrinter {
 			case 1:
 				System.out.println("Please enter AlaCarte Item ID");
 				ID = sc.nextInt();
-				orderList.get(orderID).deleteAlaFood(ID);
+				getOrderByOrderID(orderID).deleteAlaFood(ID);
 				break;
 
 			case 2:
 				System.out.println("Please enter Set Item ID");
 				ID = sc.nextInt();
-				orderList.get(orderID).deleteSetFood(ID);
+				getOrderByOrderID(orderID).deleteSetFood(ID);
 				break;
 
 			default:
@@ -97,10 +97,8 @@ public class OrderList implements ListPrinter {
 			break;
 
 		default:
-			sc.close();
 			return false;
 		}
-		sc.close();
 		return true;
 	}
 

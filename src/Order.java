@@ -35,7 +35,7 @@ public class Order implements ListPrinter {
 		this.alaCarteItemOrder = new ArrayList<AlaCarteItem>();
 		this.setItemOrder = new ArrayList<SetItem>();
 		this.orderCompleted = false;
-		this.totalprice = 0;
+		this.totalprice = 0.00;
 		this.tableID = tableID;
 	}
 
@@ -184,7 +184,7 @@ public class Order implements ListPrinter {
 			System.out.println(setItemOrder.get(j).getName());
 		}
 		System.out.println("-------------------------------------------------");
-		System.out.printf("Total cost: %d\n", this.getTotalPrice());
+		System.out.printf("Total cost: %f\n", this.getTotalprice());
 	}
 
 	/**
@@ -218,6 +218,7 @@ public class Order implements ListPrinter {
 	public boolean deleteAlaFood(int foodID) {
 		for (int i = 0; i < alaCarteItemOrder.size(); i++) {
 			if (alaCarteItemOrder.get(i).getFoodID() == foodID) {
+				totalprice -= alaCarteItemOrder.get(i).getPrice();
 				alaCarteItemOrder.remove(i);
 				return true;
 			}
@@ -232,6 +233,7 @@ public class Order implements ListPrinter {
 	public boolean deleteSetFood(int foodID) {
 		for (int i = 0; i < setItemOrder.size(); i++) {
 			if (setItemOrder.get(i).getSetID() == foodID) {
+				totalprice -= setItemOrder.get(i).getPrice();
 				setItemOrder.remove(i);
 				return true;
 			}
