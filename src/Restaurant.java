@@ -448,7 +448,8 @@ public class Restaurant {
 			case 11: // Print order invoice
 				System.out.println("Please enter order ID: ");
 				int orderid10 = sc.nextInt();
-				Boolean memberstat10 = sc.nextBoolean(); // check for member or ask for member
+				System.out.println("Please enter Phone number for member verification");
+				Boolean memberstat10 = restaMember.checkMember(sc.nextInt()); // check for member or ask for member
 				int tableid10 = restaOrderList.getTableIDByOrderID(orderid10);
 				restaOrderList.generateInvoice(orderid10, memberstat10);
 				restaTable.emptyTable(tableid10);
