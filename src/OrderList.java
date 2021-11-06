@@ -55,7 +55,7 @@ public class OrderList implements ListPrinter {
 				qty = sc.nextInt();
 				temporder = getOrderByOrderID(orderID);
 				for (int i = 0; i < menulist.getAlaCarteList().size(); i++) {
-					if (menulist.getAlaCarteList().get(i).getFoodID() == ID) {
+					if (menulist.getAlaCarteList().get(i).getFoodID() == ID && menulist.getSetMenuList().get(i).getAvailability()) {
 						AlaCarteItem tempfood = menulist.getAlaCarteList().get(i);
 						temporder.add_OrderFood(tempfood, qty);
 						flag = true;
@@ -75,7 +75,7 @@ public class OrderList implements ListPrinter {
 				qty = sc.nextInt();
 				temporder = getOrderByOrderID(orderID);
 				for (int i = 0; i < menulist.getSetMenuList().size(); i++) {
-					if (menulist.getSetMenuList().get(i).getSetID() == ID) {
+					if (menulist.getSetMenuList().get(i).getSetID() == ID && menulist.getSetMenuList().get(i).getAvailability()) {
 						SetItem tempset = menulist.getSetMenuList().get(i);
 						temporder.add_OrderFood(tempset, qty);
 						flag = true;
