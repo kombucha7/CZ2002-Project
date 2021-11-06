@@ -267,7 +267,7 @@ public class Restaurant {
 						}
 						System.out.println("Enter SetID to Update:");
 						tempSetID = sc.nextInt();
-
+						boolean exist = false;
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
 							if (restaMenu.getSetMenuList().get(i).getSetID() == tempSetID) {
 								sc.nextLine();
@@ -280,11 +280,16 @@ public class Restaurant {
 								tempprice = sc.nextDouble();
 								sc.nextLine();
 								restaMenu.getSetMenuList().get(i).setPrice(tempprice);
-
+								exist = true;
 								break;
 							}
 						}
-
+						if(!exist)
+						{
+							System.out.println("Enter a valid SetID to update!");
+							System.out.println("Enter SetID to Update:");
+							tempSetID = sc.nextInt();
+						}
 						break;
 					case 3:
 						System.out.println("Set Menu:");
