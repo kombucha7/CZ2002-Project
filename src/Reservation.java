@@ -73,6 +73,8 @@ public class Reservation {
 		return false;
 	}
 
-
+	public int getTableNum() {
+		return this.tableNum;
+	}
 
 }
