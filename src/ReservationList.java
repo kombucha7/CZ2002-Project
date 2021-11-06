@@ -32,7 +32,7 @@ public class ReservationList {
 		if (reservationList.isEmpty()) {
 			return tableArray[0];
 		}
-		while (tableArray[i] != -1) {
+		while (tableArray[i] != -1) {		// only returns if there is a reservation found at that table
 			for (int j = 0; j < reservationList.size(); j++) {
 				if (reservationList.get(j).getTableNum() == tableArray[i]) {
 					if (reservationList.get(j).getDate().toEpochMilli() - Instant.now().toEpochMilli() > 3600000) {
@@ -47,19 +47,30 @@ public class ReservationList {
 	}
 
 	public int checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
-		int i = 0;
-		if (reservationList.isEmpty()) {
+		int i = 0, counter = 0;
+		if (reservationList.size() == 0) {
 			return tableArray[0];
 		}
 
-		while (tableArray[i] != -1) {
-			for (int j = 0; j < reservationList.size(); i++) {
-				if (reservationList.get(i).getTableNum() == tableArray[i] && reservationList.get(i).getDate().toEpochMilli() - newReserve.getDate().toEpochMilli() >  3600000 ) {
-					return tableArray[i];
+		while (i < tableArray.length) {
+			for (int j = 0; j < reservationList.size(); j++) {
+				if (tableArray[i] == reservationList.get(j).getTableNum()) {
+					if (Math.abs(reservationList.get(j).getDate().getEpochSecond() - newReserve.getDate().getEpochSecond()) <  3600){
+						counter = 1;
+					}
 				}
+
 			}
+			if (counter == 1) {
+				counter = 0;
+			}
+			else{
+				return tableArray[i];
+			}
+
 			i++;
 		}
+
 		return -1;
 	}
 
@@ -89,8 +100,8 @@ public class ReservationList {
 
 	public void printReservation() {
 		for (int i = 0; i < reservationList.size(); i++) {
-			System.out.println("Phone num\t\tDate\t\t\t\tPax");
-			System.out.println(reservationList.get(i).getPhoneNum()+ "\t\t" + reservationList.get(i).getDate() + "\t\t"  + reservationList.get(i).getPax());
+			System.out.println("Phone num\t\tDate\t\t\t\tPax\tTable");
+			System.out.println(reservationList.get(i).getPhoneNum()+ "\t\t" + reservationList.get(i).getDate() + "\t\t"  + reservationList.get(i).getPax() + " " + reservationList.get(i).getTableNum());
 		}
 	}
 

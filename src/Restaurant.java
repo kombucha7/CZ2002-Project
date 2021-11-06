@@ -23,20 +23,20 @@ public class Restaurant {
 			System.out.println("SELECT OPTION: ");
 			System.out.println("1. Create/Update/Remove menu item\n" + "2. Create/Update/Remove promotion\n"
 					+ "3. Create order\n" + "4. View order\n" + "5. Add/Remove order item/s to/from order\n"
-					+ "6. Create reservation booking\n" + "7. Check/Remove reservation booking\n"
-					+ "8. Check table availability\n" + "9. Assign customer to table\n" + "10. Print order invoice\n"
-					+ "11. Print sale revenue report by period (eg day or month)\n" + "12. Advance time(1 hour)\n"
-					+ "13. Exit");
+					+ "6. Create reservation booking\n" + "7. Check reservation booking\n" + "8. Remove reservation booking"
+					+ "9. Check table availability\n" + "10. Assign customer to table\n" + "11. Print order invoice\n"
+					+ "12. Print sale revenue report by period (eg day or month)\n" + "13. Advance time(1 hour)\n"
+					+ "14. Exit");
 
 			option = sc.nextInt();
 
 			// troubleshooting
-			while (option < 0 || option > 13) {
+			while (option < 0 || option > 14) {
 				System.out.println("Invalid option selected. Re-enter: ");
 				option = sc.nextInt();
 			}
 			// exit app
-			if (option == 13) {
+			if (option == 14) {
 				System.out.println("Exiting...");
 				break;
 			}
@@ -387,17 +387,28 @@ public class Restaurant {
 				break;
 
 			case 7: // Check/Remove reservation booking
-				restaReserve.removeReservation(123);
+				System.out.println("Enter the phone number used for reservation");
+				phoneNum = sc.nextInt();
+				restaReserve.checkReservation(phoneNum);
+				restaReserve.printReservation();
 				System.out.println("\n");
 				break;
 
-			case 8: // Check table availability
+			case 8: // Remove reservation booking
+				System.out.println("Enter the phone number used for reservation");
+				phoneNum = sc.nextInt();
+				restaReserve.removeReservation(phoneNum);
+				restaReserve.printReservation();
+				System.out.println("\n");
+				break;
+
+			case 9: // Check table availability
 				System.out.println("Number of tables available: " + restaTable.getEmpty() + "\n");
 				// table_list.printTable();
 				System.out.println("\n");
 				break;
 
-			case 9: // Assign customer to table
+			case 10: // Assign customer to table
 				System.out.println("Enter number of pax: ");
 				int pax9 = sc.nextInt();
 				int[] availableTables9 = restaTable.matchCurrentTable(pax9);
@@ -408,7 +419,7 @@ public class Restaurant {
 				System.out.println("\n");
 				break;
 
-			case 10: // Print order invoice
+			case 11: // Print order invoice
 				System.out.println("Please enter order ID: ");
 				int orderid10 = sc.nextInt();
 				Boolean memberstat10 = sc.nextBoolean(); // check for member or ask for member
@@ -419,7 +430,7 @@ public class Restaurant {
 				System.out.println("\n");
 				break;
 
-			case 11: // Print sale revenue report by period (eg day or month)
+			case 12: // Print sale revenue report by period (eg day or month)
 				String restday, restmonth, restyear, ini, fin, date11;
 				System.out.println("Enter Date in the format (DDMMYYYY):");
 				date11 = sc.next();
@@ -437,7 +448,7 @@ public class Restaurant {
 				System.out.println("\n");
 				break;
 
-			case 12: // Advance time by 1 hour
+			case 13: // Advance time by 1 hour
 				handler.advanceTime(60);
 				// add code to check reservations
 				System.out.println("\n");
