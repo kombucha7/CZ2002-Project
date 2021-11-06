@@ -284,10 +284,6 @@ public class Restaurant {
 				else {
 					System.out.println("Reservation list full");
 				}
-
-				//test to see if reservation works
-				restaReserve.printReservation();
-
 				System.out.println("\n");
 				break;
 
