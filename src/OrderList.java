@@ -78,6 +78,7 @@ public class OrderList implements ListPrinter {
 					if (menulist.getSetMenuList().get(i).getSetID() == ID) {
 						SetItem tempset = menulist.getSetMenuList().get(i);
 						temporder.add_OrderFood(tempset, qty);
+						flag = true;
 						break;
 					}
 				}
