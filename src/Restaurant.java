@@ -287,8 +287,6 @@ public class Restaurant {
 						if(!exist)
 						{
 							System.out.println("Enter a valid SetID to update!");
-							System.out.println("Enter SetID to Update:");
-							tempSetID = sc.nextInt();
 						}
 						break;
 					case 3:
