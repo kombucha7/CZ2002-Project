@@ -18,7 +18,11 @@ public class TimeHandler {
 		System.out.println("Please enter amount of time to advance in minutes: ");
 		int adv_time = sc.nextInt();
 		clock = Clock.offset(clock, Duration.ofMinutes(adv_time));
-		sc.close();
+	}
+
+	public void advanceTime(int mins)
+	{
+		clock = Clock.offset(clock, Duration.ofMinutes(mins));
 	}
 
 	public Instant getInstant() {
