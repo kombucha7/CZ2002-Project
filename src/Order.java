@@ -184,7 +184,7 @@ public class Order implements ListPrinter {
 			System.out.println(setItemOrder.get(j).getName());
 		}
 		System.out.println("-------------------------------------------------");
-		System.out.printf("Total cost: %f\n", this.getTotalprice());
+		System.out.printf("Total cost: %.2f\n", this.getTotalprice());
 	}
 
 	/**
