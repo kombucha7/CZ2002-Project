@@ -18,7 +18,6 @@ public class Staff extends Person {
 		this.employeeID = employeeID;
 		this.jobTitle = jobTitle;
 		this.gender = gender;
-		throw new UnsupportedOperationException();
 	}
 
 	public int getEmployeeID() {
