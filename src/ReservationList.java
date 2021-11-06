@@ -28,23 +28,31 @@ public class ReservationList {
 	}
 
 	public int checkCurrentReserved(int[] tableArray) {
-		for (int i = 0; i < tableArray.length; i++){
+		int i = 0;
+		while (i < tableArray.length) {
 			for (int j = 0; j < reservationList.size(); j++) {
 				if (reservationList.get(j).getTableNum() == tableArray[i]) {
-					if (reservationList.get(j).getDate().toEpochMilli() - Instant.now().toEpochMilli() > 3600000){
+					if (reservationList.get(j).getDate().toEpochMilli() - Instant.now().toEpochMilli() > 3600000) {
 						return tableArray[i];
 					}
 				}
 			}
+			i++;
 		}
+
 		return -1;
 	}
 
 	public int checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
 		int i = 0;
+
+		if (reservationList.size() == 0) {
+			return tableArray[i];
+		}
+
 		while (i < tableArray.length) {
 			for (int j = 0; j < reservationList.size(); i++) {
-				if (reservationList.get(i).getTableNum() == tableArray[i] && reservationList.get(i).getDate().toEpochMilli() - newReserve.getDate().toEpochMilli() >  3600000 ) {
+				if (reservationList.get(j).getTableNum() == tableArray[i] && reservationList.get(j).getDate().toEpochMilli() - newReserve.getDate().toEpochMilli() >  3600000 ) {
 					return tableArray[i];
 				}
 			}
