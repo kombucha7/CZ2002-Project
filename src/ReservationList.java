@@ -7,9 +7,6 @@ import java.time.temporal.ChronoUnit;
 
 public class ReservationList {
 
-	int customerNum;
-	Instant instantTest;
-
 	private ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
 
 	public ReservationList() {
@@ -34,10 +31,19 @@ public class ReservationList {
 		int pax = sc.nextInt();
 
 
+		System.out.println("Enter phone no.:");
+		int phoneNum = sc.nextInt();
+
 		Instant inst1 = Instant.parse(year + "-" + month + "-" + day +"T" + hours +":" + minute + ":00.00Z");
-		Reservation addNew = new Reservation(inst1, pax, customerNum);	//find a way to get the table based on the pax
+		Reservation addNew = new Reservation(inst1, pax, phoneNum);
+		//find a way to get the table based on the pax
+
 		reservationList.add(addNew);
+
+
 	}
+
+	/////////////Moved to another class to check//////////////////////////
 
 	public void removeExpired() {		//if they miss their reservation
 		for (int i = 0; i < reservationList.size(); i++) {
@@ -74,7 +80,7 @@ public class ReservationList {
 
 	public void checkReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
-			if (reservationList.get(i).getReservationID() == phoneNum) {
+			if (reservationList.get(i).getPhoneNum() == phoneNum) {
 				System.out.println("Reservation Found " + reservationList.get(i).getDate());
 				return;
 			}
@@ -86,7 +92,7 @@ public class ReservationList {
 
 	public void printReservation() {
 		for (int i = 0; i < reservationList.size(); i++) {
-			System.out.println(reservationList.get(i).getReservationID() + " " +
+			System.out.println(reservationList.get(i).getPhoneNum() + " " +
 					reservationList.get(i).getDate() + " " +
 					reservationList.get(i).getPax());
 		}

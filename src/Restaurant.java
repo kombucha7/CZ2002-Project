@@ -14,6 +14,7 @@ public class Restaurant {
 		MemberList restaMember = new MemberList();
 		TimeHandler handler = new TimeHandler();
 		RevenueReport restaReport = new RevenueReport();
+		ReservationList restaReserve = new ReservationList();
 
 		int option;
 		Scanner sc = new Scanner(System.in);
@@ -252,6 +253,8 @@ public class Restaurant {
 				break;
 
 			case 6: // Create reservation booking
+				restaReserve.createReservation();
+				// need to tag a table to reservation
 				System.out.println("\n");
 				break;
 
