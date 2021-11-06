@@ -43,6 +43,7 @@ public class OrderList implements ListPrinter {
 		switch (choice) {
 		case 1:
 			Order temporder;
+			boolean flag = false;
 			System.out.println("Press 1 for AlaCarte Item");
 			System.out.println("Press 2 for Set Item");
 			choice = sc.nextInt();
@@ -53,16 +54,18 @@ public class OrderList implements ListPrinter {
 				System.out.println("Please enter number of items");
 				qty = sc.nextInt();
 				temporder = getOrderByOrderID(orderID);
-				for(int i = 0; i<menulist.getAlaCarteList().size(); i++)
-				{
-					if(menulist.getAlaCarteList().get(i).getFoodID()==ID)
-					{
+				for (int i = 0; i < menulist.getAlaCarteList().size(); i++) {
+					if (menulist.getAlaCarteList().get(i).getFoodID() == ID) {
 						AlaCarteItem tempfood = menulist.getAlaCarteList().get(i);
 						temporder.add_OrderFood(tempfood, qty);
+						flag = true;
 						break;
 					}
 				}
-				System.out.println("Invalid Food ID");
+				if (!flag) {
+					System.out.println("Invalid Food ID");
+					flag = false;
+				}
 				break;
 
 			case 2:
@@ -71,16 +74,17 @@ public class OrderList implements ListPrinter {
 				System.out.println("Please enter number of items");
 				qty = sc.nextInt();
 				temporder = getOrderByOrderID(orderID);
-				for(int i = 0; i<menulist.getSetMenuList().size(); i++)
-				{
-					if(menulist.getSetMenuList().get(i).getSetID()==ID)
-					{
-						SetItem tempset = menulist.getSetMenuList().get(ID);
+				for (int i = 0; i < menulist.getSetMenuList().size(); i++) {
+					if (menulist.getSetMenuList().get(i).getSetID() == ID) {
+						SetItem tempset = menulist.getSetMenuList().get(i);
 						temporder.add_OrderFood(tempset, qty);
 						break;
 					}
 				}
-				System.out.println("Invalid Set ID");
+				if (!flag) {
+					System.out.println("Invalid Set ID");
+					flag = false;
+				}
 				break;
 
 			default:
@@ -97,13 +101,27 @@ public class OrderList implements ListPrinter {
 			case 1:
 				System.out.println("Please enter AlaCarte Item ID");
 				ID = sc.nextInt();
-				getOrderByOrderID(orderID).deleteAlaFood(ID);
+				if(getOrderByOrderID(orderID).deleteAlaFood(ID))
+				{
+					System.out.println("Success");
+				}
+				else
+				{
+					System.out.println("Failed");
+				}
 				break;
 
 			case 2:
 				System.out.println("Please enter Set Item ID");
 				ID = sc.nextInt();
-				getOrderByOrderID(orderID).deleteSetFood(ID);
+				if(getOrderByOrderID(orderID).deleteSetFood(ID))
+				{
+					System.out.println("Success");
+				}
+				else
+				{
+					System.out.println("Failed");
+				}
 				break;
 
 			default:
@@ -167,15 +185,12 @@ public class OrderList implements ListPrinter {
 		return null;
 	}
 
-	public Order getOrderByTableID(int tableID)
-	{
-		for(int i = 0; i<orderList.size(); i++)
-		{
-			if(orderList.get(i).getTableID()==tableID)
-			{
-				if(orderList.get(i).getOrderCompleted()==false) return orderList.get(i);
-				else
-				{
+	public Order getOrderByTableID(int tableID) {
+		for (int i = 0; i < orderList.size(); i++) {
+			if (orderList.get(i).getTableID() == tableID) {
+				if (orderList.get(i).getOrderCompleted() == false)
+					return orderList.get(i);
+				else {
 					break;
 				}
 			}
