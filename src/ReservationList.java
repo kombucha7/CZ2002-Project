@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Scanner;
 import static java.util.concurrent.TimeUnit.*;
 import java.time.temporal.ChronoUnit;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class ReservationList {
 
@@ -89,7 +92,7 @@ public class ReservationList {
 	public void checkReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
 			if (reservationList.get(i).getPhoneNum() == phoneNum) {
-				System.out.println("Reservation Found " + reservationList.get(i).getDate());
+				System.out.println("Reservation Found: " + reservationList.get(i).getDate());
 				return;
 			}
 		}
@@ -99,10 +102,13 @@ public class ReservationList {
 	}
 
 	public void printReservation() {
+		System.out.println("###################################################");
+		System.out.println("Phone Number\t\t   Date\t\t\t   Pax\t  Table");
 		for (int i = 0; i < reservationList.size(); i++) {
-			System.out.println("Phone num\t\tDate\t\t\t\tPax\tTable");
-			System.out.println(reservationList.get(i).getPhoneNum()+ "\t\t" + reservationList.get(i).getDate() + "\t\t"  + reservationList.get(i).getPax() + " " + reservationList.get(i).getTableNum());
+			System.out.printf("%10d%25s%6d%8d",reservationList.get(i).getPhoneNum(),reservationList.get(i).getDate(),reservationList.get(i).getPax(),reservationList.get(i).getTableNum());
+			System.out.println("");
 		}
+		System.out.println("###################################################");
 	}
 
 	public void arrivedForReservation() {
