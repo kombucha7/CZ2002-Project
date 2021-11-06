@@ -229,6 +229,7 @@ public class Restaurant {
 									temp.addItem(restaMenu.getAlaCarteList().get(i));
 									found = true;
 									tempfoodID = 1;
+									System.out.println(restaMenu.getAlaCarteList().get(i).getName()+"alacarte item added");
 									break;
 								}
 							}
@@ -236,8 +237,6 @@ public class Restaurant {
 							{
 								System.out.println("Invalid FoodID! Enter a valid foodID :");
 								tempfoodID = sc.nextInt();
-								System.out.println("done");
-								
 							}
 							tempfoodID = sc.nextInt();		
 						}
@@ -267,7 +266,7 @@ public class Restaurant {
 						}
 						System.out.println("Enter SetID to Update:");
 						tempSetID = sc.nextInt();
-
+						boolean exist = false;
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
 							if (restaMenu.getSetMenuList().get(i).getSetID() == tempSetID) {
 								sc.nextLine();
@@ -280,11 +279,14 @@ public class Restaurant {
 								tempprice = sc.nextDouble();
 								sc.nextLine();
 								restaMenu.getSetMenuList().get(i).setPrice(tempprice);
-
+								exist = true;
 								break;
 							}
 						}
-
+						if(!exist)
+						{
+							System.out.println("Enter a valid SetID to update!");
+						}
 						break;
 					case 3:
 						System.out.println("Set Menu:");
