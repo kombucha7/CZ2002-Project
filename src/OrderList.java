@@ -53,8 +53,16 @@ public class OrderList implements ListPrinter {
 				System.out.println("Please enter number of items");
 				qty = sc.nextInt();
 				temporder = getOrderByOrderID(orderID);
-				AlaCarteItem tempfood = menulist.getAlaCarteList().get(ID);
-				temporder.add_OrderFood(tempfood, qty);
+				for(int i = 0; i<menulist.getAlaCarteList().size(); i++)
+				{
+					if(menulist.getAlaCarteList().get(i).getFoodID()==ID)
+					{
+						AlaCarteItem tempfood = menulist.getAlaCarteList().get(i);
+						temporder.add_OrderFood(tempfood, qty);
+						break;
+					}
+				}
+				System.out.println("Invalid Food ID");
 				break;
 
 			case 2:
@@ -63,8 +71,16 @@ public class OrderList implements ListPrinter {
 				System.out.println("Please enter number of items");
 				qty = sc.nextInt();
 				temporder = getOrderByOrderID(orderID);
-				SetItem tempset = menulist.getSetMenuList().get(ID);
-				temporder.add_OrderFood(tempset, qty);
+				for(int i = 0; i<menulist.getSetMenuList().size(); i++)
+				{
+					if(menulist.getSetMenuList().get(i).getSetID()==ID)
+					{
+						SetItem tempset = menulist.getSetMenuList().get(ID);
+						temporder.add_OrderFood(tempset, qty);
+						break;
+					}
+				}
+				System.out.println("Invalid Set ID");
 				break;
 
 			default:
