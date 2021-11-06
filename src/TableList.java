@@ -2,10 +2,11 @@ import java.util.ArrayList;
 
 public class TableList implements ListPrinter {
 
-	private ArrayList<Table> tableList = new ArrayList<>();
+	private ArrayList<Table> tableList;
 	private static int totalTables = 15;
 
 	public TableList() {
+		tableList = new ArrayList<>();
 
 		Table table1 = new Table(0, 2);
 		tableList.add(table1);
@@ -64,7 +65,7 @@ public class TableList implements ListPrinter {
 	 */
 	// returns array of tables that are not occupied
 	// if full or if there is no available table with the required seating, array is full of -1
-	public int[] matchTable(int pax) {
+	public int[] matchCurrentTable(int pax) {
 		int[] availableTables = new int[totalTables];
 		int numAvailable = 0;
 
@@ -74,8 +75,24 @@ public class TableList implements ListPrinter {
 
 		for (int i=0; i<totalTables; i++) {
 			if (!tableList.get(i).isOccupied() && tableList.get(i).getNumSeat() >= pax) {
-//				occupyTable(i);
-//				return tableList.get(i).getTableID();
+				availableTables[numAvailable] = i;
+				numAvailable++;
+			}
+		}
+		return availableTables;
+	}
+
+	// returns array of tables that can fit the required pax (for reservations in the future)
+	public int[] matchUpcomingTable(int pax) {
+		int[] availableTables = new int[totalTables];
+		int numAvailable = 0;
+
+		for (int i=0; i<totalTables; i++) {
+			availableTables[i] = -1;
+		}
+
+		for (int i=0; i<totalTables; i++) {
+			if (tableList.get(i).getNumSeat() >= pax) {
 				availableTables[numAvailable] = i;
 				numAvailable++;
 			}
