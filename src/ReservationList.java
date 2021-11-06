@@ -29,7 +29,7 @@ public class ReservationList {
 
 	public int checkCurrentReserved(int[] tableArray) {
 		int i = 0;
-		while (i < tableArray.length) {
+		while (tableArray[i] != -1) {
 			for (int j = 0; j < reservationList.size(); j++) {
 				if (reservationList.get(j).getTableNum() == tableArray[i]) {
 					if (reservationList.get(j).getDate().toEpochMilli() - Instant.now().toEpochMilli() > 3600000) {
@@ -45,7 +45,10 @@ public class ReservationList {
 
 	public int checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
 		int i = 0;
-		while (i < tableArray.length) {
+		if (reservationList.isEmpty()) {
+			return tableArray[0];
+		}
+		while (tableArray[i] != -1) {
 			for (int j = 0; j < reservationList.size(); i++) {
 				if (reservationList.get(i).getTableNum() == tableArray[i] && reservationList.get(i).getDate().toEpochMilli() - newReserve.getDate().toEpochMilli() >  3600000 ) {
 					return tableArray[i];
@@ -82,9 +85,11 @@ public class ReservationList {
 
 	public void printReservation() {
 		for (int i = 0; i < reservationList.size(); i++) {
-			System.out.println(reservationList.get(i).getPhoneNum() + " " +
-					reservationList.get(i).getDate() + " " +
+			/*System.out.printf("%.16d,%.16d,%.16d",reservationList.get(i).getPhoneNum(),
+					reservationList.get(i).getDate(),
 					reservationList.get(i).getPax());
+			*/
+			System.out.println(reservationList.get(i).getPhoneNum()+ " " + reservationList.get(i).getDate() + " "  + reservationList.get(i).getPax());
 		}
 	}
 
