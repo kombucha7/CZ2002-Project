@@ -7,7 +7,7 @@ public class Restaurant {
 
 	public static void main(String[] args) {
 		// TODO - implement Restaurant.main
-		TableList table_list = new TableList();
+		TableList restaTable = new TableList();
 		Menu restaMenu = new Menu();
 		OrderList restaOrderList = new OrderList();
 		StaffList restaStaffList = new StaffList();
@@ -253,17 +253,47 @@ public class Restaurant {
 				break;
 
 			case 6: // Create reservation booking
-				restaReserve.createReservation();
-				// need to tag a table to reservation
+				System.out.println("###Creating a new reservation###");
+				System.out.println("Enter Date in the format (DDMMYYYY):");	//truncate D/M/Y
+				String dateInput = sc.next();
+				String day = dateInput.substring(0,2);
+				String month = dateInput.substring(0,2);
+				String year = dateInput.substring(0,4);
+
+				System.out.println("Enter Time in the format (HHmm):");
+				String timeInput = sc.next();
+				String hours = timeInput.substring(0,2);
+				String minute = timeInput.substring(0,2);
+
+				System.out.println("Enter no. pax");
+				int pax = sc.nextInt();
+
+				System.out.println("Enter phone no.:");
+				int phoneNum = sc.nextInt();
+
+				Instant inst1 = Instant.parse(year + "-" + month + "-" + day +"T" + hours +":" + minute + ":00.00Z");
+				Reservation addNew = new Reservation(inst1, pax, phoneNum);
+
+				int tables[] = restaTable.matchCurrentTable(pax);
+
+				int index = restaReserve.checkUpcomingReserved(tables,addNew);
+				if (index > -1) {
+					addNew.setTableNum(index);
+					restaReserve.createReservation(addNew);
+				}
+				else {
+					System.out.println("Reservation list full");
+				}
 				System.out.println("\n");
 				break;
 
 			case 7: // Check/Remove reservation booking
+				restaReserve.removeReservation(123);
 				System.out.println("\n");
 				break;
 
 			case 8: // Check table availability
-				System.out.println("Number of tables available: " + table_list.getEmpty() + "\n");
+				System.out.println("Number of tables available: " + restaTable.getEmpty() + "\n");
 				// table_list.printTable();
 				System.out.println("\n");
 				break;

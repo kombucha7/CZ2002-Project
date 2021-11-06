@@ -13,39 +13,13 @@ public class ReservationList {
 
 	}
 
-	public void createReservation() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("###Creating a new reservation###");
-		System.out.println("Enter Date in the format (DDMMYYYY):");	//truncate D/M/Y
-		String dateInput = sc.next();
-		String day = dateInput.substring(0,2);
-		String month = dateInput.substring(0,2);
-		String year = dateInput.substring(0,4);
-
-		System.out.println("Enter Time in the format (HHmm):");
-		String timeInput = sc.next();
-		String hours = timeInput.substring(0,2);
-		String minute = timeInput.substring(0,2);
-
-		System.out.println("Enter no. pax");
-		int pax = sc.nextInt();
-
-
-		System.out.println("Enter phone no.:");
-		int phoneNum = sc.nextInt();
-
-		Instant inst1 = Instant.parse(year + "-" + month + "-" + day +"T" + hours +":" + minute + ":00.00Z");
-		Reservation addNew = new Reservation(inst1, pax, phoneNum);
-		//find a way to get the table based on the pax
-
-		reservationList.add(addNew);
-
-
+	public void createReservation(Reservation reservation) {
+		reservationList.add(reservation);
 	}
 
 	/////////////Moved to another class to check//////////////////////////
 
-	public void removeExpired() {		//if they miss their reservation
+	public void removeExpired() {		//if they miss their reservation for more than 1 hr
 		for (int i = 0; i < reservationList.size(); i++) {
 			if (reservationList.get(i).isExpired()){
 				reservationList.remove(i);
@@ -53,7 +27,7 @@ public class ReservationList {
 		}
 	}
 
-	public int checkUpcomingReserved(int[] tableArray) {
+	public int checkCurrentReserved(int[] tableArray) {
 		for (int i = 0; i < tableArray.length; i++){
 			for (int j = 0; j < reservationList.size(); j++) {
 				if (reservationList.get(j).getTableNum() == tableArray[i]) {
@@ -66,16 +40,29 @@ public class ReservationList {
 		return -1;
 	}
 
-	public void removeReservation() {
-		//need to implement in the main function?
-		//https://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ScheduledExecutorService.html
-		/*
+	public int checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
+		int i = 0;
+		while (i < tableArray.length) {
+			for (int j = 0; j < reservationList.size(); i++) {
+				if (reservationList.get(i).getTableNum() == tableArray[i] && reservationList.get(i).getDate().toEpochMilli() - newReserve.getDate().toEpochMilli() >  3600000 ) {
+					return tableArray[i];
+				}
+			}
+			i++;
+		}
+		return -1;
+	}
+
+	public void removeReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
-			if (current time >= reservationList.get(i).getDate().plus(1, ChronoUnit.HOURS){
+			if (reservationList.get(i).getPhoneNum() == phoneNum) {
 				reservationList.remove(i);
+				System.out.println("Reservation removed");
+				return;
 			}
 		}
-		 */
+
+		System.out.println("Reservation not found");
 	}
 
 	public void checkReservation(int phoneNum) {
