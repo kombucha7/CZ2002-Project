@@ -355,13 +355,13 @@ public class Restaurant {
 				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 				String dateInput = sc.next();
 				String day = dateInput.substring(0, 2);
-				String month = dateInput.substring(0, 2);
-				String year = dateInput.substring(0, 4);
+				String month = dateInput.substring(2, 4);
+				String year = dateInput.substring(4, 8);
 
 				System.out.println("Enter Time in the format (HHmm):");
 				String timeInput = sc.next();
 				String hours = timeInput.substring(0, 2);
-				String minute = timeInput.substring(0, 2);
+				String minute = timeInput.substring(2, 4);
 
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
@@ -381,6 +381,8 @@ public class Restaurant {
 				} else {
 					System.out.println("Reservation list full");
 				}
+
+				restaReserve.printReservation();
 				System.out.println("\n");
 				break;
 

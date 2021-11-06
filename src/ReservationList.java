@@ -85,11 +85,8 @@ public class ReservationList {
 
 	public void printReservation() {
 		for (int i = 0; i < reservationList.size(); i++) {
-			/*System.out.printf("%.16d,%.16d,%.16d",reservationList.get(i).getPhoneNum(),
-					reservationList.get(i).getDate(),
-					reservationList.get(i).getPax());
-			*/
-			System.out.println(reservationList.get(i).getPhoneNum()+ " " + reservationList.get(i).getDate() + " "  + reservationList.get(i).getPax());
+			System.out.println("Phone num\t\tDate\t\tPax");
+			System.out.println(reservationList.get(i).getPhoneNum()+ "\t\t" + reservationList.get(i).getDate() + "\t\t\t\t"  + reservationList.get(i).getPax());
 		}
 	}
 
