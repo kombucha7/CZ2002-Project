@@ -137,12 +137,10 @@ public class OrderList implements ListPrinter {
 		return true;
 	}
 
-	public boolean addOrder(int staffID, Instant date, int pax, orderType ordertype, int tableID) {
+	public int addOrder(int staffID, Instant date, int pax, orderType ordertype, int tableID) {
 		Order tempOrder = new Order(orderID++, staffID, date, pax, ordertype, tableID);
-		if (orderList.add(tempOrder))
-			return true;
-		else
-			return false;
+		orderList.add(tempOrder);
+		return orderID-1;
 	}
 
 	public boolean updateArchive(RevenueReport revport, int orderID) {
