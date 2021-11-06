@@ -336,23 +336,16 @@ public class Restaurant {
 				int tableID3 = 1;
 				System.out.printf("Please pick Order Type\n(1) Dine In\n(2) Takeout\n");
 				int choice3 = sc.nextInt();
-				orderType type3 = orderType.dine_in;
-				boolean flag3 = true;
-				while (flag3) {
-					switch (choice3) {
-					case 1:
-						type3 = orderType.dine_in;
-						flag3 = false;
-						break;
-					case 2:
-						type3 = orderType.takeout;
-						flag3 = false;
-						break;
-					default:
-						System.out.println("wrong entry please enter again");
-						break;
-					}
+				orderType type3;
+
+				while (choice3 != 1 && choice3 != 2) {
+					System.out.println("Invalid entry. Please re-enter:");
+					choice3 = sc.nextInt();
 				}
+				if (choice3 == 1) {
+					type3 = orderType.dine_in;
+				} else type3 = orderType.takeout;
+
 				Instant time3 = handler.getInstant();
 				int toprintorderid = restaOrderList.addOrder(staffID3, time3, pax3, type3, tableID3);
 				System.out.printf("Order ID: %d\n", toprintorderid);
