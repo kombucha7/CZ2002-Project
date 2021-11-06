@@ -24,19 +24,20 @@ public class Restaurant {
 			System.out.println("1. Create/Update/Remove menu item\n" + "2. Create/Update/Remove promotion\n"
 					+ "3. Create order\n" + "4. View order\n" + "5. Add/Remove order item/s to/from order\n"
 					+ "6. Create reservation booking\n" + "7. Check/Remove reservation booking\n"
-					+ "8. Check table availability\n" + "9. Print order invoice\n"
-					+ "10. Print sale revenue report by period (eg day or month)\n" + "11. Advance time(1 hour)\n"
-					+ "12. Exit");
+					+ "8. Check table availability\n" + "9. Assign customer to table\n"
+					+ "10. Print order invoice\n"
+					+ "11. Print sale revenue report by period (eg day or month)\n" + "12. Advance time(1 hour)\n"
+					+ "13. Exit");
 
 			option = sc.nextInt();
 
 			// troubleshooting
-			while (option < 0 || option > 12) {
+			while (option < 0 || option > 13) {
 				System.out.println("Invalid option selected. Re-enter: ");
 				option = sc.nextInt();
 			}
 			// exit app
-			if (option == 12) {
+			if (option == 13) {
 				System.out.println("Exiting...");
 				break;
 			}
@@ -48,13 +49,12 @@ public class Restaurant {
 				break;
 
 			case 2: // Create/Update/Remove promotion
-				System.out.println("\n");
 				String tempsetname, tempdes;
 				double tempprice;
 				int tempSetID, tempfoodID;
 
 				while (true) {
-					System.out.println("Select a option: ");
+					System.out.println("Select an option: ");
 					System.out.println("1.Create promotion items");
 					System.out.println("2.Update promotion set items");
 					System.out.println("3.Remove promotion set items");
@@ -112,7 +112,7 @@ public class Restaurant {
 						}
 						break;
 					case 2:
-						// Update exisitng Set promotion
+						// Update existing Set promotion
 						System.out.println("Set Menu:");
 						System.out
 								.println("===========================================================================");
@@ -200,7 +200,7 @@ public class Restaurant {
 
 					}
 				}
-
+				System.out.println("\n");
 				break;
 
 			case 3: // Create order
@@ -298,16 +298,27 @@ public class Restaurant {
 				System.out.println("\n");
 				break;
 
-			case 9: // Print order invoice
-				System.out.println("Please enter order ID: ");
-				int orderid9 = sc.nextInt();
-				Boolean memberstat9 = sc.nextBoolean(); // check for member or ask for member
-				restaOrderList.generateInvoice(orderid9, memberstat9);
-				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderid9));
+			case 9: // Assign customer to table
+				System.out.println("Enter number of pax: ");
+				int pax9 = sc.nextInt();
+				int[] availableTables9 = restaTable.matchCurrentTable(pax9);
+				int tableID9 = restaReserve.checkCurrentReserved(availableTables9);
+
+				restaTable.occupyTable(tableID9);
+				System.out.println("Table with ID of " + tableID9 + " occupied!");
 				System.out.println("\n");
 				break;
 
-			case 10: // Print sale revenue report by period (eg day or month)
+			case 10: // Print order invoice
+				System.out.println("Please enter order ID: ");
+				int orderid10 = sc.nextInt();
+				Boolean memberstat10 = sc.nextBoolean(); // check for member or ask for member
+				restaOrderList.generateInvoice(orderid10, memberstat10);
+				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderid10));
+				System.out.println("\n");
+				break;
+
+			case 11: // Print sale revenue report by period (eg day or month)
 				System.out.println("Please enter initial year: (YYYY)");
 				String iniyear = sc.next();
 				System.out.println("Please enter initial month: (MM)");
@@ -326,7 +337,7 @@ public class Restaurant {
 				System.out.println("\n");
 				break;
 
-			case 11: // Advance time by 1 hour
+			case 12: // Advance time by 1 hour
 				handler.advanceTime(60);
 				// add code to check reservations
 				System.out.println("\n");
