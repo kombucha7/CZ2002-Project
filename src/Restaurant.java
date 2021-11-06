@@ -229,6 +229,7 @@ public class Restaurant {
 									temp.addItem(restaMenu.getAlaCarteList().get(i));
 									found = true;
 									tempfoodID = 1;
+									System.out.println(restaMenu.getAlaCarteList().get(i).getName()+"alacarte item added");
 									break;
 								}
 							}
@@ -236,8 +237,6 @@ public class Restaurant {
 							{
 								System.out.println("Invalid FoodID! Enter a valid foodID :");
 								tempfoodID = sc.nextInt();
-								System.out.println("done");
-								
 							}
 							tempfoodID = sc.nextInt();		
 						}
