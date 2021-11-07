@@ -370,36 +370,29 @@ public class Restaurant {
 				break;
 
 			case 6: // Create reservation booking
+				System.out.println(Instant.now());
 				System.out.println("###Creating a new reservation###");
 				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 				String dateInput = sc.next();
 				String day = dateInput.substring(0, 2);
 				String month = dateInput.substring(2, 4);
 				String year = dateInput.substring(4, 8);
-
 				System.out.println("Enter Time in the format (HHmm):");
 				String timeInput = sc.next();
 				String hours = timeInput.substring(0, 2);
 				String minute = timeInput.substring(2, 4);
-
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
-
 				System.out.println("Enter phone no.:");
 				int phoneNum = sc.nextInt();
-
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
+				//////////////////Checking if reservation is made in advance///////////////////////////////
 				Reservation addNew = new Reservation(inst1, pax, phoneNum);
+				if (addNew.checkIfInAdvance() == false){System.out.println("Reservation can only be made 1 hour in advance\n"); break;}
 
 				int tables[] = restaTable.matchCurrentTable(pax);
 
-				int index = restaReserve.checkUpcomingReserved(tables, addNew);
-				if (index > -1) {
-					addNew.setTableNum(index);
-					restaReserve.createReservation(addNew);
-				} else {
-					System.out.println("Reservation list full");
-				}
+				restaReserve.checkUpcomingReserved(tables, addNew);
 
 				restaReserve.printReservation();
 				System.out.println("\n");

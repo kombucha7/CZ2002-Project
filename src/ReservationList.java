@@ -49,32 +49,39 @@ public class ReservationList {
 		return -1;
 	}
 
-	public int checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
-		int i = 0, counter = 0;
+	public void checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
+		int i = 0, counter = 0, foundTable = -1;
 		if (reservationList.size() == 0) {
-			return tableArray[0];
+			foundTable = tableArray[0];
 		}
-
-		while (i < tableArray.length) {
-			for (int j = 0; j < reservationList.size(); j++) {
-				if (tableArray[i] == reservationList.get(j).getTableNum()) {
-					if (Math.abs(reservationList.get(j).getDate().getEpochSecond() - newReserve.getDate().getEpochSecond()) <  3600){
-						counter = 1;
+		else {
+			while (i < tableArray.length) {
+				for (int j = 0; j < reservationList.size(); j++) {
+					if (tableArray[i] == reservationList.get(j).getTableNum()) {
+						if (Math.abs(reservationList.get(j).getDate().getEpochSecond() - newReserve.getDate().getEpochSecond()) < 3600) {
+							counter = 1;
+						}
 					}
+
+				}
+				if (counter == 1) {
+					counter = 0;
+				} else {
+					foundTable = tableArray[i];
+					break;
 				}
 
+				i++;
 			}
-			if (counter == 1) {
-				counter = 0;
-			}
-			else{
-				return tableArray[i];
-			}
-
-			i++;
 		}
 
-		return -1;
+		if (foundTable > -1) {
+			newReserve.setTableNum(foundTable);
+			createReservation(newReserve);return;
+		}
+		else{
+			System.out.println("Reservation list is full");
+		}
 	}
 
 	public void removeReservation(int phoneNum) {
