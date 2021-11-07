@@ -370,7 +370,6 @@ public class Restaurant {
 				break;
 
 			case 6: // Create reservation booking
-				System.out.println(Instant.now());
 				System.out.println("###Creating a new reservation###");
 				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 				String dateInput = sc.next();
