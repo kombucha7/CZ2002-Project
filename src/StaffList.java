@@ -128,9 +128,10 @@ public class StaffList {
 
 
 	public void printList() {
+		System.out.println("Name  |  ID  |  Title");
 		for (int i = 0; i < staffList.size(); i++) {
-			System.out.println(staffList.get(i).getName() + " " +
-					staffList.get(i).getEmployeeID() + " " +
+			System.out.println(staffList.get(i).getName() + "   " +
+					staffList.get(i).getEmployeeID() + "   " +
 					staffList.get(i).getJobTitle());
 		}
 	}
