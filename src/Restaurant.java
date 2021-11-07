@@ -25,18 +25,18 @@ public class Restaurant {
 					+ "3. Create order\n" + "4. View order\n" + "5. Add/Remove order item/s to/from order\n"
 					+ "6. Create reservation booking\n" + "7. Check reservation booking\n" + "8. Remove reservation booking\n"
 					+ "9. Check table availability\n" + "10. Assign customer to table\n" + "11. Print order invoice\n"
-					+ "12. Print sale revenue report by period (eg day or month)\n" + "13. Advance time(1 hour)\n"
-					+ "14. Exit");
+					+ "12. Print sale revenue report by period (eg day or month)\n" + "13. Advance time(1 hour)\n" + "14. Show staff list\n"
+					+ "15. Exit");
 
 			option = sc.nextInt();
 
 			// troubleshooting
-			while (option < 0 || option > 14) {
+			while (option < 0 || option > 15) {
 				System.out.println("Invalid option selected. Re-enter: ");
 				option = sc.nextInt();
 			}
 			// exit app
-			if (option == 14) {
+			if (option == 15) {
 				System.out.println("Exiting...");
 				break;
 			}
@@ -472,6 +472,10 @@ public class Restaurant {
 				handler.advanceTime(60);
 				// add code to check reservations
 				System.out.println("\n");
+				break;
+
+			case 14: // print staff list
+				restaStaffList.printList();
 				break;
 			}
 
