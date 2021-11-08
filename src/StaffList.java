@@ -101,10 +101,6 @@ public class StaffList implements PersonManager{
 		staffList.add(tempstaff);
 	}
 
-	public void add_Person(Staff staff) {
-		staffList.add(staff);
-	}
-
 	public void delete_Person(int staffID) {
 		for (int i = 0; i < staffList.size(); i++){
 			if (staffList.get(i).getEmployeeID() == staffID){
