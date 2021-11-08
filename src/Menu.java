@@ -147,7 +147,7 @@ public class Menu implements CustPrintable {
 	 * @param foodID
 	 * @param price
 	 */
-	public void update_alaCartePrice(int foodID, float price) {
+	public void update_alaCartePrice(int foodID, double price) {
 		// TODO - implement Menu.update_alaCartePrice
 		boolean search = false;
 		for (int i = 0; i < alaCarteList.size(); i++) {
@@ -220,7 +220,7 @@ public class Menu implements CustPrintable {
 	 * @param setID
 	 * @param price
 	 */
-	public void update_setMenuPrice(int setID, float price) {
+	public void update_setMenuPrice(int setID, double price) {
 		// TODO - implement Menu.update_setMenuPrice
 		boolean search = false;
 		for(int i =0 ; i <setMenuList.size();i++)
