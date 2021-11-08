@@ -238,18 +238,4 @@ public class Order implements ListPrinter {
 	public void setTableID(int tableID) {
 		this.tableID = tableID;
 	}
-
-	// add to vpp
-	public double getTotalPrice() {
-		return this.totalprice;
-	}
-
-	/**
-	 * add to vpp
-	 * 
-	 * @param totalprice
-	 */
-	public void setTotalPrice(double totalprice) {
-		this.totalprice = totalprice;
-	}
 }
