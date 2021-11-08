@@ -2,38 +2,35 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberList implements PersonManager{
-	//ArrayList<String> cars = new ArrayList<String>();
+
 	private ArrayList<Member> memberList;
-	private int totalmembers;
 
 	public MemberList() {
 		memberList = new ArrayList<Member>();
-		this.totalmembers=0;
-		Member tempmem1 = new Member("Liam", 98765431);
-		memberList.add(tempmem1);
-		Member tempmem2 = new Member("Noah", 98765432);
-		memberList.add(tempmem2);
-		Member tempmem3 = new Member("Olver", 98765433);
-		memberList.add(tempmem3);
-		Member tempmem4 = new Member("Elijah", 98765434);
-		memberList.add(tempmem4);
-		Member tempmem5 = new Member("William", 98765435);
-		memberList.add(tempmem5);
-		Member tempmem6 = new Member("Olivia", 98765436);
-		memberList.add(tempmem6);
-		Member tempmem7 = new Member("Emma", 98765437);
-		memberList.add(tempmem7);
-		Member tempmem8 = new Member("Ava", 98765438);
-		memberList.add(tempmem8);
-		Member tempmem9 = new Member("Charlotte", 98765439);
-		memberList.add(tempmem9);
-		Member tempmem10 = new Member("Sophia", 98765441);
-		memberList.add(tempmem10);
+		Member tempMem1 = new Member("Liam", 98765431);
+		memberList.add(tempMem1);
+		Member tempMem2 = new Member("Noah", 98765432);
+		memberList.add(tempMem2);
+		Member tempMem3 = new Member("Olver", 98765433);
+		memberList.add(tempMem3);
+		Member tempMem4 = new Member("Elijah", 98765434);
+		memberList.add(tempMem4);
+		Member tempMem5 = new Member("William", 98765435);
+		memberList.add(tempMem5);
+		Member tempMem6 = new Member("Olivia", 98765436);
+		memberList.add(tempMem6);
+		Member tempMem7 = new Member("Emma", 98765437);
+		memberList.add(tempMem7);
+		Member tempMem8 = new Member("Ava", 98765438);
+		memberList.add(tempMem8);
+		Member tempMem9 = new Member("Charlotte", 98765439);
+		memberList.add(tempMem9);
+		Member tempMem10 = new Member("Sophia", 98765441);
+		memberList.add(tempMem10);
 	}
 
 	public void add_Person(Member member) {
 		memberList.add(member);
-		totalmembers++;
 	}
 
 	public void add_Person()
@@ -45,9 +42,8 @@ public class MemberList implements PersonManager{
 		name = sc.next();
 		System.out.println("Please enter member phone number: ");
 		num = sc.nextInt();
-		Member tempmem = new Member(name, num);
-		memberList.add(tempmem);
-		totalmembers++;
+		Member tempMem = new Member(name, num);
+		memberList.add(tempMem);
 		sc.close();
 	}
 
@@ -59,19 +55,19 @@ public class MemberList implements PersonManager{
 		for (int i = 0; i < memberList.size(); i++){
 			if (memberList.get(i).getPhoneNum() == memberID){
 				memberList.remove(i);
-				System.out.println("Member removed");
+				System.out.println("Member removed.");
 				return;
 			}
 		}
 
-		System.out.println("Member not found");
+		System.out.println("Member not found.");
 	}
 
 	public ArrayList<Member> getMemberIDList() {
 		return this.memberList;
 	}
 
-	public int getTotalmembers() {
+	public int getTotalMembers() {
 		return this.memberList.size();
 	}
 
@@ -83,7 +79,7 @@ public class MemberList implements PersonManager{
 		}
 	}
 
-	public boolean checkMember(int phonenum) // add to vpp
+	public boolean checkMember(int phonenum) 
 	{
 		for(int i = 0; i < memberList.size(); i++)
 		{
