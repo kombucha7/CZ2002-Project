@@ -477,10 +477,11 @@ public class Restaurant {
 											}
 											for (int f = 0; f < temp.getAlaCarteMenuList().size(); f++) {
 												if (temp.getAlaCarteMenuList().get(f).getFoodID() == tempfoodID) {
+													String tempname = temp.getAlaCarteMenuList().get(f).getName();
 													temp.deleteItem(temp.getAlaCarteMenuList().get(f));
 													found = true;
 													tempfoodID = 1;
-													System.out.println(temp.getAlaCarteMenuList().get(f).getName()+" alacarte item deleted");
+													System.out.println(tempname+" alacarte item deleted");
 													break;
 												}
 											}
