@@ -32,7 +32,7 @@ public class Invoice implements CustPrintable {
 					order.getSetItemOrder().get(i).getPrice());
 		}
 
-		finalprice = order.getTotalPrice();
+		finalprice = order.getTotalprice();
 		System.out.printf("Total Price: %.2f\n", finalprice);
 
 		if (member) {
