@@ -4,11 +4,9 @@ import java.util.Scanner;
 public class MemberList implements PersonManager{
 
 	private ArrayList<Member> memberList;
-	private int totalMembers;
 
 	public MemberList() {
 		memberList = new ArrayList<Member>();
-		this.totalMembers=0;
 		Member tempMem1 = new Member("Liam", 98765431);
 		memberList.add(tempMem1);
 		Member tempMem2 = new Member("Noah", 98765432);
@@ -33,7 +31,6 @@ public class MemberList implements PersonManager{
 
 	public void add_Person(Member member) {
 		memberList.add(member);
-		totalMembers++;
 	}
 
 	public void add_Person()
@@ -47,7 +44,6 @@ public class MemberList implements PersonManager{
 		num = sc.nextInt();
 		Member tempMem = new Member(name, num);
 		memberList.add(tempMem);
-		totalMembers++;
 		sc.close();
 	}
 
