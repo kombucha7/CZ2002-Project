@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StaffList {
+public class StaffList implements PersonManager{
 
 	private ArrayList<Staff> staffList;
 	private static int numStaff = 1;
@@ -31,7 +31,7 @@ public class StaffList {
 		staffList.add(tempstaff10);
 	}
 
-	public void add_Staff()
+	public void add_Person()
 	{
 		int choice;
 		boolean flag = true;
@@ -101,11 +101,11 @@ public class StaffList {
 		staffList.add(tempstaff);
 	}
 
-	public void add_Staff(Staff staff) {
+	public void add_Person(Staff staff) {
 		staffList.add(staff);
 	}
 
-	public void delete_Staff(int staffID) {
+	public void delete_Person(int staffID) {
 		for (int i = 0; i < staffList.size(); i++){
 			if (staffList.get(i).getEmployeeID() == staffID){
 				staffList.remove(i);

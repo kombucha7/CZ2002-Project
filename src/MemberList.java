@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MemberList {
+public class MemberList implements PersonManager{
 	//ArrayList<String> cars = new ArrayList<String>();
 	private ArrayList<Member> memberList;
 	private int totalmembers;
@@ -31,12 +31,12 @@ public class MemberList {
 		memberList.add(tempmem10);
 	}
 
-	public void add_Member(Member member) {
+	public void add_Person(Member member) {
 		memberList.add(member);
 		totalmembers++;
 	}
 
-	public void add_Member()
+	public void add_Person()
 	{
 		Scanner sc = new Scanner(System.in);
 		String name;
@@ -55,7 +55,7 @@ public class MemberList {
 	 * 
 	 * @param memberID
 	 */
-	public void delete_Member(int memberID) {
+	public void delete_Person(int memberID) {
 		for (int i = 0; i < memberList.size(); i++){
 			if (memberList.get(i).getPhoneNum() == memberID){
 				memberList.remove(i);
