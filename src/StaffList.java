@@ -31,6 +31,10 @@ public class StaffList implements PersonManager{
 		staffList.add(tempStaff10);
 	}
 
+	public void add_Person(Staff staff) {
+		staffList.add(staff);
+	}
+
 	public void add_Person()
 	{
 		int choice;
