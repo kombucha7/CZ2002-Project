@@ -47,24 +47,26 @@ public class Restaurant {
 			case 1: // Create/Update/Remove menu item
 				int menuOption, choizes;
 				String name, description, newfoodname, updateTF;
-				int price, foodID, foodIndex;
+				int foodID, foodIndex;
+				float price;
 				foodType userFoodType;
 
 				while (true) {
 					System.out.println("\n");
 					System.out.println("SELECT OPTION: ");
-					System.out.println("1. Create menu item");
-					System.out.println("2. Update menu item");
-					System.out.println("3. Remove menu item");
-					System.out.println("4. Go back");
+					System.out.println("1. Create Ala Carte Item");
+					System.out.println("2. Update Ala Carte Item");
+					System.out.println("3. Remove Ala Carte Item");
+					System.out.println("4. Print Ala Carte item");
+					System.out.println("5. Go back");
 
 					menuOption = sc.nextInt();
 
-					while (menuOption < 0 || menuOption > 4) {
+					while (menuOption < 0 || menuOption > 5) {
 						System.out.println("Invalid option selected. Re-enter: ");
 						menuOption = sc.nextInt();
 					}
-					if (menuOption == 4) {
+					if (menuOption == 5) {
 						System.out.println("Returning to previous option...");
 						break;
 					}
@@ -93,7 +95,7 @@ public class Restaurant {
 									break;
 								} else if (retain.equals("N")) {
 									System.out.println("Enter the new price:");
-									price = sc.nextInt();
+									price = sc.nextFloat();
 									restaMenu.getAlaCarteList().get(i).setPrice(price);
 									System.out.println("Enter the new description:");
 									sc.nextLine();
@@ -113,7 +115,7 @@ public class Restaurant {
 
 						if (actual) {
 							System.out.println("Enter Price: ");
-							price = sc.nextInt();
+							price = sc.nextFloat();
 							System.out.println("Enter Food Description:");
 							sc.nextLine(); // Buffer
 							description = sc.nextLine();
@@ -163,7 +165,7 @@ public class Restaurant {
 										System.out.println(
 												"Current Price is $" + restaMenu.getAlaCarteList().get(i).getPrice());
 										System.out.println("Enter the new price:");
-										price = sc.nextInt();
+										price = sc.nextFloat();
 										restaMenu.getAlaCarteList().get(i).setPrice(price);
 										System.out.println("Successfully updated Food Price!");
 									} else if (choizes == 3) {
@@ -217,11 +219,31 @@ public class Restaurant {
 							}
 						}
 						break;
+					case 4:
+						System.out.println("\n");
+						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
+							System.out.println("FoodID: " + restaMenu.getAlaCarteList().get(i).getFoodID() + " Name: "
+									+ restaMenu.getAlaCarteList().get(i).getName());
+						}
+						System.out.println("Enter Food ID to check details: ");
+						foodID = sc.nextInt();
+						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
+							if (foodID == restaMenu.getAlaCarteList().get(i).getFoodID()) {
+								System.out.println("\n");
+								System.out.println("Current Food Info in list is set as: ");
+								System.out.println("Name: " + restaMenu.getAlaCarteList().get(i).getName());
+								System.out.println("Price: $" + restaMenu.getAlaCarteList().get(i).getPrice());
+								System.out
+										.println("Description: " + restaMenu.getAlaCarteList().get(i).getDescription());
+								System.out.println("Food Type: " + restaMenu.getAlaCarteList().get(i).getFoodType());
+								break;
+							}
+						}
 					}
 				}
 				break;
 
-				case 2: // Create/Update/Remove promotion
+			case 2: // Create/Update/Remove promotion
 				System.out.println("\n");
 				String tempsetname, tempdes;
 				double tempprice;
@@ -246,7 +268,7 @@ public class Restaurant {
 					}
 					switch (option) {
 					case 1:
-					System.out.println("Set Menu:");
+						System.out.println("Set Menu:");
 						System.out
 								.println("===========================================================================");
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
@@ -276,8 +298,8 @@ public class Restaurant {
 
 						System.out.println("Enter new Set Price:");
 						tempprice = sc.nextDouble();
-						sc.nextLine(); 
-						
+						sc.nextLine();
+
 						System.out.println("Enter new Set description:");
 						tempdes = sc.nextLine();
 						tempSetID = restaMenu.getSetMenuList().size() + 1;
@@ -296,11 +318,10 @@ public class Restaurant {
 						System.out.println("Enter -1 to stop adding!");
 						tempfoodID = sc.nextInt();
 						sc.nextLine();
-						
+
 						while (tempfoodID > 0) {
 							boolean found = false;
-							if (tempfoodID < 0) 
-							{
+							if (tempfoodID < 0) {
 								break;
 							}
 							for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
@@ -308,12 +329,12 @@ public class Restaurant {
 									temp.addItem(restaMenu.getAlaCarteList().get(i));
 									found = true;
 									tempfoodID = 1;
-									System.out.println(restaMenu.getAlaCarteList().get(i).getName()+" alacarte item added");
+									System.out.println(
+											restaMenu.getAlaCarteList().get(i).getName() + " alacarte item added");
 									break;
 								}
 							}
-							if(!found)
-							{
+							if (!found) {
 								System.out.println("Invalid FoodID! Enter a valid foodID :");
 								tempfoodID = sc.nextInt();
 								sc.nextLine();
@@ -322,19 +343,21 @@ public class Restaurant {
 										temp.addItem(restaMenu.getAlaCarteList().get(i));
 										found = true;
 										tempfoodID = 1;
-										System.out.println(restaMenu.getAlaCarteList().get(i).getName()+" alacarte item added");
+										System.out.println(
+												restaMenu.getAlaCarteList().get(i).getName() + " alacarte item added");
 										break;
 									}
 								}
 							}
-							tempfoodID = sc.nextInt();		
+							tempfoodID = sc.nextInt();
 						}
-						
+
 						break;
 					case 2:
 						// Update exisitng Set promotion
 						System.out.println("Set Menu:");
-						System.out.println("===========================================================================");
+						System.out
+								.println("===========================================================================");
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
 							if (restaMenu.getSetMenuList().get(i).getAvailability()) {
 								System.out.println(restaMenu.getSetMenuList().get(i).getSetID() + ") Name: "
@@ -345,21 +368,19 @@ public class Restaurant {
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
-									
-									if(restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().size() -1 == j)
-									{
+
+									if (restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().size() - 1 == j) {
+										System.out.print(restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j)
+												.getName());
+									} else {
 										System.out.print(
-											restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j).getName());
-									}
-									else
-									{
-										System.out.print(
-											restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j).getName()
-													+ " , ");
+												restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j).getName()
+														+ " , ");
 									}
 								}
 								System.out.println("");
-								System.out.println("============================================================================");
+								System.out.println(
+										"============================================================================");
 							}
 						}
 						System.out.println("Enter SetID to Update:");
@@ -370,7 +391,7 @@ public class Restaurant {
 								sc.nextLine();
 								System.out.println("Enter new name:");
 								tempsetname = sc.nextLine();
-								
+
 								restaMenu.getSetMenuList().get(i).setName(tempsetname);
 
 								System.out.println("Enter new price:");
@@ -378,144 +399,141 @@ public class Restaurant {
 								sc.nextLine();
 								restaMenu.getSetMenuList().get(i).setPrice(tempprice);
 								exist = true;
-								
-								System.out.println("SetID: "+restaMenu.getSetMenuList().get(i).getSetID());
-								System.out.println("Set name: "+restaMenu.getSetMenuList().get(i).getName());
-								System.out.println("Promotion set price: "+ restaMenu.getSetMenuList().get(i).getPrice());
+
+								System.out.println("SetID: " + restaMenu.getSetMenuList().get(i).getSetID());
+								System.out.println("Set name: " + restaMenu.getSetMenuList().get(i).getName());
+								System.out.println(
+										"Promotion set price: " + restaMenu.getSetMenuList().get(i).getPrice());
 								System.out.print("Set contains: ");
-								for(int j = 0; j< restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().size();j++)
-								{
-									if(restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().size() - 1 == j)
-									{
+								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
+										.size(); j++) {
+									if (restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().size() - 1 == j) {
+										System.out.print(restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j)
+												.getName());
+									} else {
 										System.out.print(
-											restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j).getName());
-									}
-									else
-									{
-										System.out.print(
-											restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j).getName() + " , ");
+												restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().get(j).getName()
+														+ " , ");
 									}
 								}
 								System.out.println("");
-								System.out.println("============================================================================");
+								System.out.println(
+										"============================================================================");
 								System.out.println("1) Add new Alacarte Item to exisiting SetID");
 								System.out.println("2) Remove existing Alacarte Item to exisiting SetID ");
 								System.out.println("3) Save changes to new set name,set price and set description");
 								System.out.println("Enter your option number: ");
 								option = sc.nextInt();
 								temp = restaMenu.getSetMenuList().get(i);
-								switch(option)
-								{
-									case 1:
-										System.out.println("Available Alacarte to add into Promotional set: ");
-										for (int e = 0; e < restaMenu.getAlaCarteList().size(); e++) {
-											if (restaMenu.getAlaCarteList().get(e).getAvailability()) {
-												System.out.println("FoodID: " + restaMenu.getAlaCarteList().get(e).getFoodID()
-														+ " Name: " + restaMenu.getAlaCarteList().get(e).getName());
-											}
+								switch (option) {
+								case 1:
+									System.out.println("Available Alacarte to add into Promotional set: ");
+									for (int e = 0; e < restaMenu.getAlaCarteList().size(); e++) {
+										if (restaMenu.getAlaCarteList().get(e).getAvailability()) {
+											System.out
+													.println("FoodID: " + restaMenu.getAlaCarteList().get(e).getFoodID()
+															+ " Name: " + restaMenu.getAlaCarteList().get(e).getName());
 										}
-										System.out.println("Enter Alacarte Food FoodID to Add into promotional set:");
-										System.out.println("Enter -1 to stop adding!");
-										tempfoodID = sc.nextInt();
-										sc.nextLine();
-										
-										while (tempfoodID > 0) {
-											boolean found = false;
-											if (tempfoodID < 0) 
-											{
+									}
+									System.out.println("Enter Alacarte Food FoodID to Add into promotional set:");
+									System.out.println("Enter -1 to stop adding!");
+									tempfoodID = sc.nextInt();
+									sc.nextLine();
+
+									while (tempfoodID > 0) {
+										boolean found = false;
+										if (tempfoodID < 0) {
+											break;
+										}
+										for (int f = 0; f < restaMenu.getAlaCarteList().size(); f++) {
+											if (restaMenu.getAlaCarteList().get(f).getFoodID() == tempfoodID) {
+												temp.addItem(restaMenu.getAlaCarteList().get(f));
+												found = true;
+												tempfoodID = 1;
+												System.out.println(restaMenu.getAlaCarteList().get(f).getName()
+														+ " alacarte item added");
 												break;
 											}
-											for (int f = 0; f < restaMenu.getAlaCarteList().size(); f++) {
-												if (restaMenu.getAlaCarteList().get(f).getFoodID() == tempfoodID) {
-													temp.addItem(restaMenu.getAlaCarteList().get(f));
+										}
+										if (!found) {
+											System.out.println("Invalid FoodID! Enter a valid foodID :");
+											tempfoodID = sc.nextInt();
+											sc.nextLine();
+											for (int g = 0; g < restaMenu.getAlaCarteList().size(); g++) {
+												if (restaMenu.getAlaCarteList().get(g).getFoodID() == tempfoodID) {
+													temp.addItem(restaMenu.getAlaCarteList().get(g));
 													found = true;
 													tempfoodID = 1;
-													System.out.println(restaMenu.getAlaCarteList().get(f).getName()+" alacarte item added");
+													System.out.println(restaMenu.getAlaCarteList().get(g).getName()
+															+ " alacarte item added");
 													break;
 												}
 											}
-											if(!found)
-											{
-												System.out.println("Invalid FoodID! Enter a valid foodID :");
-												tempfoodID = sc.nextInt();
-												sc.nextLine();
-												for (int g = 0; g < restaMenu.getAlaCarteList().size(); g++) {
-													if (restaMenu.getAlaCarteList().get(g).getFoodID() == tempfoodID) {
-														temp.addItem(restaMenu.getAlaCarteList().get(g));
-														found = true;
-														tempfoodID = 1;
-														System.out.println(restaMenu.getAlaCarteList().get(g).getName()+" alacarte item added");
-														break;
-													}
-												}
-											}
-											tempfoodID = sc.nextInt();		
 										}
-										break;
-									case 2:
-										System.out.println("Available Alacarte to delete into Promotional set: ");
-										for (int e = 0; e < temp.getAlaCarteMenuList().size(); e++) {
-											if (temp.getAlaCarteMenuList().get(e).getAvailability()) {
-												System.out.println("FoodID: " + temp.getAlaCarteMenuList().get(e).getFoodID()
-														+ " Name: " + temp.getAlaCarteMenuList().get(e).getName());
-											}
-										}
-										System.out.println("Enter Alacarte Food FoodID to delete into promotional set:");
-										System.out.println("Enter -1 to stop adding!");
 										tempfoodID = sc.nextInt();
-										sc.nextLine();
-										
-										while (tempfoodID > 0) {
-											boolean found = false;
-											if (tempfoodID < 0) 
-											{
+									}
+									break;
+								case 2:
+									System.out.println("Available Alacarte to delete into Promotional set: ");
+									for (int e = 0; e < temp.getAlaCarteMenuList().size(); e++) {
+										if (temp.getAlaCarteMenuList().get(e).getAvailability()) {
+											System.out
+													.println("FoodID: " + temp.getAlaCarteMenuList().get(e).getFoodID()
+															+ " Name: " + temp.getAlaCarteMenuList().get(e).getName());
+										}
+									}
+									System.out.println("Enter Alacarte Food FoodID to delete into promotional set:");
+									System.out.println("Enter -1 to stop adding!");
+									tempfoodID = sc.nextInt();
+									sc.nextLine();
+
+									while (tempfoodID > 0) {
+										boolean found = false;
+										if (tempfoodID < 0) {
+											break;
+										} else if (temp.getAlaCarteMenuList().size() == 1) {
+											temp.setAvailability(false);
+										}
+										for (int f = 0; f < temp.getAlaCarteMenuList().size(); f++) {
+											if (temp.getAlaCarteMenuList().get(f).getFoodID() == tempfoodID) {
+												String tempname = temp.getAlaCarteMenuList().get(f).getName();
+												temp.deleteItem(temp.getAlaCarteMenuList().get(f));
+												found = true;
+												tempfoodID = 1;
+												System.out.println(tempname + " alacarte item deleted");
 												break;
 											}
-											else if (temp.getAlaCarteMenuList().size() == 1)
-											{
-												temp.setAvailability(false);
-											}
-											for (int f = 0; f < temp.getAlaCarteMenuList().size(); f++) {
-												if (temp.getAlaCarteMenuList().get(f).getFoodID() == tempfoodID) {
-													String tempname = temp.getAlaCarteMenuList().get(f).getName();
-													temp.deleteItem(temp.getAlaCarteMenuList().get(f));
+										}
+										if (!found) {
+											System.out.println("Invalid FoodID! Enter a valid foodID :");
+											tempfoodID = sc.nextInt();
+											sc.nextLine();
+											for (int g = 0; g < temp.getAlaCarteMenuList().size(); g++) {
+												if (temp.getAlaCarteMenuList().get(g).getFoodID() == tempfoodID) {
+													temp.deleteItem(temp.getAlaCarteMenuList().get(g));
 													found = true;
 													tempfoodID = 1;
-													System.out.println(tempname+" alacarte item deleted");
+													System.out.println(temp.getAlaCarteMenuList().get(g).getName()
+															+ " alacarte item deleted");
 													break;
 												}
 											}
-											if(!found)
-											{
-												System.out.println("Invalid FoodID! Enter a valid foodID :");
-												tempfoodID = sc.nextInt();
-												sc.nextLine();
-												for (int g = 0; g < temp.getAlaCarteMenuList().size(); g++) {
-													if (temp.getAlaCarteMenuList().get(g).getFoodID() == tempfoodID) {
-														temp.deleteItem(temp.getAlaCarteMenuList().get(g));
-														found = true;
-														tempfoodID = 1;
-														System.out.println(temp.getAlaCarteMenuList().get(g).getName()+" alacarte item deleted");
-														break;
-													}
-												}
-											}
-											tempfoodID = sc.nextInt();		
 										}
-										break;
-									case 3:
-										System.out.println("Saving set name, set price and set desciption.......");
-										break;
-									default:
-										System.out.println("Invalid FoodID! Enter a valid option :");
-										option = sc.nextInt();
+										tempfoodID = sc.nextInt();
+									}
+									break;
+								case 3:
+									System.out.println("Saving set name, set price and set desciption.......");
+									break;
+								default:
+									System.out.println("Invalid FoodID! Enter a valid option :");
+									option = sc.nextInt();
 								}
 
 								break;
 							}
 						}
-						if(!exist)
-						{
+						if (!exist) {
 							System.out.println("Enter a valid SetID to update!");
 						}
 						System.out.println("1.Add new");
@@ -555,29 +573,30 @@ public class Restaurant {
 						break;
 					case 4:
 						System.out.println("Set Menu:");
-						System.out.println("===========================================================================");
-						for(int q = 0;q<restaMenu.getSetMenuList().size();q++)
-						{
-							if(restaMenu.getSetMenuList().get(q).getAvailability())
-							{
-								System.out.println(restaMenu.getSetMenuList().get(q).getSetID() + ") Name: "+restaMenu.getSetMenuList().get(q).getName());
-								System.out.println("Price: "+restaMenu.getSetMenuList().get(q).getPrice());
-								System.out.println("Description: "+restaMenu.getSetMenuList().get(q).getDescription());
+						System.out
+								.println("===========================================================================");
+						for (int q = 0; q < restaMenu.getSetMenuList().size(); q++) {
+							if (restaMenu.getSetMenuList().get(q).getAvailability()) {
+								System.out.println(restaMenu.getSetMenuList().get(q).getSetID() + ") Name: "
+										+ restaMenu.getSetMenuList().get(q).getName());
+								System.out.println("Price: " + restaMenu.getSetMenuList().get(q).getPrice());
+								System.out
+										.println("Description: " + restaMenu.getSetMenuList().get(q).getDescription());
 								System.out.print("Contains: ");
-								for(int j = 0; j < restaMenu.getSetMenuList().get(q).getAlaCarteMenuList().size();j++)
-								{
-									if(restaMenu.getSetMenuList().get(q).getAlaCarteMenuList().size() -1 == j)
-									{
+								for (int j = 0; j < restaMenu.getSetMenuList().get(q).getAlaCarteMenuList()
+										.size(); j++) {
+									if (restaMenu.getSetMenuList().get(q).getAlaCarteMenuList().size() - 1 == j) {
+										System.out.print(restaMenu.getSetMenuList().get(q).getAlaCarteMenuList().get(j)
+												.getName());
+									} else {
 										System.out.print(
-											restaMenu.getSetMenuList().get(q).getAlaCarteMenuList().get(j).getName());
-									}
-									else
-									{
-										System.out.print(restaMenu.getSetMenuList().get(q).getAlaCarteMenuList().get(j).getName()+ " , ");
+												restaMenu.getSetMenuList().get(q).getAlaCarteMenuList().get(j).getName()
+														+ " , ");
 									}
 								}
 								System.out.println("");
-								System.out.println("============================================================================");
+								System.out.println(
+										"============================================================================");
 							}
 						}
 						break;
