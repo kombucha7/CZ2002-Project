@@ -19,6 +19,10 @@ public class Table {
 		return this.numSeat;
 	}
 
+	public int getTableID() {
+		return this.tableID;
+	}
+
 	public void occupy() {
 		tableOccupied = true;
 	}
