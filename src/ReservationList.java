@@ -1,12 +1,7 @@
 import javax.swing.*;
 import java.time.Instant;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Scanner;
-import static java.util.concurrent.TimeUnit.*;
-import java.time.temporal.ChronoUnit;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+
 
 public class ReservationList {
 
@@ -20,8 +15,6 @@ public class ReservationList {
 		reservationList.add(reservation);
 	}
 
-	/////////////Moved to another class to check//////////////////////////
-
 	public void removeExpired(Instant time) {		//if they miss their reservation for more than 1 hr
 		for (int i = 0; i < reservationList.size(); i++) {
 			if (reservationList.get(i).isExpired(time)){
@@ -31,23 +24,31 @@ public class ReservationList {
 		}
 	}
 
-	public int checkCurrentReserved(int[] tableArray) {
-		int i = 0;
+	public int checkCurrentReserved(int[] tableArray, Instant time) {
+		int i = 0, counter = 0, foundTable = -1;
+		//debug for (i = 0; i < tableArray.length; i++) {System.out.println(tableArray[i]);}
 		if (reservationList.isEmpty()) {
-			return tableArray[0];
+			foundTable = tableArray[0];
 		}
 		while (tableArray[i] != -1) {		// only returns if there is a reservation found at that table
 			for (int j = 0; j < reservationList.size(); j++) {
-				if (reservationList.get(j).getTableNum() == tableArray[i]) {
-					if (reservationList.get(j).getDate().toEpochMilli() - Instant.now().toEpochMilli() > 3600000) {
-						return tableArray[i];
+				if (tableArray[i] == reservationList.get(j).getTableNum()){
+					if(reservationList.get(j).getDate().getEpochSecond() - time.getEpochSecond() < 3600){	//if less than an hour
+						counter = 1;
 					}
 				}
 			}
+			if (counter == 1) {counter = 0;}
+			else{foundTable = tableArray[i];break;}
 			i++;
 		}
-
-		return -1;
+		if (foundTable >-1) {
+			return foundTable;
+		}
+		else{
+			System.out.println("No available table at the moment");
+			return foundTable;
+		}
 	}
 
 	public void checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
@@ -111,9 +112,4 @@ public class ReservationList {
 		}
 		System.out.println("###################################################");
 	}
-
-	public void arrivedForReservation() {
-		// TODO - when customer shows up on time for reservation, remove booking from arraylist?
-	}
-
 }

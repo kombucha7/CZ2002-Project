@@ -607,6 +607,7 @@ public class Restaurant {
 				break;
 
 			case 3: // View menu
+				restaMenu.printer();
 				break;
 
 			case 4: // Create order
@@ -674,7 +675,7 @@ public class Restaurant {
 					break;
 				}
 
-				int tables[] = restaTable.matchCurrentTable(pax);
+				int tables[] = restaTable.matchUpcomingTable(pax);
 
 				restaReserve.checkUpcomingReserved(tables, newReserve);
 
@@ -708,7 +709,7 @@ public class Restaurant {
 				System.out.println("Enter number of pax: ");
 				int pax9 = sc.nextInt();
 				int[] availableTables9 = restaTable.matchCurrentTable(pax9);
-				int tableID9 = restaReserve.checkCurrentReserved(availableTables9);
+				int tableID9 = restaReserve.checkCurrentReserved(availableTables9,handler.getInstant());
 
 				restaTable.occupyTable(tableID9);
 				System.out.println("Table with ID of " + tableID9 + " occupied!");
