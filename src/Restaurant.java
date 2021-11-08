@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.time.Instant;
+import java.util.regex.Pattern;
 
 public class Restaurant {
 
@@ -655,22 +656,44 @@ public class Restaurant {
 				System.out.println("###Creating a new reservation###");
 				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 				String dateInput = sc.next();
+				if (dateInput.length() != 8) {
+					System.out.println("Invalid Number.");
+					break;
+				} else if (Pattern.matches("[a-zA-Z]+", dateInput)) {
+					System.out.println("Invalid Number.");
+					break;
+				}
 				String day = dateInput.substring(0, 2);
 				String month = dateInput.substring(2, 4);
 				String year = dateInput.substring(4, 8);
-				System.out.println("Enter Time in the format (HHmm):");
+				System.out.println("Enter Time in the format (HHMM):");
 				String timeInput = sc.next();
+				if (timeInput.length() != 8) {
+					System.out.println("Invalid Time.");
+					break;
+				} else if (Pattern.matches("[a-zA-Z]+", timeInput)) {
+					System.out.println("Invalid Time.");
+					break;
+				}
 				String hours = timeInput.substring(0, 2);
 				String minute = timeInput.substring(2, 4);
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
+				while (pax <1 || pax>10) {
+					System.out.println("Invalid number. Re-enter");
+					pax = sc.nextInt();
+				}
 				System.out.println("Enter phone no.:");
 				int phoneNum = sc.nextInt();
+				while (String.valueOf(phoneNum).length() != 4) {
+					System.out.println("Invalid number. Re-enter");
+					phoneNum = sc.nextInt();
+				}
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
 				////////////////// Checking if reservation is made in
 				////////////////// advance///////////////////////////////
 				Reservation newReserve = new Reservation(inst1, pax, phoneNum);
-				if (newReserve.checkIfInAdvance(handler.getInstant()) == false) {
+				if (!newReserve.checkIfInAdvance(handler.getInstant())) {
 					System.out.println("Reservation can only be made 1 hour in advance\n");
 					break;
 				}
@@ -712,8 +735,8 @@ public class Restaurant {
 					System.out.println("Invalid number of people. Please re-enter:");
 					pax11 = sc.nextInt();
 				}
-				int[] availableTables9 = restaTable.matchCurrentTable(pax11);
-				int tableID11 = restaReserve.checkCurrentReserved(availableTables9,handler.getInstant());
+				int[] availableTables11 = restaTable.matchCurrentTable(pax11);
+				int tableID11 = restaReserve.checkCurrentReserved(availableTables11,handler.getInstant());
 				if (tableID11 == -1) {
 					System.out.println("No available table. Please wait.");
 					break;
