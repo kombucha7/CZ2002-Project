@@ -333,10 +333,8 @@ public class Restaurant {
 			case 4: // Create order
 				System.out.println("Please enter StaffID");
 				int staffID3 = sc.nextInt();
-				System.out.println("Please enter number of customers");
-				int pax3 = sc.nextInt();
-				// use pax3 to find which available table
-				int tableID3 = 1;
+				System.out.println("Please enter Table Number: ");
+				int tableID3 = sc.nextInt(); // enter value found from assignTable
 				System.out.printf("Please pick Order Type\n(1) Dine In\n(2) Takeout\n");
 				int choice3 = sc.nextInt();
 				orderType type3;
@@ -350,7 +348,7 @@ public class Restaurant {
 				} else type3 = orderType.takeout;
 
 				Instant time3 = handler.getInstant();
-				int toprintorderid = restaOrderList.addOrder(staffID3, time3, pax3, type3, tableID3);
+				int toprintorderid = restaOrderList.addOrder(staffID3, time3, type3, tableID3);
 				System.out.printf("Order ID: %d\n", toprintorderid);
 				System.out.println("\n");
 				break;

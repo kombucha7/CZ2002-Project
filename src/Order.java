@@ -6,7 +6,6 @@ public class Order implements ListPrinter {
 	private int orderID;
 	private int staffID;
 	private Instant date;
-	private int pax;
 	private orderType orderType;
 	private int itemQty;
 	private ArrayList<AlaCarteItem> alaCarteItemOrder;
@@ -24,11 +23,10 @@ public class Order implements ListPrinter {
 	 * @param pax
 	 * @param orderType
 	 */
-	public Order(int orderID, int staffID, Instant date, int pax, orderType ordertype, int tableID) {
+	public Order(int orderID, int staffID, Instant date, orderType ordertype, int tableID) {
 		this.orderID = orderID;
 		this.staffID = staffID;
 		this.date = date;
-		this.pax = pax;
 		this.orderType = ordertype;
 		this.itemQty = 0;
 		this.setqty = 0;
@@ -73,18 +71,6 @@ public class Order implements ListPrinter {
 	 */
 	public void setDate(Instant date) {
 		this.date = date;
-	}
-
-	public int getPax() {
-		return this.pax;
-	}
-
-	/**
-	 * 
-	 * @param pax
-	 */
-	public void setPax(int pax) {
-		this.pax = pax;
 	}
 
 	public orderType getOrderType() {

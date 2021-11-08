@@ -137,8 +137,8 @@ public class OrderList implements ListPrinter {
 		return true;
 	}
 
-	public int addOrder(int staffID, Instant date, int pax, orderType ordertype, int tableID) {
-		Order tempOrder = new Order(orderID++, staffID, date, pax, ordertype, tableID);
+	public int addOrder(int staffID, Instant date, orderType ordertype, int tableID) {
+		Order tempOrder = new Order(orderID++, staffID, date, ordertype, tableID);
 		orderList.add(tempOrder);
 		return orderID-1;
 	}
