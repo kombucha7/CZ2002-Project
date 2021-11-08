@@ -386,12 +386,12 @@ public class Restaurant {
 				int phoneNum = sc.nextInt();
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
 				//////////////////Checking if reservation is made in advance///////////////////////////////
-				Reservation addNew = new Reservation(inst1, pax, phoneNum);
-				if (addNew.checkIfInAdvance() == false){System.out.println("Reservation can only be made 1 hour in advance\n"); break;}
+				Reservation newReserve = new Reservation(inst1, pax, phoneNum);
+				if (newReserve.checkIfInAdvance(handler.getInstant()) == false){System.out.println("Reservation can only be made 1 hour in advance\n"); break;}
 
 				int tables[] = restaTable.matchCurrentTable(pax);
 
-				restaReserve.checkUpcomingReserved(tables, addNew);
+				restaReserve.checkUpcomingReserved(tables, newReserve);
 
 				restaReserve.printReservation();
 				System.out.println("\n");
@@ -406,7 +406,7 @@ public class Restaurant {
 				break;
 
 			case 8: // Remove reservation booking
-				System.out.println("Enter the phone number used for reservation");
+				System.out.println("Enter the phone number used for reservation\n");
 				phoneNum = sc.nextInt();
 				restaReserve.removeReservation(phoneNum);
 				restaReserve.printReservation();
@@ -463,6 +463,8 @@ public class Restaurant {
 			case 13: // Advance time by 1 hour
 				handler.advanceTime(60);
 				// add code to check reservations
+				Instant time = handler.getInstant();
+				restaReserve.removeExpired(time);
 				System.out.println("\n");
 				break;
 

@@ -39,8 +39,8 @@ public class Reservation {
 		return this.pax;
 	}
 
-	public boolean checkIfInAdvance() {
-		if (Math.abs(Instant.now().getEpochSecond() - date.getEpochSecond()) < 3600) {
+	public boolean checkIfInAdvance(Instant time) {
+		if (Math.abs(time.getEpochSecond() - date.getEpochSecond()) < 3600) {
 			return false;
 		}
 		else{
@@ -48,8 +48,8 @@ public class Reservation {
 		}
 	}
 
-	public boolean isExpired() {
-		if (Instant.now().isAfter(date.plus(1, ChronoUnit.HOURS))){
+	public boolean isExpired(Instant time) {
+		if (time.getEpochSecond() - date.getEpochSecond() > 900) {
 			return true;
 		}
 		return false;

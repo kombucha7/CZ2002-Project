@@ -22,10 +22,11 @@ public class ReservationList {
 
 	/////////////Moved to another class to check//////////////////////////
 
-	public void removeExpired() {		//if they miss their reservation for more than 1 hr
+	public void removeExpired(Instant time) {		//if they miss their reservation for more than 1 hr
 		for (int i = 0; i < reservationList.size(); i++) {
-			if (reservationList.get(i).isExpired()){
+			if (reservationList.get(i).isExpired(time)){
 				reservationList.remove(i);
+				i--;
 			}
 		}
 	}
@@ -62,19 +63,12 @@ public class ReservationList {
 							counter = 1;
 						}
 					}
-
 				}
-				if (counter == 1) {
-					counter = 0;
-				} else {
-					foundTable = tableArray[i];
-					break;
-				}
-
+				if (counter == 1) {counter = 0;}
+				else {foundTable = tableArray[i];break;}
 				i++;
 			}
 		}
-
 		if (foundTable > -1) {
 			newReserve.setTableNum(foundTable);
 			createReservation(newReserve);return;
