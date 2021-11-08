@@ -3,7 +3,6 @@ public class Table {
 	private int tableID;
 	private int numSeat;
 	private boolean tableOccupied;
-	private boolean reservationOccupied;
 
 	/**
 	 *
@@ -16,28 +15,8 @@ public class Table {
 		this.tableOccupied = false;
 	}
 
-	public int getTableID() {
-		return this.tableID;
-	}
-
-	/**
-	 * 
-	 * @param tableID
-	 */
-	public void setTableID(int tableID) {
-		this.tableID = tableID;
-	}
-
 	public int getNumSeat() {
 		return this.numSeat;
-	}
-
-	/**
-	 * 
-	 * @param numSeat
-	 */
-	public void setNumSeat(int numSeat) {
-		this.numSeat = numSeat;
 	}
 
 	public void occupy() {
@@ -54,16 +33,5 @@ public class Table {
 		return tableOccupied;
 	}
 
-//	public boolean getReservationOccupied() {
-//		return this.reservationOccupied;
-//	}
-//
-//	/**
-//	 *
-//	 * @param reservationOccupied
-//	 */
-//	public void setReservationOccupied(boolean reservationOccupied) {
-//		this.reservationOccupied = reservationOccupied;
-//	}
 
 }
