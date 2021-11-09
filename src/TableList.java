@@ -40,11 +40,12 @@ public class TableList implements ListPrinter {
 	}
 
 	public void printList() {
+		System.out.println("List of tables: ");
 		for (int i=0; i<tableList.size(); i++) {
 			if (tableList.get(i).isOccupied())
-				System.out.println("Table " + (i+1) + "is occupied.");
+				System.out.println("Table " + (i+1) + " is occupied.");
 			else
-				System.out.println("Table " + (i+1) + "is not occupied.");
+				System.out.println("Table " + (i+1) + " is not occupied.");
 		}
 	}
 

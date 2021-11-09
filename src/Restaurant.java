@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.time.Instant;
+import java.util.regex.Pattern;
 
 public class Restaurant {
 
@@ -607,46 +608,47 @@ public class Restaurant {
 				break;
 
 			case 3: // View menu
+				restaMenu.printer();
 				break;
 
 			case 4: // Create order
 				System.out.println("Please enter StaffID");
-				int staffID3 = sc.nextInt();
+				int staffID4 = sc.nextInt();
 				System.out.println("Please enter Table Number: ");
-				int tableID3 = sc.nextInt(); // enter value found from assignTable
+				int tableID4 = sc.nextInt(); // enter value found from assignTable
 				System.out.printf("Please pick Order Type\n(1) Dine In\n(2) Takeout\n");
-				int choice3 = sc.nextInt();
-				orderType type3;
+				int choice4 = sc.nextInt();
+				orderType type4;
 
-				while (choice3 != 1 && choice3 != 2) {
+				while (choice4 != 1 && choice4 != 2) {
 					System.out.println("Invalid entry. Please re-enter:");
-					choice3 = sc.nextInt();
+					choice4 = sc.nextInt();
 				}
-				if (choice3 == 1) {
-					type3 = orderType.dine_in;
+				if (choice4 == 1) {
+					type4 = orderType.dine_in;
 				} else
-					type3 = orderType.takeout;
+					type4 = orderType.takeout;
 
-				Instant time3 = handler.getInstant();
-				int toprintorderid = restaOrderList.addOrder(staffID3, time3, type3, tableID3);
-				System.out.printf("Order ID: %d\n", toprintorderid);
+				Instant time4 = handler.getInstant();
+				int toPrintOrderID = restaOrderList.addOrder(staffID4, time4, type4, tableID4);
+				System.out.printf("Order ID: %d\n", toPrintOrderID);
 				System.out.println("\n");
 				break;
 
 			case 5: // View order
 				System.out.println("Please enter orderID");
-				int orderid4 = sc.nextInt();
-				Order toprintorder = restaOrderList.getOrderByOrderID(orderid4);
-				if (toprintorder != null) {
-					toprintorder.printList();
+				int orderID5 = sc.nextInt();
+				Order toPrintOrder = restaOrderList.getOrderByOrderID(orderID5);
+				if (toPrintOrder != null) {
+					toPrintOrder.printList();
 				}
 				System.out.println("\n");
 				break;
 
 			case 6: // Add/Remove order item/s to/from order
 				System.out.println("Please enter orderID");
-				int orderid5 = sc.nextInt();
-				restaOrderList.updateOrder(orderid5, restaMenu);
+				int orderID6 = sc.nextInt();
+				restaOrderList.updateOrder(orderID6, restaMenu);
 				System.out.println("\n");
 				break;
 
@@ -654,27 +656,49 @@ public class Restaurant {
 				System.out.println("###Creating a new reservation###");
 				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 				String dateInput = sc.next();
+				if (dateInput.length() != 8) {
+					System.out.println("Invalid Number.");
+					break;
+				} else if (Pattern.matches("[a-zA-Z]+", dateInput)) {
+					System.out.println("Invalid Number.");
+					break;
+				}
 				String day = dateInput.substring(0, 2);
 				String month = dateInput.substring(2, 4);
 				String year = dateInput.substring(4, 8);
-				System.out.println("Enter Time in the format (HHmm):");
+				System.out.println("Enter Time in the format (HHMM):");
 				String timeInput = sc.next();
+				if (timeInput.length() != 8) {
+					System.out.println("Invalid Time.");
+					break;
+				} else if (Pattern.matches("[a-zA-Z]+", timeInput)) {
+					System.out.println("Invalid Time.");
+					break;
+				}
 				String hours = timeInput.substring(0, 2);
 				String minute = timeInput.substring(2, 4);
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
+				while (pax <1 || pax>10) {
+					System.out.println("Invalid number. Re-enter");
+					pax = sc.nextInt();
+				}
 				System.out.println("Enter phone no.:");
 				int phoneNum = sc.nextInt();
+				while (String.valueOf(phoneNum).length() != 4) {
+					System.out.println("Invalid number. Re-enter");
+					phoneNum = sc.nextInt();
+				}
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
 				////////////////// Checking if reservation is made in
 				////////////////// advance///////////////////////////////
 				Reservation newReserve = new Reservation(inst1, pax, phoneNum);
-				if (newReserve.checkIfInAdvance(handler.getInstant()) == false) {
+				if (!newReserve.checkIfInAdvance(handler.getInstant())) {
 					System.out.println("Reservation can only be made 1 hour in advance\n");
 					break;
 				}
 
-				int tables[] = restaTable.matchCurrentTable(pax);
+				int tables[] = restaTable.matchUpcomingTable(pax);
 
 				restaReserve.checkUpcomingReserved(tables, newReserve);
 
@@ -706,41 +730,48 @@ public class Restaurant {
 
 			case 11: // Assign customer to table
 				System.out.println("Enter number of pax: ");
-				int pax9 = sc.nextInt();
-				int[] availableTables9 = restaTable.matchCurrentTable(pax9);
-				int tableID9 = restaReserve.checkCurrentReserved(availableTables9);
-
-				restaTable.occupyTable(tableID9);
-				System.out.println("Table with ID of " + tableID9 + " occupied!");
+				int pax11 = sc.nextInt();
+				while (pax11 < 1 || pax11 > 10) {
+					System.out.println("Invalid number of people. Please re-enter:");
+					pax11 = sc.nextInt();
+				}
+				int[] availableTables11 = restaTable.matchCurrentTable(pax11);
+				int tableID11 = restaReserve.checkCurrentReserved(availableTables11,handler.getInstant());
+				if (tableID11 == -1) {
+					System.out.println("No available table. Please wait.");
+					break;
+				}
+				restaTable.occupyTable(tableID11);
+				System.out.println("Table with ID of " + tableID11 + " occupied!");
 				System.out.println("\n");
 				break;
 
 			case 12: // Print order invoice
 				System.out.println("Please enter order ID: ");
-				int orderid10 = sc.nextInt();
+				int orderID12 = sc.nextInt();
 				System.out.println("Please enter Phone number for member verification");
-				Boolean memberstat10 = restaMember.checkMember(sc.nextInt()); // check for member or ask for member
-				int tableid10 = restaOrderList.getTableIDByOrderID(orderid10);
-				restaOrderList.generateInvoice(orderid10, memberstat10);
-				restaTable.emptyTable(tableid10);
-				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderid10));
+				Boolean memberStat12 = restaMember.checkMember(sc.nextInt()); // check for member or ask for member
+				int tableID12 = restaOrderList.getTableIDByOrderID(orderID12);
+				restaOrderList.generateInvoice(orderID12, memberStat12);
+				restaTable.emptyTable(tableID12);
+				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderID12));
 				System.out.println("\n");
 				break;
 
 			case 13: // Print sale revenue report by period (eg day or month)
-				String restday, restmonth, restyear, ini, fin, date11;
+				String restDay, restMonth, restYear, ini, fin, date13;
 				System.out.println("Enter Date in the format (DDMMYYYY):");
-				date11 = sc.next();
-				restday = date11.substring(0, 2);
-				restmonth = date11.substring(2, 4);
-				restyear = date11.substring(4, 8);
-				ini = restyear + "-" + restmonth + "-" + restday + "T00:00:00Z";
+				date13 = sc.next();
+				restDay = date13.substring(0, 2);
+				restMonth = date13.substring(2, 4);
+				restYear = date13.substring(4, 8);
+				ini = restYear + "-" + restMonth + "-" + restDay + "T00:00:00Z";
 				System.out.println("Enter Date in the format (DDMMYYYY):");
-				date11 = sc.next();
-				restday = date11.substring(0, 2);
-				restmonth = date11.substring(2, 4);
-				restyear = date11.substring(4, 8);
-				fin = restyear + "-" + restmonth + "-" + restday + "T00:00:00Z";
+				date13 = sc.next();
+				restDay = date13.substring(0, 2);
+				restMonth = date13.substring(2, 4);
+				restYear = date13.substring(4, 8);
+				fin = restYear + "-" + restMonth + "-" + restDay + "T00:00:00Z";
 				restaReport.periodRevenue(Instant.parse(ini), Instant.parse(fin));
 				System.out.println("\n");
 				break;
