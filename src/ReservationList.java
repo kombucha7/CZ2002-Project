@@ -13,7 +13,7 @@ public class ReservationList {
 
 	public void createReservation(Reservation reservation) {
 		reservationList.add(reservation);
-	}
+	}	//creation of reservation
 
 	public void removeExpired(Instant time) {		//if they miss their reservation for more than 1 hr
 		for (int i = 0; i < reservationList.size(); i++) {
@@ -24,33 +24,36 @@ public class ReservationList {
 		}
 	}
 
+	//For people who are walking in and want to find a seat. Have to check if current tables are reserved.
 	public int checkCurrentReserved(int[] tableArray, Instant time) {
 		int i = 0, counter = 0, foundTable = -1;
-		//debug for (i = 0; i < tableArray.length; i++) {System.out.println(tableArray[i]);}
-		if (reservationList.isEmpty()) {
+		if (reservationList.size() == 0) {
 			foundTable = tableArray[0];
 		}
-		while (tableArray[i] != -1) {		// only returns if there is a reservation found at that table
-			for (int j = 0; j < reservationList.size(); j++) {
-				if (tableArray[i] == reservationList.get(j).getTableNum()){
-					if(reservationList.get(j).getDate().getEpochSecond() - time.getEpochSecond() < 3600){	//if less than an hour
-						counter = 1;
+		else {
+			while (tableArray[i] != -1) {
+				for (int j = 0; j < reservationList.size(); j++) {
+					if (tableArray[i] == reservationList.get(j).getTableNum()) {
+						if (reservationList.get(j).getDate().getEpochSecond() - time.now().getEpochSecond() > 3600 ) {
+							counter = 1;
+						}
 					}
 				}
+				if (counter == 1) {counter = 0;}
+				else {foundTable = tableArray[i];break;}
+				i++;
 			}
-			if (counter == 1) {counter = 0;}
-			else{foundTable = tableArray[i];break;}
-			i++;
 		}
-		if (foundTable >-1) {
+		if (foundTable > -1) {
 			return foundTable;
 		}
 		else{
-			System.out.println("No available table at the moment");
-			return foundTable;
+			System.out.println("Restaurant walk-ins are full");
+			return -1;
 		}
 	}
 
+	//For people who want to reserve, need to check if it clashes
 	public void checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
 		int i = 0, counter = 0, foundTable = -1;
 		if (reservationList.size() == 0) {

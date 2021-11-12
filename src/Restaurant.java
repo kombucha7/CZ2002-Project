@@ -677,13 +677,13 @@ public class Restaurant {
 				String year = dateInput.substring(4, 8);
 				System.out.println("Enter Time in the format (HHMM):");
 				String timeInput = sc.next();
-				if (timeInput.length() != 8) {
+				/*if (timeInput.length() != 8) {
 					System.out.println("Invalid Time.");
 					break;
 				} else if (Pattern.matches("[a-zA-Z]+", timeInput)) {
 					System.out.println("Invalid Time.");
 					break;
-				}
+				}*/
 				String hours = timeInput.substring(0, 2);
 				String minute = timeInput.substring(2, 4);
 				System.out.println("Enter no. pax");
@@ -694,10 +694,10 @@ public class Restaurant {
 				}
 				System.out.println("Enter phone no.:");
 				int phoneNum = sc.nextInt();
-				while (String.valueOf(phoneNum).length() != 4) {
+				/*while (String.valueOf(phoneNum).length() != 4) {
 					System.out.println("Invalid number. Re-enter");
 					phoneNum = sc.nextInt();
-				}
+				}*/
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
 				////////////////// Checking if reservation is made in
 				////////////////// advance///////////////////////////////
@@ -745,7 +745,7 @@ public class Restaurant {
 					pax11 = sc.nextInt();
 				}
 				int[] availableTables11 = restaTable.matchCurrentTable(pax11);
-				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
+				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());	//get first available table considering reservation list
 				if (tableID11 == -1) {
 					System.out.println("No available table. Please wait.");
 					break;

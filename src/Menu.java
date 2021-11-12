@@ -383,7 +383,7 @@ public class Menu implements CustPrintable {
 			}
 		}
 
-		System.out.println("Alacarte Menu:");
+		System.out.println("\n\nAlacarte Menu:");
 		System.out.println("===========================================================================");
 		for(int i = 0;i<alaCarteList.size();i++)
 		{
