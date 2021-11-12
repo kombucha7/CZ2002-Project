@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.time.Instant;
 import java.util.regex.Pattern;
@@ -672,26 +673,42 @@ public class Restaurant {
 			case 7: // Create reservation booking
 				System.out.println("###Creating a new reservation###");
 				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
-				String dateInput = sc.next();
-				if (dateInput.length() != 8) {
-					System.out.println("Invalid Number.");
-					break;
-				} else if (Pattern.matches("[a-zA-Z]+", dateInput)) {
-					System.out.println("Invalid Number.");
-					break;
+				int dateInt,timeInt;
+				String day,month,year,hours,minute;
+
+				while (true) {
+					try {
+						dateInt = sc.nextInt();
+						//String length = Integer.toString(dateInt);
+						String dateInput = "" + dateInt;
+						day = dateInput.substring(0, 2);
+						month = dateInput.substring(2, 4);
+						year = dateInput.substring(4, 8);
+						break;
+
+					} catch (InputMismatchException | StringIndexOutOfBoundsException inputError) {
+						System.out.println("Please re-enter in the correct format");
+						sc.nextLine();
+					}
 				}
-				String day = dateInput.substring(0, 2);
-				String month = dateInput.substring(2, 4);
-				String year = dateInput.substring(4, 8);
+
 				System.out.println("Enter Time in the format (HHMM):");
-				String timeInput = sc.next();
-				/*
-				 * if (timeInput.length() != 8) { System.out.println("Invalid Time."); break; }
-				 * else if (Pattern.matches("[a-zA-Z]+", timeInput)) {
-				 * System.out.println("Invalid Time."); break; }
-				 */
-				String hours = timeInput.substring(0, 2);
-				String minute = timeInput.substring(2, 4);
+				while (true) {
+					try {
+						timeInt = sc.nextInt();
+						//String length = Integer.toString(dateInt);
+						String timeInput = "" + timeInt;
+						hours = timeInput.substring(0, 2);
+						minute = timeInput.substring(2, 4);
+						break;
+
+					} catch (InputMismatchException | StringIndexOutOfBoundsException inputError) {
+						System.out.println("Please re-enter in the correct format");
+						sc.nextLine();
+					}
+				}
+
+
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
 				while (pax < 1 || pax > 10) {
@@ -700,13 +717,13 @@ public class Restaurant {
 				}
 				System.out.println("Enter phone no.:");
 				int phoneNum = sc.nextInt();
-				/*
-				 * while (String.valueOf(phoneNum).length() != 4) {
-				 * System.out.println("Invalid number. Re-enter"); phoneNum = sc.nextInt(); }
-				 */
+
+				while (String.valueOf(phoneNum).length() != 8) {
+					System.out.println("Invalid number. Re-enter"); phoneNum = sc.nextInt(); }
+
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
-				////////////////// Checking if reservation is made in
-				////////////////// advance///////////////////////////////
+
+				//Check if reservation is made in advance//
 				Reservation newReserve = new Reservation(inst1, pax, phoneNum);
 				if (!newReserve.checkIfInAdvance(handler.getInstant())) {
 					System.out.println("Reservation can only be made 1 hour in advance\n");
@@ -723,18 +740,40 @@ public class Restaurant {
 
 			case 8: // Check/Remove reservation booking
 				System.out.println("Enter the phone number used for reservation");
-				phoneNum = sc.nextInt();
+				while (true) {
+					try {
+						phoneNum = sc.nextInt();
+						String length = Integer.toString(phoneNum);
+						if (length.length() != 8) {
+							throw new InputMismatchException();
+						}
+						break;
+
+					} catch (InputMismatchException | StringIndexOutOfBoundsException inputError) {
+						System.out.println("Please re-enter in the correct format");
+						sc.nextLine();
+					}
+				}
 				restaReserve.checkReservation(phoneNum);
-				restaReserve.printReservation();
-				System.out.println("\n");
 				break;
 
 			case 9: // Remove reservation booking
 				System.out.println("Enter the phone number used for reservation\n");
-				phoneNum = sc.nextInt();
+				while (true) {
+					try {
+						phoneNum = sc.nextInt();
+						String length = Integer.toString(phoneNum);
+						if (length.length() != 8) {
+							throw new InputMismatchException();
+						}
+						break;
+
+					} catch (InputMismatchException | StringIndexOutOfBoundsException inputError) {
+						System.out.println("Please re-enter in the correct format");
+						sc.nextLine();
+					}
+				}
 				restaReserve.removeReservation(phoneNum);
-				restaReserve.printReservation();
-				System.out.println("\n");
 				break;
 
 			case 10: // Check table availability
