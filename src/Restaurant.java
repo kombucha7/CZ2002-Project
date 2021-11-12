@@ -88,10 +88,11 @@ public class Restaurant {
 								System.out.println(
 										"\nDescription: " + restaMenu.getAlaCarteList().get(i).getDescription());
 								System.out.println("Food Type: " + restaMenu.getAlaCarteList().get(i).getFoodType());
-								System.out.println("Do you want to retain the previous list? (Y/N):");
+								System.out.println("Do you want to retain the previous information? (Y/N):");
 								retain = sc.nextLine();
 								if (retain.equals("Y")) {
 									restaMenu.getAlaCarteList().get(i).setAvailability(true);
+									System.out.println("Previous information has been retained.");
 									actual = false;
 									break;
 								} else if (retain.equals("N")) {
@@ -215,14 +216,20 @@ public class Restaurant {
 									break;
 								}
 							}
+							if (foodavail) {
+								System.out.println("Enter valid Food ID to update: ");
+								foodID = sc.nextInt();
+							}
 						}
 						break;
 					case 4:
 						boolean noFoodID = true;
 						System.out.println("\n");
 						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
-							System.out.println("FoodID: " + restaMenu.getAlaCarteList().get(i).getFoodID() + " Name: "
-									+ restaMenu.getAlaCarteList().get(i).getName());
+							if (restaMenu.getAlaCarteList().get(i).getAvailability() == true) {
+								System.out.println("FoodID: " + restaMenu.getAlaCarteList().get(i).getFoodID()
+										+ " Name: " + restaMenu.getAlaCarteList().get(i).getName());
+							}
 						}
 						System.out.println("Enter Food ID to check details: ");
 						foodID = sc.nextInt();
@@ -235,11 +242,7 @@ public class Restaurant {
 								System.out.println(
 										"\nDescription: " + restaMenu.getAlaCarteList().get(i).getDescription());
 								System.out.println("Food Type: " + restaMenu.getAlaCarteList().get(i).getFoodType());
-								if (restaMenu.getAlaCarteList().get(i).getAvailability() == true) {
-									System.out.println("Food is currently available in Restaurant.");
-								} else {
-									System.out.println("Food is not available in Restaurant!");
-								}
+								System.out.println("Food is currently available in Restaurant.");
 								noFoodID = false;
 								break;
 							}
@@ -677,13 +680,11 @@ public class Restaurant {
 				String year = dateInput.substring(4, 8);
 				System.out.println("Enter Time in the format (HHMM):");
 				String timeInput = sc.next();
-				/*if (timeInput.length() != 8) {
-					System.out.println("Invalid Time.");
-					break;
-				} else if (Pattern.matches("[a-zA-Z]+", timeInput)) {
-					System.out.println("Invalid Time.");
-					break;
-				}*/
+				/*
+				 * if (timeInput.length() != 8) { System.out.println("Invalid Time."); break; }
+				 * else if (Pattern.matches("[a-zA-Z]+", timeInput)) {
+				 * System.out.println("Invalid Time."); break; }
+				 */
 				String hours = timeInput.substring(0, 2);
 				String minute = timeInput.substring(2, 4);
 				System.out.println("Enter no. pax");
@@ -694,10 +695,10 @@ public class Restaurant {
 				}
 				System.out.println("Enter phone no.:");
 				int phoneNum = sc.nextInt();
-				/*while (String.valueOf(phoneNum).length() != 4) {
-					System.out.println("Invalid number. Re-enter");
-					phoneNum = sc.nextInt();
-				}*/
+				/*
+				 * while (String.valueOf(phoneNum).length() != 4) {
+				 * System.out.println("Invalid number. Re-enter"); phoneNum = sc.nextInt(); }
+				 */
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
 				////////////////// Checking if reservation is made in
 				////////////////// advance///////////////////////////////
@@ -745,7 +746,12 @@ public class Restaurant {
 					pax11 = sc.nextInt();
 				}
 				int[] availableTables11 = restaTable.matchCurrentTable(pax11);
-				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());	//get first available table considering reservation list
+				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant()); // get first
+																											// available
+																											// table
+																											// considering
+																											// reservation
+																											// list
 				if (tableID11 == -1) {
 					System.out.println("No available table. Please wait.");
 					break;
