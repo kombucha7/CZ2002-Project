@@ -748,14 +748,11 @@ public class Restaurant {
 					pax11 = sc.nextInt();
 				}
 				int[] availableTables11 = restaTable.matchCurrentTable(pax11);
-				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant()); // get first
-																											// available
-																											// table
-																											// considering
-																											// reservation
-																											// list
+				// get first available table considering reservation list
+				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
+
 				if (tableID11 == -1) {
-					System.out.println("No available table. Please wait.");
+					System.out.println("No available table. Please wait.\n");
 					break;
 				}
 				restaTable.occupyTable(tableID11);
