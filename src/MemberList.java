@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MemberList implements PersonManager{
+public class MemberList implements PersonManager, Serializable {
 
 	private ArrayList<Member> memberList;
 

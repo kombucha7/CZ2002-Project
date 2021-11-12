@@ -5,8 +5,9 @@
  * @version 1.0
  * @since 2021-11-12
  */
+import java.io.Serializable;
 import java.util.ArrayList;
-public class SetItem {
+public class SetItem implements Serializable {
 
 	private String name;
 	private double price;

@@ -1,4 +1,5 @@
-public class Invoice implements CustPrintable {
+import java.io.Serializable;
+public class Invoice implements CustPrintable, Serializable {
 
 	private boolean member;
 	private Order order;

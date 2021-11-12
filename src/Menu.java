@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * 	Represents the promotion set item to be added into menu
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @since 2021-11-12
  */
 
-public class Menu implements CustPrintable {
+public class Menu implements CustPrintable, Serializable {
 
 	private ArrayList<AlaCarteItem> alaCarteList;
 	private ArrayList<SetItem> setMenuList;
@@ -395,7 +396,7 @@ public class Menu implements CustPrintable {
 			}
 		}
 
-		System.out.println("Alacarte Menu:");
+		System.out.println("\n\nAlacarte Menu:");
 		System.out.println("===========================================================================");
 		for(int i = 0;i<alaCarteList.size();i++)
 		{
