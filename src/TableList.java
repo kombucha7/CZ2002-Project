@@ -1,10 +1,24 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * 	Represents the list of tables in the restaurant
+ * @author Ong Xin Rui Celestine
+ * @version 1.0
+ * @since 2021-11-12
+ */
+
 public class TableList implements ListPrinter, Serializable {
 
+	/**
+	 * Arraylist of tables in restaurant
+	 */
 	private ArrayList<Table> tableList;
 
+	/**
+	 * Creates a list of 15 tables
+	 * We assume that the number of tables is fixed
+	 */
 	public TableList() {
 		tableList = new ArrayList<>();
 
@@ -40,6 +54,9 @@ public class TableList implements ListPrinter, Serializable {
 		tableList.add(table15);
 	}
 
+	/**
+	 * Prints out the list of occupied and unoccupied tables
+	 */
 	public void printList() {
 		System.out.println("List of tables: ");
 		for (int i=0; i<tableList.size(); i++) {
@@ -50,6 +67,10 @@ public class TableList implements ListPrinter, Serializable {
 		}
 	}
 
+	/**
+	 * gives us the total number of empty tables
+	 * @return number of empty tables
+	 */
 	public int getEmpty() {
 		int count=0;
 		for (int i=0; i<tableList.size(); i++) {
@@ -61,11 +82,11 @@ public class TableList implements ListPrinter, Serializable {
 	}
 
 	/**
-	 * 
-	 * @param pax
+	 * Returns the tables that can accommodate the given pax that are not occupied at the current time instant
+	 * If full or if there is no available table with the required seating, array is full of -1
+	 * @param pax Number of people to be seated
+	 * @return array of tables that are not occupied
 	 */
-	// returns array of tables that are not occupied
-	// if full or if there is no available table with the required seating, array is full of -1
 	public int[] matchCurrentTable(int pax) {
 		int[] availableTables = new int[tableList.size()];
 		int numAvailable = 0;
@@ -83,7 +104,13 @@ public class TableList implements ListPrinter, Serializable {
 		return availableTables;
 	}
 
-	// returns array of tables that can fit the required pax (for reservations in the future)
+	/**
+	 * Returns the tables that can accommodate the given pax that are not occupied at a future time instant
+	 * Used for reservations in the future
+	 * If full or if there is no available table with the required seating, array is full of -1
+	 * @param pax Number of people to be seated
+	 * @return array of tables that are not occupied
+	 */
 	public int[] matchUpcomingTable(int pax) {
 		int[] availableTables = new int[tableList.size()];
 		int numAvailable = 0;
@@ -102,13 +129,17 @@ public class TableList implements ListPrinter, Serializable {
 	}
 
 	/**
-	 * 
+	 * Indicate that a table is now occupied by a group
 	 * @param tableID
 	 */
 	public void occupyTable(int tableID) {
 		tableList.get(tableID).occupy();
 	}
 
+	/**
+	 * Indicate that a table is now unoccupied by a group
+	 * @param tableID
+	 */
 	public void emptyTable(int tableID) {
 		tableList.get(tableID).empty();
 	}
