@@ -8,29 +8,18 @@ public class Restaurant {
 
 	public static void main(String[] args) {
 		// TODO - implement Restaurant.main
-		
-		//TableList restaTable = new TableList();
-		//Menu restaMenu = new Menu();
-		/*
+
+
 		OrderList restaOrderList = new OrderList();
-		StaffList restaStaffList = new StaffList();
-		MemberList restaMember = new MemberList();
 		TimeHandler handler = new TimeHandler();
-		*/
-		//RevenueReport restaReport = new RevenueReport();
-		//ReservationList restaReserve = new ReservationList();
-		//*/
-		
-		
+		RevenueReport restaReport = new RevenueReport();
+		ReservationList restaReserve = new ReservationList();
 		TableList restaTable = ObjectReaderWriter.readTableList();
 		Menu restaMenu = ObjectReaderWriter.readMenu();
-		OrderList restaOrderList = ObjectReaderWriter.readOrderList();
 		StaffList restaStaffList = ObjectReaderWriter.readStaffList();
 		MemberList restaMember = ObjectReaderWriter.readMemberList();
-		TimeHandler handler =ObjectReaderWriter.readTimeHandler();
-		RevenueReport restaReport = ObjectReaderWriter.readRevenueReport();
-		ReservationList restaReserve = ObjectReaderWriter.readReservationList();
 		
+
 		int option;
 		Scanner sc = new Scanner(System.in);
 
@@ -53,14 +42,6 @@ public class Restaurant {
 			}
 			// exit app
 			if (option == 16) {
-				ObjectReaderWriter.writeMemberList(restaMember);
-				ObjectReaderWriter.writeMenu(restaMenu);
-				ObjectReaderWriter.writeOrderList(restaOrderList);
-				ObjectReaderWriter.writeReservationList(restaReserve);
-				ObjectReaderWriter.writeRevenueReport(restaReport);
-				ObjectReaderWriter.writeStaffList(restaStaffList);
-				ObjectReaderWriter.writeTableList(restaTable);
-				ObjectReaderWriter.writeTimeHandler(handler);
 				System.out.println("Exiting...");
 				break;
 			}
