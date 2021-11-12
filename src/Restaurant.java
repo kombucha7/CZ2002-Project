@@ -47,7 +47,7 @@ public class Restaurant {
 			switch (option) {
 			case 1: // Create/Update/Remove menu item
 				int menuOption, choizes;
-				String name, description, newfoodname, updateTF;
+				String name, description, newfoodname;
 				int foodID, foodIndex;
 				float price;
 				foodType userFoodType;
@@ -679,7 +679,7 @@ public class Restaurant {
 				String minute = timeInput.substring(2, 4);
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
-				while (pax <1 || pax>10) {
+				while (pax < 1 || pax > 10) {
 					System.out.println("Invalid number. Re-enter");
 					pax = sc.nextInt();
 				}
@@ -736,7 +736,7 @@ public class Restaurant {
 					pax11 = sc.nextInt();
 				}
 				int[] availableTables11 = restaTable.matchCurrentTable(pax11);
-				int tableID11 = restaReserve.checkCurrentReserved(availableTables11,handler.getInstant());
+				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
 				if (tableID11 == -1) {
 					System.out.println("No available table. Please wait.");
 					break;
