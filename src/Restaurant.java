@@ -235,7 +235,8 @@ public class Restaurant {
 						System.out.println("Enter Food ID to check details: ");
 						foodID = sc.nextInt();
 						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
-							if (foodID == restaMenu.getAlaCarteList().get(i).getFoodID()) {
+							if (foodID == restaMenu.getAlaCarteList().get(i).getFoodID()
+									&& restaMenu.getAlaCarteList().get(i).getAvailability() == true) {
 								System.out.println("\n");
 								System.out.println("Current Food Info in list is set as: ");
 								System.out.println("Name: " + restaMenu.getAlaCarteList().get(i).getName());
