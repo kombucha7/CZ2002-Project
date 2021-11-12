@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Scanner;
 
 /**
  * Class to manage and interface with order objects
+ * 
  * @author Chan Hui De Elliot
  */
 public class OrderList implements ListPrinter, Serializable {
@@ -45,105 +47,107 @@ public class OrderList implements ListPrinter, Serializable {
 	public boolean updateOrder(int orderID, Menu menulist) {
 		int choice, ID, qty;
 		Scanner sc = new Scanner(System.in);
+		try {
+			System.out.println("Press 1 to add item");
+			System.out.println("Press 2 to delete item");
+			System.out.println("Press 0 to end");
 
-		System.out.println("Press 1 to add item");
-		System.out.println("Press 2 to delete item");
-		System.out.println("Press 0 to end");
-
-		choice = sc.nextInt();
-
-		switch (choice) {
-		case 1:
-			Order temporder;
-			boolean flag = false;
-			System.out.println("Press 1 for AlaCarte Item");
-			System.out.println("Press 2 for Set Item");
 			choice = sc.nextInt();
+
 			switch (choice) {
 			case 1:
-				System.out.println("Please enter AlaCarte Item ID");
-				ID = sc.nextInt();
-				System.out.println("Please enter number of items");
-				qty = sc.nextInt();
-				temporder = getOrderByOrderID(orderID);
-				for (int i = 0; i < menulist.getAlaCarteList().size(); i++) {
-					if (menulist.getAlaCarteList().get(i).getFoodID() == ID && menulist.getAlaCarteList().get(i).getAvailability()) {
-						AlaCarteItem tempfood = menulist.getAlaCarteList().get(i);
-						temporder.add_OrderFood(tempfood, qty);
-						flag = true;
-						break;
+				Order temporder;
+				boolean flag = false;
+				System.out.println("Press 1 for AlaCarte Item");
+				System.out.println("Press 2 for Set Item");
+				choice = sc.nextInt();
+				switch (choice) {
+				case 1:
+
+					System.out.println("Please enter AlaCarte Item ID");
+					ID = sc.nextInt();
+					System.out.println("Please enter number of items");
+					qty = sc.nextInt();
+
+					temporder = getOrderByOrderID(orderID);
+					for (int i = 0; i < menulist.getAlaCarteList().size(); i++) {
+						if (menulist.getAlaCarteList().get(i).getFoodID() == ID
+								&& menulist.getAlaCarteList().get(i).getAvailability()) {
+							AlaCarteItem tempfood = menulist.getAlaCarteList().get(i);
+							temporder.add_OrderFood(tempfood, qty);
+							flag = true;
+							break;
+						}
 					}
-				}
-				if (!flag) {
-					System.out.println("Invalid Food ID");
-					flag = false;
+					if (!flag) {
+						System.out.println("Invalid Food ID");
+						flag = false;
+					}
+					break;
+
+				case 2:
+					System.out.println("Please enter Set Item ID");
+					ID = sc.nextInt();
+					System.out.println("Please enter number of items");
+					qty = sc.nextInt();
+					temporder = getOrderByOrderID(orderID);
+					for (int i = 0; i < menulist.getSetMenuList().size(); i++) {
+						if (menulist.getSetMenuList().get(i).getSetID() == ID
+								&& menulist.getSetMenuList().get(i).getAvailability()) {
+							SetItem tempset = menulist.getSetMenuList().get(i);
+							temporder.add_OrderFood(tempset, qty);
+							flag = true;
+							break;
+						}
+					}
+					if (!flag) {
+						System.out.println("Invalid Set ID");
+						flag = false;
+					}
+					break;
+
+				default:
+					System.out.println("Invalid Choice");
+					break;
 				}
 				break;
 
 			case 2:
-				System.out.println("Please enter Set Item ID");
-				ID = sc.nextInt();
-				System.out.println("Please enter number of items");
-				qty = sc.nextInt();
-				temporder = getOrderByOrderID(orderID);
-				for (int i = 0; i < menulist.getSetMenuList().size(); i++) {
-					if (menulist.getSetMenuList().get(i).getSetID() == ID && menulist.getSetMenuList().get(i).getAvailability()) {
-						SetItem tempset = menulist.getSetMenuList().get(i);
-						temporder.add_OrderFood(tempset, qty);
-						flag = true;
-						break;
+				System.out.println("Press 1 for AlaCarte Item");
+				System.out.println("Press 2 for Set Item");
+				choice = sc.nextInt();
+				switch (choice) {
+				case 1:
+					System.out.println("Please enter AlaCarte Item ID");
+					ID = sc.nextInt();
+					if (getOrderByOrderID(orderID).deleteAlaFood(ID)) {
+						System.out.println("Success");
+					} else {
+						System.out.println("Failed");
 					}
-				}
-				if (!flag) {
-					System.out.println("Invalid Set ID");
-					flag = false;
+					break;
+
+				case 2:
+					System.out.println("Please enter Set Item ID");
+					ID = sc.nextInt();
+					if (getOrderByOrderID(orderID).deleteSetFood(ID)) {
+						System.out.println("Success");
+					} else {
+						System.out.println("Failed");
+					}
+					break;
+
+				default:
+					System.out.println("Invalid Choice");
+					break;
 				}
 				break;
 
 			default:
-				System.out.println("Invalid Choice");
-				break;
+				return false;
 			}
-			break;
-
-		case 2:
-			System.out.println("Press 1 for AlaCarte Item");
-			System.out.println("Press 2 for Set Item");
-			choice = sc.nextInt();
-			switch (choice) {
-			case 1:
-				System.out.println("Please enter AlaCarte Item ID");
-				ID = sc.nextInt();
-				if(getOrderByOrderID(orderID).deleteAlaFood(ID))
-				{
-					System.out.println("Success");
-				}
-				else
-				{
-					System.out.println("Failed");
-				}
-				break;
-
-			case 2:
-				System.out.println("Please enter Set Item ID");
-				ID = sc.nextInt();
-				if(getOrderByOrderID(orderID).deleteSetFood(ID))
-				{
-					System.out.println("Success");
-				}
-				else
-				{
-					System.out.println("Failed");
-				}
-				break;
-
-			default:
-				System.out.println("Invalid Choice");
-				break;
-			}
-			break;
-
-		default:
+		} catch (InputMismatchException e) {
+			System.out.println("Wrong Entry");
 			return false;
 		}
 		return true;
@@ -152,7 +156,7 @@ public class OrderList implements ListPrinter, Serializable {
 	public int addOrder(int staffID, Instant date, orderType ordertype, int tableID) {
 		Order tempOrder = new Order(orderID++, staffID, date, ordertype, tableID);
 		orderList.add(tempOrder);
-		return orderID-1;
+		return orderID - 1;
 	}
 
 	public boolean updateArchive(RevenueReport revport, int orderID) {
@@ -209,15 +213,11 @@ public class OrderList implements ListPrinter, Serializable {
 		return null;
 	}
 
-	public int getTableIDByOrderID(int orderID)
-	{
+	public int getTableIDByOrderID(int orderID) {
 		Order temporder = getOrderByOrderID(orderID);
-		if(temporder!= null)
-		{
+		if (temporder != null) {
 			return temporder.getTableID();
-		}
-		else return -1;
+		} else
+			return -1;
 	}
 }
-
-	
