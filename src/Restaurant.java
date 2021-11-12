@@ -84,9 +84,9 @@ public class Restaurant {
 							if (name.equals(restaMenu.getAlaCarteList().get(i).getName())) {
 								System.out.println("Current Food Info in list is set as: ");
 								System.out.println("Name: " + restaMenu.getAlaCarteList().get(i).getName());
-								System.out.println("Price: $" + restaMenu.getAlaCarteList().get(i).getPrice());
-								System.out
-										.println("Description: " + restaMenu.getAlaCarteList().get(i).getDescription());
+								System.out.printf("Price: $%.2f", restaMenu.getAlaCarteList().get(i).getPrice());
+								System.out.println(
+										"\nDescription: " + restaMenu.getAlaCarteList().get(i).getDescription());
 								System.out.println("Food Type: " + restaMenu.getAlaCarteList().get(i).getFoodType());
 								System.out.println("Do you want to retain the previous list? (Y/N):");
 								retain = sc.nextLine();
@@ -99,12 +99,9 @@ public class Restaurant {
 									price = sc.nextFloat();
 									restaMenu.getAlaCarteList().get(i).setPrice(price);
 									System.out.println("Enter the new description:");
-									sc.nextLine();
+									sc.nextLine(); // Buffer
 									description = sc.nextLine();
 									restaMenu.getAlaCarteList().get(i).setDescription(description);
-									System.out.println("Enter the new food type (Main,Dessert,Drinks,Appetizer):");
-									userFoodType = foodType.valueOf(sc.nextLine());
-									restaMenu.getAlaCarteList().get(i).setFoodType(userFoodType);
 									restaMenu.getAlaCarteList().get(i).setAvailability(true);
 									System.out.println("Successfully updated!");
 									actual = false;
@@ -129,8 +126,8 @@ public class Restaurant {
 							AlaCarteItem newItem = new AlaCarteItem(name, price, description, userFoodType, foodID,
 									true);
 							restaMenu.getAlaCarteList().add(newItem);
-							System.out.println(
-									name + " of price $" + price + " has been added into food type " + userFoodType);
+							System.out.printf(name + " of price $%.2f has been added into food type " + userFoodType,
+									price);
 						}
 						break;
 					case 2:
@@ -163,9 +160,9 @@ public class Restaurant {
 										restaMenu.getAlaCarteList().get(i).setName(newfoodname);
 										System.out.println("Successfully updated Food Name!");
 									} else if (choizes == 2) {
-										System.out.println(
-												"Current Price is $" + restaMenu.getAlaCarteList().get(i).getPrice());
-										System.out.println("Enter the new price:");
+										System.out.printf("Current Price is $%.2f",
+												restaMenu.getAlaCarteList().get(i).getPrice());
+										System.out.println("\nEnter the new price:");
 										price = sc.nextFloat();
 										restaMenu.getAlaCarteList().get(i).setPrice(price);
 										System.out.println("Successfully updated Food Price!");
@@ -221,6 +218,7 @@ public class Restaurant {
 						}
 						break;
 					case 4:
+						boolean noFoodID = true;
 						System.out.println("\n");
 						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
 							System.out.println("FoodID: " + restaMenu.getAlaCarteList().get(i).getFoodID() + " Name: "
@@ -233,12 +231,23 @@ public class Restaurant {
 								System.out.println("\n");
 								System.out.println("Current Food Info in list is set as: ");
 								System.out.println("Name: " + restaMenu.getAlaCarteList().get(i).getName());
-								System.out.println("Price: $" + restaMenu.getAlaCarteList().get(i).getPrice());
-								System.out
-										.println("Description: " + restaMenu.getAlaCarteList().get(i).getDescription());
+								System.out.printf("Price: $%.2f", restaMenu.getAlaCarteList().get(i).getPrice());
+								System.out.println(
+										"\nDescription: " + restaMenu.getAlaCarteList().get(i).getDescription());
 								System.out.println("Food Type: " + restaMenu.getAlaCarteList().get(i).getFoodType());
+								if (restaMenu.getAlaCarteList().get(i).getAvailability() == true) {
+									System.out.println("Food is currently available in Restaurant.");
+								} else {
+									System.out.println("Food is not available in Restaurant!");
+								}
+								noFoodID = false;
 								break;
 							}
+						}
+						if (noFoodID) {
+							System.out.println("No FoodID " + foodID + " found in list!");
+							System.out.println("Exiting ...");
+							break;
 						}
 					}
 				}
