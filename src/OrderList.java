@@ -1,8 +1,13 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Scanner;
 
-public class OrderList implements ListPrinter {
+/**
+ * Class to manage and interface with order objects
+ * @author Chan Hui De Elliot
+ */
+public class OrderList implements ListPrinter, Serializable {
 
 	private ArrayList<Order> orderList;
 	private static int orderID = 1;
@@ -29,6 +34,13 @@ public class OrderList implements ListPrinter {
 		else
 			return false;
 	}
+
+	/**
+	 * 
+	 * @param orderID
+	 * @param menulist
+	 * @return
+	 */
 
 	public boolean updateOrder(int orderID, Menu menulist) {
 		int choice, ID, qty;

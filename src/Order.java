@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 import java.time.Instant;
 
-public class Order implements ListPrinter {
+public class Order implements ListPrinter, Serializable {
 
 	private int orderID;
 	private int staffID;

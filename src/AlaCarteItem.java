@@ -1,4 +1,6 @@
-public class AlaCarteItem {
+import java.io.Serializable;
+
+public class AlaCarteItem implements Serializable{
 
 	private String name;
 	private double price;
