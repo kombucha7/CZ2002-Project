@@ -70,7 +70,7 @@ public class RevenueReport implements Serializable {
 			int total = 0;
 			for (i = 0; i < temporderlist.size(); i++)
 				total += temporderlist.get(i).getTotalprice();
-			System.out.printf("Total Revenue: %d\n", total);
+			System.out.printf("Total Revenue: $%.2f\n", total);
 			System.out.println("------------------------------------------------------");
 			if (!alalist.isEmpty()) {
 				Set<AlaCarteItem> uniqueala = new HashSet<AlaCarteItem>(alalist);
