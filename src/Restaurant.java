@@ -671,30 +671,20 @@ public class Restaurant {
 				break;
 
 			case 7: // Create reservation booking
-				System.out.println("###Creating a new reservation###");
-				System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
+				System.out.println("Creating a new reservation");
 				int dateInt,timeInt;
 				String day,month,year,hours,minute;
 
 				while (true) {
 					try {
+						System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 						dateInt = sc.nextInt();
 						//String length = Integer.toString(dateInt);
 						String dateInput = "" + dateInt;
 						day = dateInput.substring(0, 2);
 						month = dateInput.substring(2, 4);
 						year = dateInput.substring(4, 8);
-						break;
-
-					} catch (InputMismatchException | StringIndexOutOfBoundsException inputError) {
-						System.out.println("Please re-enter in the correct format");
-						sc.nextLine();
-					}
-				}
-
-				System.out.println("Enter Time in the format (HHMM):");
-				while (true) {
-					try {
+						System.out.println("Enter Time in the format (HHMM):");
 						timeInt = sc.nextInt();
 						//String length = Integer.toString(dateInt);
 						String timeInput = "" + timeInt;
@@ -707,7 +697,6 @@ public class Restaurant {
 						sc.nextLine();
 					}
 				}
-
 
 				System.out.println("Enter no. pax");
 				int pax = sc.nextInt();
