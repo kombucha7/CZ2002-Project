@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.sql.Time;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
 
-public class Reservation {
+public class Reservation implements Serializable {
 
 	private Instant date;
 	private int pax;

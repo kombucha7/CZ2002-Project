@@ -1,9 +1,10 @@
 import javax.swing.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 
 
-public class ReservationList {
+public class ReservationList implements Serializable {
 
 	private ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
 
@@ -48,7 +49,6 @@ public class ReservationList {
 			return foundTable;
 		}
 		else{
-			System.out.println("Restaurant walk-ins are full");
 			return -1;
 		}
 	}

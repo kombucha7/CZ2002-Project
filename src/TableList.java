@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TableList implements ListPrinter {
+public class TableList implements ListPrinter, Serializable {
 
 	private ArrayList<Table> tableList;
 

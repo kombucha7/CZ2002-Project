@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StaffList implements PersonManager{
+public class StaffList implements PersonManager, Serializable {
 
 	private ArrayList<Staff> staffList;
 	private static int numStaff = 1;

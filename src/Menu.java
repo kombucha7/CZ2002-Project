@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Menu implements CustPrintable {
+public class Menu implements CustPrintable, Serializable {
 
 	private ArrayList<AlaCarteItem> alaCarteList;
 	private ArrayList<SetItem> setMenuList;

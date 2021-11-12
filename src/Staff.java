@@ -1,4 +1,6 @@
-public class Staff extends Person {
+import java.io.Serializable;
+
+public class Staff extends Person implements Serializable {
 
 	private int employeeID;
 	private jobTitle jobTitle;

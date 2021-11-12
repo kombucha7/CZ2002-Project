@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -5,7 +6,7 @@ import java.util.Set;
 import java.util.Iterator;
 import java.util.HashSet;
 
-public class RevenueReport {
+public class RevenueReport implements Serializable {
 
 	private ArrayList<Order> orderList;
 

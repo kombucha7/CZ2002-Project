@@ -1,10 +1,11 @@
+import java.io.Serializable;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Scanner;
 import java.time.Duration;
 
-public class TimeHandler {
+public class TimeHandler implements Serializable {
 
 	private Clock clock;
 	private String init_time = "2021-11-14T09:00:00Z";
