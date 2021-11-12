@@ -179,6 +179,7 @@ public class Restaurant {
 										System.out.println("Current Food Type is: "
 												+ restaMenu.getAlaCarteList().get(i).getFoodType());
 										System.out.println("Enter the new food type (Main,Dessert,Drinks,Appetizer):");
+										sc.nextLine();
 										userFoodType = foodType.valueOf(sc.nextLine());
 										restaMenu.getAlaCarteList().get(i).setFoodType(userFoodType);
 										System.out.println("Successfully updated Food Type!");
