@@ -1,4 +1,11 @@
 import java.util.ArrayList;
+/**
+ * 	Represents the promotion set item to be added into menu
+ * 	A promotion set contains many alacarte item.
+ * @author arron tay & kwang wee
+ * @version 1.0
+ * @since 2021-11-12
+ */
 
 public class Menu implements CustPrintable {
 
@@ -95,13 +102,17 @@ public class Menu implements CustPrintable {
 
 
 	}
+	/**
+	 * Gets the Alacartelist
+	 * @param alaCarteList
+	 */
 
 	public ArrayList<AlaCarteItem> getAlaCarteList() {
 		return this.alaCarteList;
 	}
 
 	/**
-	 * 
+	 * set the alacartelist
 	 * @param alaCarteList
 	 */
 	public void setAlaCarteList(ArrayList<AlaCarteItem> alaCarteList) {
@@ -113,7 +124,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Set the setMenuList
 	 * @param setMenuList
 	 */
 	public void setSetMenuList(ArrayList<SetItem> setMenuList) {
@@ -121,7 +132,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Update the alaracate Name by putting FoodID 
 	 * @param foodID
 	 * @param name
 	 */
@@ -143,7 +154,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Update alacarte item price by using its foodID and price input
 	 * @param foodID
 	 * @param price
 	 */
@@ -165,7 +176,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Update the alacarte item description by using its foodID
 	 * @param foodID
 	 * @param description
 	 */
@@ -188,7 +199,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Update the alacarte item name by using its foodID
 	 * @param setID
 	 * @param name
 	 */
@@ -216,7 +227,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Update the set item price by using its setID
 	 * @param setID
 	 * @param price
 	 */
@@ -243,7 +254,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Update the set item description by using its SetID
 	 * @param setID
 	 * @param description
 	 */
@@ -270,7 +281,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * remove the alacarte item from set item
 	 * @param foodID
 	 */
 	public void removeAlaCarteItem(int foodID) {
@@ -292,7 +303,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Remove the whole setID from the setMenulist
 	 * @param setID
 	 */
 	public void removeMenuItem(int setID) {
@@ -318,7 +329,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Add alacarte item into the alacarte list
 	 * @param item
 	 */
 	public void addAlaCarteItem(AlaCarteItem item) {
@@ -342,7 +353,7 @@ public class Menu implements CustPrintable {
 	}
 
 	/**
-	 * 
+	 * Add set item into setmenu list
 	 * @param item
 	 */
 	public void addSetMenuItem(SetItem item) {
@@ -364,6 +375,7 @@ public class Menu implements CustPrintable {
 	}
 
 	public void printer() {
+		// TODO -print all alacarte item and set item in one menu
 		System.out.println("Set Menu:");
 		System.out.println("===========================================================================");
 		for(int i = 0;i<setMenuList.size();i++)
