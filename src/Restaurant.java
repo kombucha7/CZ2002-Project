@@ -57,7 +57,7 @@ public class Restaurant {
 				foodType userFoodType;
 
 				while (true) {
-					System.out.println("\n");
+					System.out.println("");
 					System.out.println("SELECT OPTION: ");
 					System.out.println("1. Create Ala Carte Item");
 					System.out.println("2. Update Ala Carte Item");
@@ -715,7 +715,7 @@ public class Restaurant {
 				Instant time4 = handler.getInstant();
 				int toPrintOrderID = restaOrderList.addOrder(staffID4, time4, type4, tableID4);
 				System.out.printf("Order ID: %d\n", toPrintOrderID);
-				System.out.println("\n");
+				System.out.println("");
 				break;
 
 			case 5: // View order
@@ -725,14 +725,14 @@ public class Restaurant {
 				if (toPrintOrder != null) {
 					toPrintOrder.printList();
 				}
-				System.out.println("\n");
+				System.out.println("");
 				break;
 
 			case 6: // Add/Remove order item/s to/from order
 				System.out.println("Please enter orderID");
 				int orderID6 = sc.nextInt();
 				restaOrderList.updateOrder(orderID6, restaMenu);
-				System.out.println("\n");
+				System.out.println("");
 				break;
 
 			case 7: // Create reservation booking
@@ -792,7 +792,7 @@ public class Restaurant {
 
 				//restaReserve.printReservation();
 				System.out.println("Reservation made successfully");
-				System.out.println("\n");
+				System.out.println("");
 				break;
 
 			case 8: // Check/Remove reservation booking
@@ -870,7 +870,7 @@ public class Restaurant {
 								}
 								restaTable.occupyTable(tableID11);
 								System.out.println("Table with ID of " + tableID11 + " occupied!");
-								System.out.println("\n");
+								System.out.println("");
 								break;
 							case 2:
 								System.out.println("Enter number used for reservation");
@@ -902,7 +902,7 @@ public class Restaurant {
 				restaOrderList.generateInvoice(orderID12, memberStat12);
 				restaTable.emptyTable(tableID12);
 				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderID12));
-				System.out.println("\n");
+				System.out.println("");
 				break;
 
 			case 13: // Print sale revenue report by period (eg day or month)
@@ -920,7 +920,7 @@ public class Restaurant {
 				restYear = date13.substring(4, 8);
 				fin = restYear + "-" + restMonth + "-" + restDay + "T00:00:00Z";
 				restaReport.periodRevenue(Instant.parse(ini), Instant.parse(fin));
-				System.out.println("\n");
+				System.out.println("");
 				break;
 
 			case 14: // Advance time by 1 hour
