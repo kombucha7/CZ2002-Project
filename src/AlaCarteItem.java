@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class AlaCarteItem implements Serializable{
+public class AlaCarteItem implements Serializable {
 
 	private String name;
 	private double price;
@@ -10,6 +10,7 @@ public class AlaCarteItem implements Serializable{
 	private boolean availability;
 
 	/**
+	 * Constructor Class for AlaCarteItem
 	 * 
 	 * @param name
 	 * @param price
@@ -18,7 +19,8 @@ public class AlaCarteItem implements Serializable{
 	 * @param foodID
 	 * @param availability
 	 */
-	public AlaCarteItem() { }
+	public AlaCarteItem() {
+	}
 
 	public AlaCarteItem(String name, double price, String description, foodType foodtype, int foodID,
 			boolean availability) {
@@ -31,11 +33,17 @@ public class AlaCarteItem implements Serializable{
 		this.availability = availability;
 	}
 
+	/**
+	 * Get Name of Food
+	 * 
+	 * @param name
+	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
+	 * Set Name of Food
 	 * 
 	 * @param name
 	 */
@@ -43,11 +51,17 @@ public class AlaCarteItem implements Serializable{
 		this.name = name;
 	}
 
+	/**
+	 * Get Price of Food
+	 * 
+	 * @param price
+	 */
 	public double getPrice() {
 		return this.price;
 	}
 
 	/**
+	 * Set Price of Food
 	 * 
 	 * @param price
 	 */
@@ -55,11 +69,17 @@ public class AlaCarteItem implements Serializable{
 		this.price = price;
 	}
 
+	/**
+	 * Get Description of Food
+	 * 
+	 * @param description
+	 */
 	public String getDescription() {
 		return this.description;
 	}
 
 	/**
+	 * Set Description of Food
 	 * 
 	 * @param description
 	 */
@@ -67,11 +87,17 @@ public class AlaCarteItem implements Serializable{
 		this.description = description;
 	}
 
+	/**
+	 * Get foodType of Food
+	 * 
+	 * @param foodType
+	 */
 	public foodType getFoodType() {
 		return this.foodType;
 	}
 
 	/**
+	 * Set foodType of Food
 	 * 
 	 * @param foodType
 	 */
@@ -79,11 +105,18 @@ public class AlaCarteItem implements Serializable{
 		this.foodType = foodType;
 	}
 
+	/**
+	 * get FoodID for Food
+	 * 
+	 * @param foodID
+	 */
+
 	public int getFoodID() {
 		return this.foodID;
 	}
 
 	/**
+	 * Set FoodID for Food
 	 * 
 	 * @param foodID
 	 */
@@ -91,11 +124,17 @@ public class AlaCarteItem implements Serializable{
 		this.foodID = foodID;
 	}
 
+	/**
+	 * Get Availability of Food
+	 * 
+	 * @param availability
+	 */
 	public boolean getAvailability() {
 		return this.availability;
 	}
 
 	/**
+	 * Set Availability of Food
 	 * 
 	 * @param availability
 	 */
