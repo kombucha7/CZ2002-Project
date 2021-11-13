@@ -118,9 +118,11 @@ public class ReservationList implements Serializable {
 		if (foundTable > -1) {
 			newReserve.setTableNum(foundTable);
 			createReservation(newReserve);
+			System.out.println("Reservation made successfully");
 			return;
 		} else {
 			System.out.println("Reservation list is full");
+			return;
 		}
 	}
 

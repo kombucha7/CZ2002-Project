@@ -792,7 +792,6 @@ public class Restaurant {
 				restaReserve.checkUpcomingReserved(tables, newReserve);
 
 				//restaReserve.printReservation();
-				System.out.println("Reservation made successfully");
 				System.out.println("");
 				break;
 
