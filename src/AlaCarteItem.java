@@ -16,8 +16,7 @@ public class AlaCarteItem implements Serializable {
 	 */
 	private String description;
 	/**
-	 * Ala Carte Item Food Type which consist of (Mains, Appetizer, Drinks,
-	 * Desserts)
+	 * Ala Carte Item Food Type which consist of (Mains, Appetizer, Drinks, Dessert)
 	 */
 	private foodType foodType;
 	/**
@@ -31,27 +30,20 @@ public class AlaCarteItem implements Serializable {
 
 	/**
 	 * Empty Constructor Class for AlaCarteItem
-	 * 
-	 * @param name
-	 * @param price
-	 * @param description
-	 * @param foodtype
-	 * @param foodID
-	 * @param availability
 	 */
 	public AlaCarteItem() {
 	}
 
 	/**
-	 * Constructor Class for AlaCarteItem, with parameters of Name, Price,
-	 * Description, foodType and foodID
+	 * Constructor Class for AlaCarteItem
 	 * 
-	 * @param name
-	 * @param price
-	 * @param description
-	 * @param foodtype
-	 * @param foodID
-	 * @param availability
+	 * @param name         Name of the Ala Carte Item
+	 * @param price        Price of the Ala Carte Item
+	 * @param description  Description of Ala Carte Item
+	 * @param foodtype     FoodType(Main, Appetizer, Drinks, Dessert) of Ala Carte
+	 *                     Item
+	 * @param foodID       FoodID of Ala Carte Item
+	 * @param availability Availability of Ala Carte Item
 	 */
 	public AlaCarteItem(String name, double price, String description, foodType foodtype, int foodID,
 			boolean availability) {
@@ -67,16 +59,14 @@ public class AlaCarteItem implements Serializable {
 	/**
 	 * Get Name of Ala Carte Item
 	 * 
-	 * @param name
+	 * @return Return the current name of Ala Carte Item
 	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
-	 * Set Name of Ala Carte Item
-	 * 
-	 * @param name
+	 * @param name Set Name of Ala Carte Item
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -85,16 +75,14 @@ public class AlaCarteItem implements Serializable {
 	/**
 	 * Get Price of Ala Carte Item
 	 * 
-	 * @param price
+	 * @return Return the price of Ala Carte Item
 	 */
 	public double getPrice() {
 		return this.price;
 	}
 
 	/**
-	 * Set Price of Ala Carte Item
-	 * 
-	 * @param price
+	 * @param price Set Price of Ala Carte Item
 	 */
 	public void setPrice(double price) {
 		this.price = price;
@@ -103,16 +91,14 @@ public class AlaCarteItem implements Serializable {
 	/**
 	 * Get Description of Ala Carte Item
 	 * 
-	 * @param description
+	 * @return Return Description of Ala Carte Item
 	 */
 	public String getDescription() {
 		return this.description;
 	}
 
 	/**
-	 * Set Description of Ala Carte Item
-	 * 
-	 * @param description
+	 * @param description Set Description of Ala Carte Item
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -121,16 +107,14 @@ public class AlaCarteItem implements Serializable {
 	/**
 	 * Get foodType of Ala Carte Item
 	 * 
-	 * @param foodType
+	 * @return Return foodType of Ala Carte Item
 	 */
 	public foodType getFoodType() {
 		return this.foodType;
 	}
 
 	/**
-	 * Set foodType of Ala Carte Item
-	 * 
-	 * @param foodType
+	 * @param foodType Set foodType of Ala Carte Item
 	 */
 	public void setFoodType(foodType foodType) {
 		this.foodType = foodType;
@@ -139,7 +123,7 @@ public class AlaCarteItem implements Serializable {
 	/**
 	 * Get FoodID for Ala Carte Item
 	 * 
-	 * @param foodID
+	 * @return Return FoodID of Ala Carte Item
 	 */
 
 	public int getFoodID() {
@@ -147,9 +131,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Set FoodID for Ala Carte Item
-	 * 
-	 * @param foodID
+	 * @param foodID Set FoodID for Ala Carte Item
 	 */
 	public void setFoodID(int foodID) {
 		this.foodID = foodID;
@@ -158,16 +140,14 @@ public class AlaCarteItem implements Serializable {
 	/**
 	 * Get Availability of Ala Carte Item
 	 * 
-	 * @param availability
+	 * @return Return Availability of Ala Carte Item
 	 */
 	public boolean getAvailability() {
 		return this.availability;
 	}
 
 	/**
-	 * Set Availability of Ala Carte Item
-	 * 
-	 * @param availability
+	 * @param availability Set Availability of Ala Carte Item
 	 */
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
