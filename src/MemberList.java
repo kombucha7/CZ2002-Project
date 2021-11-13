@@ -19,21 +19,6 @@ public class MemberList implements PersonManager, Serializable {
 	 */
 	public MemberList() {
 		memberList = new ArrayList<Member>();
-
-		/*
-		 * Member tempMem1 = new Member("Liam", 98765431); hard code can be deleted
-		 * already memberList.add(tempMem1); remember to delete before submission Member
-		 * tempMem2 = new Member("Noah", 98765432); kept temporarily for backup incase
-		 * txt corrupts which has happened once memberList.add(tempMem2); Member
-		 * tempMem3 = new Member("Olver", 98765433); memberList.add(tempMem3); Member
-		 * tempMem4 = new Member("Elijah", 98765434); memberList.add(tempMem4); Member
-		 * tempMem5 = new Member("William", 98765435); memberList.add(tempMem5); Member
-		 * tempMem6 = new Member("Olivia", 98765436); memberList.add(tempMem6); Member
-		 * tempMem7 = new Member("Emma", 98765437); memberList.add(tempMem7); Member
-		 * tempMem8 = new Member("Ava", 98765438); memberList.add(tempMem8); Member
-		 * tempMem9 = new Member("Charlotte", 98765439); memberList.add(tempMem9);
-		 * Member tempMem10 = new Member("Sophia", 98765441); memberList.add(tempMem10);
-		 */
 	}
 
 	/**

@@ -23,28 +23,6 @@ public class StaffList implements PersonManager, Serializable {
 	 */
 	public StaffList() {
 		staffList = new ArrayList<Staff>();
-
-		// kept as backup in case serialized objects corrupts
-		// remember to delete before submission
-		/*
-		 * Staff tempStaff1 = new Staff("John", 12345678, numStaff++, jobTitle.Cashier,
-		 * gender.Male); staffList.add(tempStaff1); Staff tempStaff2 = new Staff("Tom",
-		 * 22345678, numStaff++, jobTitle.Cashier, gender.Male);
-		 * staffList.add(tempStaff2); Staff tempStaff3 = new Staff("Harry", 32345678,
-		 * numStaff++, jobTitle.Waiter, gender.Male); staffList.add(tempStaff3); Staff
-		 * tempStaff4 = new Staff("Jim", 42345678, numStaff++, jobTitle.Waiter,
-		 * gender.Male); staffList.add(tempStaff4); Staff tempStaff5 = new Staff("Ryan",
-		 * 52345678, numStaff++, jobTitle.Waiter, gender.Male);
-		 * staffList.add(tempStaff5); Staff tempStaff6 = new Staff("Emma", 62345678,
-		 * numStaff++, jobTitle.Waiter, gender.Female); staffList.add(tempStaff6); Staff
-		 * tempStaff7 = new Staff("Ava", 72345678, numStaff++, jobTitle.Waiter,
-		 * gender.Female); staffList.add(tempStaff7); Staff tempStaff8 = new
-		 * Staff("Charlotte", 82345678, numStaff++, jobTitle.Chef, gender.Female);
-		 * staffList.add(tempStaff8); Staff tempStaff9 = new Staff("Olivia", 92345678,
-		 * numStaff++, jobTitle.Chef, gender.Female); staffList.add(tempStaff9); Staff
-		 * tempStaff10 = new Staff("Sophia", 13345678, numStaff++, jobTitle.Manager,
-		 * gender.Female); staffList.add(tempStaff10);
-		 */
 	}
 
 	/**
