@@ -65,7 +65,7 @@ public class SetItem implements Serializable {
 
 	/**
 	 * Delete alacarte item from the alaCarteMenuList list
-	 * @param alacarteID Alacarte object deleted from the Alacarte menulist for each set
+	 * @param alacarteID Alacarte object deleted from the Alacarte menulist for set item
 	 */
 	public void deleteItem(AlaCarteItem alacarteID) {
 		alaCarteMenuList.remove(alacarteID);
@@ -73,7 +73,7 @@ public class SetItem implements Serializable {
 	}
 	/**
 	 * Get the Promotion set name for each set
-	 * @param name gets the set name for the set
+	 * @return  set name for the set item
 	 */
 	public String getName() {
 		return this.name;
@@ -81,14 +81,14 @@ public class SetItem implements Serializable {
 
 	/**
 	 * Set the Promotion set name for each set
-	 * @param name set name to be set item
+	 * @param name set name for set item
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	/**
 	 * Get the Promotion set price for each set
-	 * @param price set price return by the getprice function
+	 * @return price set item
 	 */
 	public double getPrice() {
 		return this.price;
@@ -102,8 +102,8 @@ public class SetItem implements Serializable {
 		this.price = price;
 	}
 	/**
-	 * get the alacarte menu list for each set ID
-	 * @param alaCarteMenuList get alacarte object list
+	 * Return the Alacarte Menu list 
+	 * @return Alacarte menu list containing the
 	 */
 	public ArrayList<AlaCarteItem> getAlaCarteMenuList() {
 		return this.alaCarteMenuList;
@@ -118,7 +118,7 @@ public class SetItem implements Serializable {
 	}
 	/**
 	 * get the SetID of the set item
-	 * @param setID get setID 
+	 * @return setID 
 	 */
 	public int getSetID() {
 		return this.setID;
@@ -133,7 +133,7 @@ public class SetItem implements Serializable {
 	}
 	/**
 	 *  get description of the set created
-	 * @param description get set description
+	 * @return description get set description
 	 */
 	public String getDescription() {
 		return this.description;
@@ -148,7 +148,7 @@ public class SetItem implements Serializable {
 	}
 	/**
 	 * get availability to shows whether this setID is available in the menu
-	 * @param availability get availability boolean for set item
+	 * @return availability of the availability boolean for set item
 	 */
 
 	public boolean getAvailability() {
