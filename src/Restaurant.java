@@ -871,7 +871,6 @@ public class Restaurant {
 								}
 								restaTable.occupyTable(tableID11);
 								System.out.println("Table with ID of " + tableID11 + " occupied!");
-								System.out.println("");
 								break;
 							case 2:
 								System.out.println("Enter number used for reservation");
@@ -900,6 +899,8 @@ public class Restaurant {
 				System.out.println("Please enter Phone number for member verification");
 				Boolean memberStat12 = restaMember.checkMember(sc.nextInt()); // check for member or ask for member
 				int tableID12 = restaOrderList.getTableIDByOrderID(orderID12);
+				System.out.println("\n=========================================");
+				System.out.println("Current Time:" + handler.getInstant());
 				restaOrderList.generateInvoice(orderID12, memberStat12);
 				restaTable.emptyTable(tableID12);
 				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderID12));
