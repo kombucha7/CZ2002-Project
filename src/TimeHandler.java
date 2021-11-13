@@ -7,6 +7,8 @@ import java.time.Duration;
 
 /**
  * Class to simulate the flow of time within our Restaurant App
+ * 
+ * @author Chan Hui De Elliot
  */
 public class TimeHandler implements Serializable {
 
