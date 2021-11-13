@@ -3,6 +3,13 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 /**
+ * 	Represents the reservation list used in restaurant class
+ * @author Ang Ray Sean
+ * @version 1.0
+ * @since 2021-11-12
+ */
+
+/**
  * List class that stores reservation objects and provides functions to manage
  * said objects
  */

@@ -2,8 +2,8 @@ import java.io.Serializable;
 import java.time.Instant;
 
 /**
- * 	Represents an individual table in the restaurant
- * @author Ong Xin Rui Celestine
+ * Represents each individual reservation
+ * @author Ang Ray Sean
  * @version 1.0
  * @since 2021-11-12
  */
