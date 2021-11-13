@@ -316,9 +316,22 @@ public class Restaurant {
 						tempsetname = sc.nextLine();
 
 						System.out.println("Enter new Set Price:");
-						tempprice = sc.nextDouble();
-						sc.nextLine();
-
+						while(true)
+						{
+							try
+							{
+								tempprice = sc.nextDouble();
+								sc.nextLine();
+								break;
+							}
+							catch(InputMismatchException e )
+							{
+								System.out.println("PLease enter a valid new Set Price:");
+								sc.nextLine();
+							}
+						}
+						
+						
 						System.out.println("Enter new Set description:");
 						tempdes = sc.nextLine();
 						tempSetID = restaMenu.getSetMenuList().size() + 1;
@@ -403,22 +416,48 @@ public class Restaurant {
 							}
 						}
 						System.out.println("Enter SetID to Update:");
-						tempSetID = sc.nextInt();
+						while(true)
+						{
+							try
+							{
+								tempSetID = sc.nextInt();
+								sc.nextLine();
+								break;
+							}
+							catch(InputMismatchException e )
+							{
+								System.out.println("PLease enter a valid new Set Price:");
+								sc.nextLine();
+							}
+						}
+						
+						
 						boolean exist = false;
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
 							if (restaMenu.getSetMenuList().get(i).getSetID() == tempSetID) {
-								sc.nextLine();
+								
 								System.out.println("Enter new name:");
 								tempsetname = sc.nextLine();
 
 								restaMenu.getSetMenuList().get(i).setName(tempsetname);
 
 								System.out.println("Enter new price:");
-								tempprice = sc.nextDouble();
-								sc.nextLine();
-								restaMenu.getSetMenuList().get(i).setPrice(tempprice);
-								exist = true;
-
+								while(true)
+								{
+									try
+									{
+										tempprice = sc.nextDouble();
+										sc.nextLine();
+										restaMenu.getSetMenuList().get(i).setPrice(tempprice);
+										exist = true;
+										break;
+									}
+									catch(InputMismatchException e )
+									{
+										System.out.println("PLease enter a valid new Set Price:");
+										sc.nextLine();
+									}
+								}
 								System.out.println("SetID: " + restaMenu.getSetMenuList().get(i).getSetID());
 								System.out.println("Set name: " + restaMenu.getSetMenuList().get(i).getName());
 								System.out.println(
@@ -581,7 +620,20 @@ public class Restaurant {
 							}
 						}
 						System.out.println("Enter SetID to delete:");
-						tempSetID = sc.nextInt();
+						while(true)
+								{
+									try
+									{
+										tempSetID = sc.nextInt();
+										break;
+									}
+									catch(InputMismatchException e )
+									{
+										System.out.println("PLease enter a valid new Set Price:");
+										sc.nextLine();
+									}
+								}
+						
 
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
 							if (restaMenu.getSetMenuList().get(i).getSetID() == tempSetID) {
