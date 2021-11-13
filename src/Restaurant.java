@@ -84,10 +84,10 @@ public class Restaurant {
 						name = sc.nextLine();
 						for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
 							if (name.equals(restaMenu.getAlaCarteList().get(i).getName())) {
+								System.out.println("");
 								System.out.println("Current Food Info in list is set as: ");
 								System.out.println("Name: " + restaMenu.getAlaCarteList().get(i).getName());
 								System.out.printf("Price: $%.2f", restaMenu.getAlaCarteList().get(i).getPrice());
-								System.out.println("");
 								System.out.println(
 										"\nDescription: " + restaMenu.getAlaCarteList().get(i).getDescription());
 								System.out.println("Food Type: " + restaMenu.getAlaCarteList().get(i).getFoodType());
@@ -324,9 +324,9 @@ public class Restaurant {
 							if (restaMenu.getSetMenuList().get(i).getAvailability()) {
 								System.out.println(restaMenu.getSetMenuList().get(i).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(i).getName());
-								System.out.printf("Price: $%.2f" , restaMenu.getSetMenuList().get(i).getPrice());
-								System.out
-										.println("\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
+								System.out.printf("Price: $%.2f", restaMenu.getSetMenuList().get(i).getPrice());
+								System.out.println(
+										"\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
@@ -420,7 +420,8 @@ public class Restaurant {
 								System.out.println(restaMenu.getSetMenuList().get(i).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(i).getName());
 								System.out.printf("Price: $%.2f ", restaMenu.getSetMenuList().get(i).getPrice());
-								System.out.println("\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
+								System.out.println(
+										"\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
@@ -475,8 +476,8 @@ public class Restaurant {
 								}
 								System.out.println("SetID: " + restaMenu.getSetMenuList().get(i).getSetID());
 								System.out.println("Set name: " + restaMenu.getSetMenuList().get(i).getName());
-								System.out.printf(
-										"Promotion set price: $%.2f " , restaMenu.getSetMenuList().get(i).getPrice());
+								System.out.printf("Promotion set price: $%.2f ",
+										restaMenu.getSetMenuList().get(i).getPrice());
 								System.out.println("");
 								System.out.print("\nSet contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
@@ -620,8 +621,8 @@ public class Restaurant {
 								System.out.println(restaMenu.getSetMenuList().get(i).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(i).getName());
 								System.out.printf("Price: $%.2f", restaMenu.getSetMenuList().get(i).getPrice());
-								System.out
-										.println("\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
+								System.out.println(
+										"\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
@@ -660,9 +661,9 @@ public class Restaurant {
 							if (restaMenu.getSetMenuList().get(q).getAvailability()) {
 								System.out.println(restaMenu.getSetMenuList().get(q).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(q).getName());
-								System.out.printf("Price: $%.2f" , restaMenu.getSetMenuList().get(q).getPrice());
-								System.out
-										.println("\nDescription: " + restaMenu.getSetMenuList().get(q).getDescription());
+								System.out.printf("Price: $%.2f", restaMenu.getSetMenuList().get(q).getPrice());
+								System.out.println(
+										"\nDescription: " + restaMenu.getSetMenuList().get(q).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(q).getAlaCarteMenuList()
 										.size(); j++) {
@@ -787,7 +788,7 @@ public class Restaurant {
 
 				restaReserve.checkUpcomingReserved(tables, newReserve);
 
-				//restaReserve.printReservation();
+				// restaReserve.printReservation();
 				System.out.println("");
 				break;
 
@@ -797,20 +798,20 @@ public class Restaurant {
 					int checkBooking = sc.nextInt();
 					try {
 						switch (checkBooking) {
-							case 1:
-								restaReserve.printReservation();
-								break;
-							case 2:
-								System.out.println("Enter the phone number used for reservation");
-								int phoneNumBooking = sc.nextInt();
-								String length = Integer.toString(phoneNumBooking);
-								if (length.length() != 8) {
-									throw new InputMismatchException();
-								}
-								restaReserve.checkReservation(phoneNumBooking);
-								break;
+						case 1:
+							restaReserve.printReservation();
+							break;
+						case 2:
+							System.out.println("Enter the phone number used for reservation");
+							int phoneNumBooking = sc.nextInt();
+							String length = Integer.toString(phoneNumBooking);
+							if (length.length() != 8) {
+								throw new InputMismatchException();
+							}
+							restaReserve.checkReservation(phoneNumBooking);
+							break;
 						}
-					} catch(InputMismatchException inputError){
+					} catch (InputMismatchException inputError) {
 						System.out.println("Please re-enter in the correct format");
 						sc.nextLine();
 					}
@@ -849,36 +850,36 @@ public class Restaurant {
 				while (true) {
 					try {
 						switch (checkInt) {
-							case 1:
-								System.out.println("Enter number of pax: ");
-								int pax11 = sc.nextInt();
-								while (pax11 < 1 || pax11 > 10) {
-									System.out.println("Invalid number of people. Please re-enter:");
-									pax11 = sc.nextInt();
-								}
-								int[] availableTables11 = restaTable.matchCurrentTable(pax11);
-								// get first available table considering reservation list
-								int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
+						case 1:
+							System.out.println("Enter number of pax: ");
+							int pax11 = sc.nextInt();
+							while (pax11 < 1 || pax11 > 10) {
+								System.out.println("Invalid number of people. Please re-enter:");
+								pax11 = sc.nextInt();
+							}
+							int[] availableTables11 = restaTable.matchCurrentTable(pax11);
+							// get first available table considering reservation list
+							int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
 
-								if (tableID11 == -1) {
-									System.out.println("No available table. Please wait.");
-									break;
-								}
-								restaTable.occupyTable(tableID11);
-								System.out.println("Table with ID of " + tableID11 + " occupied!");
+							if (tableID11 == -1) {
+								System.out.println("No available table. Please wait.");
 								break;
-							case 2:
-								System.out.println("Enter number used for reservation");
-								int phoneNo = sc.nextInt();
-								boolean foundReserve = restaReserve.checkReservation(phoneNo);
-								if (foundReserve) {
-									int tableNum = restaReserve.getTable(phoneNo);
-									restaReserve.removeReservation(phoneNo);
-									restaTable.occupyTable(tableNum);
-								} else {
-									System.out.println("Reservation not found");
-								}
-								break;
+							}
+							restaTable.occupyTable(tableID11);
+							System.out.println("Table with ID of " + tableID11 + " occupied!");
+							break;
+						case 2:
+							System.out.println("Enter number used for reservation");
+							int phoneNo = sc.nextInt();
+							boolean foundReserve = restaReserve.checkReservation(phoneNo);
+							if (foundReserve) {
+								int tableNum = restaReserve.getTable(phoneNo);
+								restaReserve.removeReservation(phoneNo);
+								restaTable.occupyTable(tableNum);
+							} else {
+								System.out.println("Reservation not found");
+							}
+							break;
 						}
 					} catch (InputMismatchException inputError) {
 						System.out.println("Please re-enter in the correct format");
@@ -895,7 +896,7 @@ public class Restaurant {
 				Boolean memberStat12 = restaMember.checkMember(sc.nextInt()); // check for member or ask for member
 				int tableID12 = restaOrderList.getTableIDByOrderID(orderID12);
 				System.out.println("\n=========================================");
-				System.out.printf("Time: %s\t\tTable %d\n", handler.getInstant(),tableID12);
+				System.out.printf("Time: %s\t\tTable %d\n", handler.getInstant(), tableID12);
 				restaOrderList.generateInvoice(orderID12, memberStat12);
 				restaTable.emptyTable(tableID12);
 				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderID12));
