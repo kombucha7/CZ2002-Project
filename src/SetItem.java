@@ -1,49 +1,48 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
- * 	Represents the promotion set item to be added into menu
- * 	A promotion set contains many alacarte item.
+ * Represents the promotion set item to be added into menu A promotion set
+ * contains many alacarte item.
+ * 
  * @author arron tay
  * @version 1.0
  * @since 2021-11-12
  */
 public class SetItem implements Serializable {
 
-	/** 
+	/**
 	 * promotion Set Name assign to each set item created
 	 */
 	private String name;
-	/** 
+	/**
 	 * Promotion set price assign to each set item created
 	 */
 	private double price;
-	/** 
+	/**
 	 * promotion set price assign to each set item created
 	 */
-	private ArrayList<AlaCarteItem> alaCarteMenuList  ;
+	private ArrayList<AlaCarteItem> alaCarteMenuList;
 	/**
 	 * promotion Set ID unique to each set item created
 	 */
 	private int setID;
-	/** 
+	/**
 	 * Promotion set description stored for each set item
 	 */
 	private String description;
-	/** 
+	/**
 	 * Promotion set availability for each set item
 	 */
 	private boolean availability;
-	
+
 	/**
-	 * constructor for setItem which takes in parameters 
-	 * @param setID  promotion Set ID unique to each set item created
+	 * constructor for setItem which takes in parameters
 	 * 
-	 * @param name promotion Set Name assign to each set item created
-	 * 
-	 * @param price promotion set price assign to each set item created
-	 * 
+	 * @param setID       promotion Set ID unique to each set item created
+	 * @param name        promotion Set Name assign to each set item created
+	 * @param price       promotion set price assign to each set item created
 	 * @param description Promotion set description stored for each set item
-	 * 
 	 */
 	public SetItem(int setID, String name, double price, String description) {
 		this.setID = setID;
@@ -56,8 +55,11 @@ public class SetItem implements Serializable {
 	}
 
 	/**
-	 * Add alacarte item to the alaCarteMenuList list to store the alacarte object assign to each set ID
-	 * @param alacarteID Alacarte object added into the Alacarte menulist for each set
+	 * Add alacarte item to the alaCarteMenuList list to store the alacarte object
+	 * assign to each set ID
+	 * 
+	 * @param alacarteID Alacarte object added into the Alacarte menulist for each
+	 *                   set
 	 */
 	public void addItem(AlaCarteItem alacarteID) {
 		alaCarteMenuList.add(alacarteID);
@@ -65,15 +67,19 @@ public class SetItem implements Serializable {
 
 	/**
 	 * Delete alacarte item from the alaCarteMenuList list
-	 * @param alacarteID Alacarte object deleted from the Alacarte menulist for set item
+	 * 
+	 * @param alacarteID Alacarte object deleted from the Alacarte menulist for set
+	 *                   item
 	 */
 	public void deleteItem(AlaCarteItem alacarteID) {
 		alaCarteMenuList.remove(alacarteID);
-		
+
 	}
+
 	/**
 	 * Get the Promotion set name for each set
-	 * @return  set name for the set item
+	 * 
+	 * @return set name for the set item
 	 */
 	public String getName() {
 		return this.name;
@@ -81,13 +87,16 @@ public class SetItem implements Serializable {
 
 	/**
 	 * Set the Promotion set name for each set
+	 * 
 	 * @param name set name for set item
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * Get the Promotion set price for each set
+	 * 
 	 * @return price set item
 	 */
 	public double getPrice() {
@@ -96,13 +105,16 @@ public class SetItem implements Serializable {
 
 	/**
 	 * Set the promotion set price for each set
+	 * 
 	 * @param price set price for the set item
 	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 	/**
-	 * Return the Alacarte Menu list 
+	 * Return the Alacarte Menu list
+	 * 
 	 * @return Alacarte menu list containing the
 	 */
 	public ArrayList<AlaCarteItem> getAlaCarteMenuList() {
@@ -111,14 +123,17 @@ public class SetItem implements Serializable {
 
 	/**
 	 * Set the alacarte menu list for each set ID
+	 * 
 	 * @param alaCarteMenuList set alacarte object list
 	 */
 	public void setAlaCarteMenuList(ArrayList<AlaCarteItem> alaCarteMenuList) {
 		this.alaCarteMenuList = alaCarteMenuList;
 	}
+
 	/**
 	 * get the SetID of the set item
-	 * @return setID 
+	 * 
+	 * @return setID
 	 */
 	public int getSetID() {
 		return this.setID;
@@ -126,13 +141,16 @@ public class SetItem implements Serializable {
 
 	/**
 	 * set the SetID of the set item
+	 * 
 	 * @param setID setID to be set
 	 */
 	public void setSetID(int setID) {
 		this.setID = setID;
 	}
+
 	/**
-	 *  get description of the set created
+	 * get description of the set created
+	 * 
 	 * @return description get set description
 	 */
 	public String getDescription() {
@@ -140,14 +158,17 @@ public class SetItem implements Serializable {
 	}
 
 	/**
-	 *  set description of the set created
-	 * @param description set description to be set 
+	 * set description of the set created
+	 * 
+	 * @param description set description to be set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	/**
 	 * get availability to shows whether this setID is available in the menu
+	 * 
 	 * @return availability of the availability boolean for set item
 	 */
 
@@ -157,6 +178,7 @@ public class SetItem implements Serializable {
 
 	/**
 	 * set availability to shows whether this setID is available in the menu
+	 * 
 	 * @param availability set availability boolean for set item
 	 */
 	public void setAvailability(boolean availability) {
