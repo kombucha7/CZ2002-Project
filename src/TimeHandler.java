@@ -73,7 +73,7 @@ public class TimeHandler implements Serializable {
 	 * Overrides the current clock object in timehandler class Not to be used unless
 	 * for debugging purposes
 	 * 
-	 * @param clock
+	 * @param clock to override current clock
 	 */
 	public void setClock(Clock clock) {
 		this.clock = clock;

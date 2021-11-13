@@ -26,8 +26,8 @@ public class Table implements Serializable {
 
 	/**
 	 * Creates a new table with the given index and number of seats
-	 * @param tableID
-	 * @param numSeat
+	 * @param tableID of table to be constructed
+	 * @param numSeat of table to be constructed
 	 */
 	public Table(int tableID, int numSeat) {
 		this.tableID = tableID;

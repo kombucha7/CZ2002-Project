@@ -7,7 +7,11 @@ import java.time.Instant;
  * to interact with.
  */
 public class Restaurant {
-
+	
+	/**
+	 * main runner class for our restaurant app
+	 * @param args to be passed in
+	 */
 	public static void main(String[] args) {
 		OrderList restaOrderList = new OrderList();
 		TimeHandler handler = new TimeHandler();

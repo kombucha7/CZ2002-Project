@@ -130,7 +130,7 @@ public class TableList implements ListPrinter, Serializable {
 
 	/**
 	 * Indicate that a table is now occupied by a group
-	 * @param tableID
+	 * @param tableID of table to be marked as occupied
 	 */
 	public void occupyTable(int tableID) {
 		tableList.get(tableID).occupy();
@@ -138,7 +138,7 @@ public class TableList implements ListPrinter, Serializable {
 
 	/**
 	 * Indicate that a table is now unoccupied by a group
-	 * @param tableID
+	 * @param tableID of table to be emptied
 	 */
 	public void emptyTable(int tableID) {
 		tableList.get(tableID).empty();

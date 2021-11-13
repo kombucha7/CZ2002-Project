@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Represents the promotion set item to be added into menu A promotion set
  * contains many alacarte item.
  * 
- * @author arron tay & kwang wee
+ * @author arron tay and kwang wee
  * @version 1.0
  * @since 2021-11-12
  */

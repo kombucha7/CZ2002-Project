@@ -72,7 +72,7 @@ public class RevenueReport implements Serializable {
 	 * Used to set a new arrayList should not be used unless for debugging purposes
 	 * as it overrides all previous records
 	 * 
-	 * @param orderList
+	 * @param orderList to override current orderlist
 	 */
 	public void setOrderList(ArrayList<Order> orderList) {
 		this.orderList = orderList;

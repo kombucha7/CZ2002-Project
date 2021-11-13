@@ -7,20 +7,23 @@ import java.time.Instant;
  * @version 1.0
  * @since 2021-11-12
  */
-
 public class Reservation implements Serializable {
+
 	/**
-	 * Contains the date & time of reservation
+	 * Contains the date and time of reservation
 	 */
 	private Instant date;
+
 	/**
 	 * Contains num of people dining in
 	 */
 	private int pax;
+
 	/**
 	 * Phone number of person making reservation (for identification)
 	 */
 	private int phoneNum;
+
 	/**
 	 * Assigned table to the reservation
 	 */
@@ -30,6 +33,10 @@ public class Reservation implements Serializable {
 
 	/**
 	 * Creates new reservation using date, num people(pax), phone number
+	 * 
+	 * @param date and time of for reservation
+	 * @param pax number of pax in reservation
+	 * @param phoneNum to verify the reservation
 	 */
 	public Reservation(Instant date, int pax, int phoneNum) {
 		this.date = date;
@@ -38,30 +45,36 @@ public class Reservation implements Serializable {
 	}
 	/**
 	 * Returns the table number tagged to reservation
+	 * @return tableNum tied to this reservation
 	 */
 	public int getTableNum() {
 		return this.tableNum;
 	}
+
 	/**
 	 * Sets the table number for the reservation
+	 * @param tableNum to override tableNum created during construction
 	 */
 	public void setTableNum(int tableNum) {
 		this.tableNum = tableNum;
 	}
 	/**
 	 * Returns the phone number tagged to this reservation
+	 * @return phone number for this order
 	 */
 	public int getPhoneNum() {
 		return this.phoneNum;
 	}
 	/**
 	 * Returns the date tagged to this reservation
+	 * @return date of this order
 	 */
 	public Instant getDate() {
 		return this.date;
 	}
 	/**
 	 * Returns the number of people dining in for this reservation
+	 * @return number of pax in this reservation
 	 */
 	public int getPax() {
 		return this.pax;
@@ -70,8 +83,8 @@ public class Reservation implements Serializable {
 	/**
 	 * Checks if reservation has been made in advance
 	 * We only allow people who call at least 1 hour in advance to book
-	 * @param time
-	 * @return
+	 * @param time current instant of time
+	 * @return false if not in advance, true if in advance
 	 */
 	public boolean checkIfInAdvance(Instant time) {
 		if (Math.abs(time.getEpochSecond() - date.getEpochSecond()) < 3600) {
@@ -86,8 +99,8 @@ public class Reservation implements Serializable {
 	 * Checks whether or not reservation has been expired
 	 * Once reservation is 15 minutes older from reservation date
 	 * remove from the reservation list
-	 * @param time
-	 * @return
+	 * @param time to compare against reservation
+	 * @return true if reservation is expired, false if not
 	 */
 	public boolean isExpired(Instant time) {
 		if (time.getEpochSecond() - date.getEpochSecond() > 900) {

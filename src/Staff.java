@@ -67,7 +67,7 @@ public class Staff extends Person implements Serializable {
 	/**
 	 * overrides the employeeID set during construction
 	 * 
-	 * @param jobTitle
+	 * @param jobTitle to override jobTitle set during constructor
 	 */
 	public void setJobTitle(jobTitle jobTitle) {
 		this.jobTitle = jobTitle;

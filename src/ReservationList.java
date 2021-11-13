@@ -106,8 +106,8 @@ public class ReservationList implements Serializable {
 	 * new reservation can use as well as checking if it is at least 1 hour apart from
 	 * each other
 	 *
-	 * @param tableArray
-	 * @param newReserve
+	 * @param tableArray an array of tableID of empty tables
+	 * @param newReserve reservation object to be checked against tablearray if seating is possible
 	 */
 	public void checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
 		int i = 0, counter = 0, foundTable = -1;
@@ -147,7 +147,7 @@ public class ReservationList implements Serializable {
 	 * for customer that wants to cancel his reservation by
 	 * providing us with his phone number and iterating through
 	 * the reservationList.
-	 * @param phoneNum
+	 * @param phoneNum to match reservation to be removed
 	 */
 	public void removeReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
@@ -165,7 +165,8 @@ public class ReservationList implements Serializable {
 	 * for customer that wants to check his reservation by
 	 * providing us with his phone number and iterating through
 	 * the reservationList.
-	 * @param phoneNum
+	 * @param phoneNum to match ID of reservation to be checked
+	 * @return true if match found, false if unable to be found
 	 */
 	public boolean checkReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
@@ -198,8 +199,8 @@ public class ReservationList implements Serializable {
 	 * based on the phone number provided. Used in the case where
 	 * customer makes reservations and enters restaurant at his designated time
 	 * will provide him with the table to sit at
-	 * @param phoneNum
-	 * @return
+	 * @param phoneNum of reservation to be matched to tableID
+	 * @return tablenum if found, -1 if not
 	 */
 	public int getTable(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {

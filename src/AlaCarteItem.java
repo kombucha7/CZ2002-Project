@@ -1,5 +1,9 @@
 import java.io.Serializable;
 
+/**
+ * Class that encapsulates each individual alacarte item on the menu
+ * @author Kwang Wee
+ */
 public class AlaCarteItem implements Serializable {
 
 	/**
