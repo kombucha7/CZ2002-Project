@@ -136,16 +136,16 @@ public class ReservationList implements Serializable {
 		System.out.println("Reservation not found");
 	}
 
-	public void checkReservation(int phoneNum) {
+	public boolean checkReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
 			if (reservationList.get(i).getPhoneNum() == phoneNum) {
 				System.out.println("Reservation Found: " + reservationList.get(i).getDate());
-				return;
+				return true;
 			}
 		}
 
 		System.out.println("Not found");
-		return;
+		return false;
 	}
 
 	public void printReservation() {
@@ -157,5 +157,15 @@ public class ReservationList implements Serializable {
 			System.out.println("");
 		}
 		System.out.println("###################################################");
+	}
+
+	public int getTable(int phoneNum) {
+		for (int i = 0; i < reservationList.size(); i++) {
+			if (phoneNum == reservationList.get(i).getPhoneNum()){
+				return reservationList.get(i).getTableNum();
+			}
+		}
+
+		return -1;
 	}
 }

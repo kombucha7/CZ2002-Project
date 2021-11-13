@@ -824,25 +824,41 @@ public class Restaurant {
 				break;
 
 			case 11: // Assign customer to table
-				System.out.println("Enter number of pax: ");
-				int pax11 = sc.nextInt();
-				while (pax11 < 1 || pax11 > 10) {
-					System.out.println("Invalid number of people. Please re-enter:");
-					pax11 = sc.nextInt();
-				}
-				int[] availableTables11 = restaTable.matchCurrentTable(pax11);
-				// get first available table considering reservation list
-				int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
+				System.out.println("1. Walk-in\n2.Reservation");
+				int checkInt = sc.nextInt();
+				switch (checkInt) {
+					case 1:
+						System.out.println("Enter number of pax: ");
+						int pax11 = sc.nextInt();
+						while (pax11 < 1 || pax11 > 10) {
+							System.out.println("Invalid number of people. Please re-enter:");
+							pax11 = sc.nextInt();
+						}
+						int[] availableTables11 = restaTable.matchCurrentTable(pax11);
+						// get first available table considering reservation list
+						int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
 
-				if (tableID11 == -1) {
-					System.out.println("No available table. Please wait.\n");
-					break;
+						if (tableID11 == -1) {
+							System.out.println("No available table. Please wait.\n");
+							break;
+						}
+						restaTable.occupyTable(tableID11);
+						System.out.println("Table with ID of " + tableID11 + " occupied!");
+						System.out.println("\n");
+						break;
+					case 2:
+						System.out.println("Enter number used for reservation");
+						int phoneNo = sc.nextInt();
+						boolean foundReserve = restaReserve.checkReservation(phoneNo);
+						if (foundReserve) {
+							int tableNum = restaReserve.getTable(phoneNo);
+							restaReserve.removeReservation(phoneNo);
+							restaTable.occupyTable(tableNum);
+						}
+						else{
+							System.out.println("Reservation not found");
+						}
 				}
-				restaTable.occupyTable(tableID11);
-				System.out.println("Table with ID of " + tableID11 + " occupied!");
-				System.out.println("\n");
-				break;
-
 			case 12: // Print order invoice
 				System.out.println("Please enter order ID: ");
 				int orderID12 = sc.nextInt();
