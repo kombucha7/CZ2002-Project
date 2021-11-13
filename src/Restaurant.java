@@ -165,6 +165,7 @@ public class Restaurant {
 
 							System.out.printf(name + " of price $%.2f has been added into food type " + userFoodType,
 									price);
+							System.out.println("");
 						}
 						break;
 					case 2:
@@ -295,7 +296,7 @@ public class Restaurant {
 				break;
 
 			case 2: // Create/Update/Remove promotion
-				System.out.println("\n");
+				System.out.println("");
 				String tempsetname, tempdes;
 				double tempprice;
 				String tempcont;
