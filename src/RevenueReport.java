@@ -6,18 +6,43 @@ import java.util.Set;
 import java.util.Iterator;
 import java.util.HashSet;
 
+/**
+ * Class to store completed orders for archival purposes Prints collates and
+ * prints out order details during a given period specified during the function
+ * call
+ * 
+ * @author Chan Hui De, Elliot
+ */
 public class RevenueReport implements Serializable {
 
+	/**
+	 * ArrayList to store individual Order objects which are added when orders are
+	 * completed
+	 */
 	private ArrayList<Order> orderList;
 
+	/**
+	 * Constructor for RevenueReport object Constructs an Order ArrayList
+	 */
 	public RevenueReport() {
 		orderList = new ArrayList<Order>();
 	}
 
+	/**
+	 * Gets the arraylist which stores all completed orders
+	 * 
+	 * @return archival arraylist
+	 */
 	public ArrayList<Order> getOrderList() {
 		return this.orderList;
 	}
 
+	/**
+	 * used to add order to the Order ArrayList within the class
+	 * 
+	 * @param order to be added
+	 * @return true if successful, false if failed
+	 */
 	public boolean addToArchive(Order order) // add to vpp
 	{
 		if (orderList.add(order))
@@ -26,6 +51,13 @@ public class RevenueReport implements Serializable {
 			return false;
 	}
 
+	/**
+	 * Used to delete order from archive for loop to parse through entire list and
+	 * delete only if orderID matches
+	 * 
+	 * @param orderID of order to be deleted
+	 * @return true if successful, false if failed
+	 */
 	public boolean deleteFromArchive(int orderID) {
 		for (int i = 0; i < orderList.size(); i++) {
 			if (orderList.get(i).getorderID() == orderID) {
@@ -37,6 +69,8 @@ public class RevenueReport implements Serializable {
 	}
 
 	/**
+	 * Used to set a new arrayList should not be used unless for debugging purposes
+	 * as it overrides all previous records
 	 * 
 	 * @param orderList
 	 */
@@ -45,9 +79,15 @@ public class RevenueReport implements Serializable {
 	}
 
 	/**
+	 * Takes in a start and end date Prints out all order contents within the
+	 * specified period Prints number of each individual item as well as total
+	 * revenue during this period Starts by duplicating all orders within date range
+	 * into temporary arraylist Then calculates the total price for all these orders
+	 * Next uses hashset to get a set of each unique foodtype and counts the number
+	 * of each unique foodtype and prints the count
 	 * 
-	 * @param start
-	 * @param end
+	 * @param start date
+	 * @param end   date
 	 */
 	public void periodRevenue(Instant start, Instant end) {
 		ArrayList<Order> temporderlist = new ArrayList<Order>();
