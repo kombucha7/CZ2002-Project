@@ -844,7 +844,7 @@ public class Restaurant {
 			case 10: // Check table availability
 				System.out.println("Number of tables available: " + restaTable.getEmpty() + "\n");
 				restaTable.printList();
-				System.out.println("\n");
+				System.out.println("");
 				break;
 
 			case 11: // Assign customer to table

@@ -70,7 +70,7 @@ public class ReservationList implements Serializable {
 			while (tableArray[i] != -1) {
 				for (int j = 0; j < reservationList.size(); j++) {
 					if (tableArray[i] == reservationList.get(j).getTableNum()) {
-						if (reservationList.get(j).getDate().getEpochSecond() - time.now().getEpochSecond() > 3600) {
+						if (reservationList.get(j).getDate().getEpochSecond() - time.now().getEpochSecond() < 3600) {
 							counter = 1;
 						}
 					}
