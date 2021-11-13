@@ -12,7 +12,13 @@ import java.util.ArrayList;
 
 public class Menu implements CustPrintable, Serializable {
 
+	/**
+	 * List containning the alacarte menu items
+	 */
 	private ArrayList<AlaCarteItem> alaCarteList;
+	/**
+	 * List containning the set menu items
+	 */
 	private ArrayList<SetItem> setMenuList;
 
 	public Menu() {
@@ -22,7 +28,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Gets the Alacartelist
 	 * 
-	 * @param alaCarteList
+	 * @param alaCarteList get alacarte object list
 	 */
 
 	public ArrayList<AlaCarteItem> getAlaCarteList() {
@@ -32,7 +38,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * set the alacartelist
 	 * 
-	 * @param alaCarteList
+	 * @param alaCarteList get alacarte object list
 	 */
 	public void setAlaCarteList(ArrayList<AlaCarteItem> alaCarteList) {
 		this.alaCarteList = alaCarteList;
@@ -45,7 +51,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Set the setMenuList
 	 * 
-	 * @param setMenuList
+	 * @param setMenuList set the set object list
 	 */
 	public void setSetMenuList(ArrayList<SetItem> setMenuList) {
 		this.setMenuList = setMenuList;
@@ -54,8 +60,8 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update the alaracate Name by putting FoodID
 	 * 
-	 * @param foodID
-	 * @param name
+	 * @param foodID foodID of the alacarte item
+	 * @param name alacarte food name 
 	 */
 	public void update_alaCarteName(int foodID, String name) {
 		// TODO - implement Menu.update_alaCarteName
@@ -77,8 +83,8 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update alacarte item price by using its foodID and price input
 	 * 
-	 * @param foodID
-	 * @param price
+	 * @param foodID foodID of the alacarte item
+	 * @param price  alacarte food name 
 	 */
 	public void update_alaCartePrice(int foodID, double price) {
 		// TODO - implement Menu.update_alaCartePrice
@@ -100,8 +106,8 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update the alacarte item description by using its foodID
 	 * 
-	 * @param foodID
-	 * @param description
+	 * @param foodID alacarte food ID
+	 * @param description alacarte food description
 	 */
 	public void update_alaCarteDescription(int foodID, String description) {
 		// TODO - implement Menu.update_alaCarteDescription
@@ -124,8 +130,8 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update the alacarte item name by using its foodID
 	 * 
-	 * @param setID
-	 * @param name
+	 * @param setID set item ID
+	 * @param name set item name
 	 */
 	public void update_setMenuName(int setID, String name) {
 		// TODO - implement Menu.update_setMenuName
@@ -148,8 +154,8 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update the set item price by using its setID
 	 * 
-	 * @param setID
-	 * @param price
+	 * @param setID set item ID
+	 * @param price set item price
 	 */
 	public void update_setMenuPrice(int setID, double price) {
 		// TODO - implement Menu.update_setMenuPrice
@@ -171,8 +177,8 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update the set item description by using its SetID
 	 * 
-	 * @param setID
-	 * @param description
+	 * @param setID set item ID
+	 * @param description set item description
 	 */
 	public void update_setMenuDescription(int setID, String description) {
 		// TODO - implement Menu.update_setMenuDescription
@@ -194,7 +200,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * remove the alacarte item from set item
 	 * 
-	 * @param foodID
+	 * @param foodID foodID to remove the alacarte object from the alacarte object list
 	 */
 	public void removeAlaCarteItem(int foodID) {
 		// TODO - implement Menu.removeAlaCarteItem
@@ -217,7 +223,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Remove the whole setID from the setMenulist
 	 * 
-	 * @param setID
+	 * @param setID set item ID to remove the set item object from the set item object list
 	 */
 	public void removeMenuItem(int setID) {
 		// TODO - implement Menu.removeMenuItem
@@ -239,7 +245,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Add alacarte item into the alacarte list
 	 * 
-	 * @param item
+	 * @param item alacarte item to be added in the alacarte list
 	 */
 	public void addAlaCarteItem(AlaCarteItem item) {
 		// TODO - implement Menu.addAlaCarteItem
@@ -264,7 +270,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Add set item into setmenu list
 	 * 
-	 * @param item
+	 * @param item set item to be added inside the set item list (set menu list)
 	 */
 	public void addSetMenuItem(SetItem item) {
 		// TODO - implement Menu.addSetMenuItem
