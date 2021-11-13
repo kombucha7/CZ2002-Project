@@ -89,6 +89,7 @@ public class Restaurant {
 								System.out.println("Current Food Info in list is set as: ");
 								System.out.println("Name: " + restaMenu.getAlaCarteList().get(i).getName());
 								System.out.printf("Price: $%.2f", restaMenu.getAlaCarteList().get(i).getPrice());
+								System.out.println("");
 								System.out.println(
 										"\nDescription: " + restaMenu.getAlaCarteList().get(i).getDescription());
 								System.out.println("Food Type: " + restaMenu.getAlaCarteList().get(i).getFoodType());
@@ -294,9 +295,9 @@ public class Restaurant {
 							if (restaMenu.getSetMenuList().get(i).getAvailability()) {
 								System.out.println(restaMenu.getSetMenuList().get(i).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(i).getName());
-								System.out.println("Price: " + restaMenu.getSetMenuList().get(i).getPrice());
+								System.out.printf("Price: $%.2f" , restaMenu.getSetMenuList().get(i).getPrice());
 								System.out
-										.println("Description: " + restaMenu.getSetMenuList().get(i).getDescription());
+										.println("\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
@@ -394,9 +395,8 @@ public class Restaurant {
 							if (restaMenu.getSetMenuList().get(i).getAvailability()) {
 								System.out.println(restaMenu.getSetMenuList().get(i).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(i).getName());
-								System.out.println("Price: " + restaMenu.getSetMenuList().get(i).getPrice());
-								System.out
-										.println("Description: " + restaMenu.getSetMenuList().get(i).getDescription());
+								System.out.printf("Price: $%.2f ", restaMenu.getSetMenuList().get(i).getPrice());
+								System.out.println("\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
@@ -460,9 +460,10 @@ public class Restaurant {
 								}
 								System.out.println("SetID: " + restaMenu.getSetMenuList().get(i).getSetID());
 								System.out.println("Set name: " + restaMenu.getSetMenuList().get(i).getName());
-								System.out.println(
-										"Promotion set price: " + restaMenu.getSetMenuList().get(i).getPrice());
-								System.out.print("Set contains: ");
+								System.out.printf(
+										"Promotion set price: $%.2f " , restaMenu.getSetMenuList().get(i).getPrice());
+								System.out.println("");
+								System.out.print("\nSet contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
 									if (restaMenu.getSetMenuList().get(i).getAlaCarteMenuList().size() - 1 == j) {
@@ -604,9 +605,9 @@ public class Restaurant {
 							if (restaMenu.getSetMenuList().get(i).getAvailability()) {
 								System.out.println(restaMenu.getSetMenuList().get(i).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(i).getName());
-								System.out.println("Price: " + restaMenu.getSetMenuList().get(i).getPrice());
+								System.out.printf("Price: $%.2f", restaMenu.getSetMenuList().get(i).getPrice());
 								System.out
-										.println("Description: " + restaMenu.getSetMenuList().get(i).getDescription());
+										.println("\nDescription: " + restaMenu.getSetMenuList().get(i).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(i).getAlaCarteMenuList()
 										.size(); j++) {
@@ -650,9 +651,9 @@ public class Restaurant {
 							if (restaMenu.getSetMenuList().get(q).getAvailability()) {
 								System.out.println(restaMenu.getSetMenuList().get(q).getSetID() + ") Name: "
 										+ restaMenu.getSetMenuList().get(q).getName());
-								System.out.println("Price: " + restaMenu.getSetMenuList().get(q).getPrice());
+								System.out.printf("Price: $%.2f" , restaMenu.getSetMenuList().get(q).getPrice());
 								System.out
-										.println("Description: " + restaMenu.getSetMenuList().get(q).getDescription());
+										.println("\nDescription: " + restaMenu.getSetMenuList().get(q).getDescription());
 								System.out.print("Contains: ");
 								for (int j = 0; j < restaMenu.getSetMenuList().get(q).getAlaCarteMenuList()
 										.size(); j++) {
