@@ -610,7 +610,6 @@ public class Restaurant {
 						if (!exist) {
 							System.out.println("Enter a valid SetID to update!");
 						}
-						System.out.println("1.Add new");
 						break;
 					case 3:
 						System.out.println("Set Menu:");
