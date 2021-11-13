@@ -794,24 +794,32 @@ public class Restaurant {
 				break;
 
 			case 8: // Check/Remove reservation booking
-				System.out.println("Enter the phone number used for reservation");
 				while (true) {
+					System.out.println("1. View all current bookings\n2. View specific booking (phoneNum)");
+					int checkBooking = sc.nextInt();
 					try {
-						phoneNum = sc.nextInt();
-						String length = Integer.toString(phoneNum);
-						if (length.length() != 8) {
-							throw new InputMismatchException();
+						switch (checkBooking) {
+							case 1:
+								restaReserve.printReservation();
+								break;
+							case 2:
+								System.out.println("Enter the phone number used for reservation");
+								int phoneNumBooking = sc.nextInt();
+								String length = Integer.toString(phoneNumBooking);
+								if (length.length() != 8) {
+									throw new InputMismatchException();
+								}
+								restaReserve.checkReservation(phoneNumBooking);
+								break;
 						}
-						break;
-
-					} catch (InputMismatchException | StringIndexOutOfBoundsException inputError) {
+					} catch(InputMismatchException inputError){
 						System.out.println("Please re-enter in the correct format");
 						sc.nextLine();
 					}
+					break;
 				}
-				restaReserve.checkReservation(phoneNum);
+				System.out.println("\n");
 				break;
-
 			case 9: // Remove reservation booking
 				System.out.println("Enter the phone number used for reservation");
 				while (true) {
