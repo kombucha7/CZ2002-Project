@@ -37,10 +37,10 @@ public class ReservationList implements Serializable {
 	} // creation of reservation
 
 	/**
-	 * remove reservation from reservationlist if the current time is a specified
-	 * period of time later than the time in the reservation object the current time
+	 * Remove reservation from reservationlist if the current time is a specified
+	 * period of time later than the time in the reservation object. The current time
 	 * is passed in via an Instant object created in the restaurant class via the
-	 * TimeHandler Object the arraylist is parsed and isExpired function is called
+	 * TimeHandler Object. The arraylist is parsed and isExpired function is called
 	 * for each object with the Instant of the current time passed into it
 	 * 
 	 * @param time Instant of the current time
@@ -56,8 +56,8 @@ public class ReservationList implements Serializable {
 	}
 
 	/**
-	 * function to check if the currently available tables have to be reserved for
-	 * reservations where the guests have not been seated this will parse through
+	 * Function to check if the currently available tables have to be reserved for
+	 * reservations where the guests have not been seated. This will parse through
 	 * the reservation list to check which reservations are currently "active" even
 	 * if the guests are late/not arrived if all tables are currently occupied by
 	 * actual guests and/or guest who have reservation but have yet to arrive,
@@ -99,9 +99,9 @@ public class ReservationList implements Serializable {
 	}
 
 	/**
-	 * function for those that want to make reservation in advance. table array is
-	 * provided by TableList and contains list of possible tables that they can use
-	 * function checks each individual reservation to see if it is possible to slot
+	 * Function for those that want to make reservation in advance. Table array is
+	 * provided by TableList and contains list of possible tables that they can use.
+	 * Function checks each individual reservation to see if it is possible to slot
 	 * the new reservation in if those reservations are taking up the tables that
 	 * new reservation can use as well as checking if it is at least 1 hour apart from
 	 * each other
