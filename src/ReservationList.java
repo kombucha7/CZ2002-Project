@@ -91,7 +91,17 @@ public class ReservationList implements Serializable {
 		}
 	}
 
-	// For people who want to reserve, need to check if it clashes
+	/**
+	 * function for those that want to make reservation in advance. table array is
+	 * provided by TableList and contains list of possible tables that they can use
+	 * function checks each individual reservation to see if it is possible to slot
+	 * the new reservation in if those reservations are taking up the tables that
+	 * new reservation can use as well as checking if it is at least 1 hour apart from
+	 * each other
+	 *
+	 * @param tableArray
+	 * @param newReserve
+	 */
 	public void checkUpcomingReserved(int[] tableArray, Reservation newReserve) {
 		int i = 0, counter = 0, foundTable = -1;
 		if (reservationList.size() == 0) {
@@ -126,6 +136,12 @@ public class ReservationList implements Serializable {
 		}
 	}
 
+	/**
+	 * for customer that wants to cancel his reservation by
+	 * providing us with his phone number and iterating through
+	 * the reservationList.
+	 * @param phoneNum
+	 */
 	public void removeReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
 			if (reservationList.get(i).getPhoneNum() == phoneNum) {
@@ -138,6 +154,12 @@ public class ReservationList implements Serializable {
 		System.out.println("Reservation not found");
 	}
 
+	/**
+	 * for customer that wants to check his reservation by
+	 * providing us with his phone number and iterating through
+	 * the reservationList.
+	 * @param phoneNum
+	 */
 	public boolean checkReservation(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
 			if (reservationList.get(i).getPhoneNum() == phoneNum) {
@@ -150,6 +172,9 @@ public class ReservationList implements Serializable {
 		return false;
 	}
 
+	/**
+	 * prints details of all the current reservations in the reservation list
+	 */
 	public void printReservation() {
 		System.out.println("###################################################");
 		System.out.println("Phone Number\t\t   Date\t\t\t   Pax\t  Table");
@@ -161,6 +186,14 @@ public class ReservationList implements Serializable {
 		System.out.println("###################################################");
 	}
 
+	/**
+	 * Returns the table number of a particular reservation
+	 * based on the phone number provided. Used in the case where
+	 * customer makes reservations and enters restaurant at his designated time
+	 * will provide him with the table to sit at
+	 * @param phoneNum
+	 * @return
+	 */
 	public int getTable(int phoneNum) {
 		for (int i = 0; i < reservationList.size(); i++) {
 			if (phoneNum == reservationList.get(i).getPhoneNum()){
