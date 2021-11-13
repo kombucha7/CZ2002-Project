@@ -2,15 +2,35 @@ import java.io.Serializable;
 
 public class AlaCarteItem implements Serializable {
 
+	/**
+	 * Ala Carte Item Name
+	 * 
+	 */
 	private String name;
+	/**
+	 * Price of each Ala Carte Item
+	 */
 	private double price;
+	/**
+	 * Description of the Ala Carte Item
+	 */
 	private String description;
+	/**
+	 * Ala Carte Item Food Type which consist of (Mains, Appetizer, Drinks,
+	 * Desserts)
+	 */
 	private foodType foodType;
+	/**
+	 * Food ID of the Ala Carte Item
+	 */
 	private int foodID;
+	/**
+	 * Availability of the Food. Removed Items will be set to FALSE
+	 */
 	private boolean availability;
 
 	/**
-	 * Constructor Class for AlaCarteItem
+	 * Empty Constructor Class for AlaCarteItem
 	 * 
 	 * @param name
 	 * @param price
@@ -22,6 +42,17 @@ public class AlaCarteItem implements Serializable {
 	public AlaCarteItem() {
 	}
 
+	/**
+	 * Constructor Class for AlaCarteItem, with parameters of Name, Price,
+	 * Description, foodType and foodID
+	 * 
+	 * @param name
+	 * @param price
+	 * @param description
+	 * @param foodtype
+	 * @param foodID
+	 * @param availability
+	 */
 	public AlaCarteItem(String name, double price, String description, foodType foodtype, int foodID,
 			boolean availability) {
 		// TODO - implement AlaCarteItem.AlaCarteItem
@@ -34,7 +65,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Get Name of Food
+	 * Get Name of Ala Carte Item
 	 * 
 	 * @param name
 	 */
@@ -43,7 +74,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Set Name of Food
+	 * Set Name of Ala Carte Item
 	 * 
 	 * @param name
 	 */
@@ -52,7 +83,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Get Price of Food
+	 * Get Price of Ala Carte Item
 	 * 
 	 * @param price
 	 */
@@ -61,7 +92,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Set Price of Food
+	 * Set Price of Ala Carte Item
 	 * 
 	 * @param price
 	 */
@@ -70,7 +101,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Get Description of Food
+	 * Get Description of Ala Carte Item
 	 * 
 	 * @param description
 	 */
@@ -79,7 +110,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Set Description of Food
+	 * Set Description of Ala Carte Item
 	 * 
 	 * @param description
 	 */
@@ -88,7 +119,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Get foodType of Food
+	 * Get foodType of Ala Carte Item
 	 * 
 	 * @param foodType
 	 */
@@ -97,7 +128,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Set foodType of Food
+	 * Set foodType of Ala Carte Item
 	 * 
 	 * @param foodType
 	 */
@@ -106,7 +137,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * get FoodID for Food
+	 * Get FoodID for Ala Carte Item
 	 * 
 	 * @param foodID
 	 */
@@ -116,7 +147,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Set FoodID for Food
+	 * Set FoodID for Ala Carte Item
 	 * 
 	 * @param foodID
 	 */
@@ -125,7 +156,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Get Availability of Food
+	 * Get Availability of Ala Carte Item
 	 * 
 	 * @param availability
 	 */
@@ -134,7 +165,7 @@ public class AlaCarteItem implements Serializable {
 	}
 
 	/**
-	 * Set Availability of Food
+	 * Set Availability of Ala Carte Item
 	 * 
 	 * @param availability
 	 */
