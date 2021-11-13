@@ -21,8 +21,13 @@ public class Menu implements CustPrintable, Serializable {
 	 */
 	private ArrayList<SetItem> setMenuList;
 
+	/**
+	 * Constructor for menu class. Also constructs arraylists for alacarteitem and
+	 * setitem
+	 */
 	public Menu() {
-
+		alaCarteList = new ArrayList<AlaCarteItem>();
+		setMenuList = new ArrayList<SetItem>();
 	}
 
 	/**
@@ -38,15 +43,17 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * set the alacartelist
 	 * 
-	 * @param alaCarteList get alacarte object list
+	 * @param alaCarteList set alacarte object list
 	 */
 	public void setAlaCarteList(ArrayList<AlaCarteItem> alaCarteList) {
 		this.alaCarteList = alaCarteList;
 	}
+
 	/**
-	 * SetMenulist contains all the set item in a list 
-	 * @return SetMenulist contains all the set item in a list 
-	*/
+	 * SetMenulist contains all the set item in a list
+	 * 
+	 * @return SetMenulist contains all the set item in a list
+	 */
 	public ArrayList<SetItem> getSetMenuList() {
 		return this.setMenuList;
 	}
@@ -64,10 +71,9 @@ public class Menu implements CustPrintable, Serializable {
 	 * Update the alaracate Name by putting FoodID
 	 * 
 	 * @param foodID foodID of the alacarte item
-	 * @param name alacarte food name 
+	 * @param name   alacarte food name
 	 */
 	public void update_alaCarteName(int foodID, String name) {
-		// TODO - implement Menu.update_alaCarteName
 		boolean search = false;
 		for (int i = 0; i < alaCarteList.size(); i++) {
 			if (alaCarteList.get(i).getFoodID() == foodID) {
@@ -90,7 +96,6 @@ public class Menu implements CustPrintable, Serializable {
 	 * @param price  alacarte food price
 	 */
 	public void update_alaCartePrice(int foodID, double price) {
-		// TODO - implement Menu.update_alaCartePrice
 		boolean search = false;
 		for (int i = 0; i < alaCarteList.size(); i++) {
 			if (alaCarteList.get(i).getFoodID() == foodID) {
@@ -109,11 +114,10 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update the alacarte item description by using its foodID
 	 * 
-	 * @param foodID alacarte food ID
+	 * @param foodID      alacarte food ID
 	 * @param description alacarte food description
 	 */
 	public void update_alaCarteDescription(int foodID, String description) {
-		// TODO - implement Menu.update_alaCarteDescription
 		boolean search = false;
 		for (int i = 0; i < alaCarteList.size(); i++) {
 			if (alaCarteList.get(i).getFoodID() == foodID) {
@@ -134,10 +138,9 @@ public class Menu implements CustPrintable, Serializable {
 	 * Update the alacarte item name by using its foodID
 	 * 
 	 * @param setID set item ID
-	 * @param name set item name
+	 * @param name  set item name
 	 */
 	public void update_setMenuName(int setID, String name) {
-		// TODO - implement Menu.update_setMenuName
 		boolean search = false;
 
 		for (int i = 0; i < setMenuList.size(); i++) {
@@ -161,7 +164,6 @@ public class Menu implements CustPrintable, Serializable {
 	 * @param price set item price
 	 */
 	public void update_setMenuPrice(int setID, double price) {
-		// TODO - implement Menu.update_setMenuPrice
 		boolean search = false;
 		for (int i = 0; i < setMenuList.size(); i++) {
 			if (setMenuList.get(i).getSetID() == setID) {
@@ -180,11 +182,10 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Update the set item description by using its SetID
 	 * 
-	 * @param setID set item ID
+	 * @param setID       set item ID
 	 * @param description set item description
 	 */
 	public void update_setMenuDescription(int setID, String description) {
-		// TODO - implement Menu.update_setMenuDescription
 		boolean search = false;
 		for (int i = 0; i < setMenuList.size(); i++) {
 			if (setMenuList.get(i).getSetID() == setID) {
@@ -203,10 +204,10 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * remove the alacarte item from set item
 	 * 
-	 * @param foodID foodID to remove the alacarte object from the alacarte object list
+	 * @param foodID foodID to remove the alacarte object from the alacarte object
+	 *               list
 	 */
 	public void removeAlaCarteItem(int foodID) {
-		// TODO - implement Menu.removeAlaCarteItem
 		boolean search = false;
 
 		for (int i = 0; i < alaCarteList.size(); i++) {
@@ -226,10 +227,10 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Remove the whole setID from the setMenulist
 	 * 
-	 * @param setID set item ID to remove the set item object from the set item object list
+	 * @param setID set item ID to remove the set item object from the set item
+	 *              object list
 	 */
 	public void removeMenuItem(int setID) {
-		// TODO - implement Menu.removeMenuItem
 		boolean search = false;
 		for (int i = 0; i < setMenuList.size(); i++) {
 			if (setMenuList.get(i).getSetID() == setID) {
@@ -251,7 +252,6 @@ public class Menu implements CustPrintable, Serializable {
 	 * @param item alacarte item to be added in the alacarte list
 	 */
 	public void addAlaCarteItem(AlaCarteItem item) {
-		// TODO - implement Menu.addAlaCarteItem
 		boolean search = false;
 
 		for (int i = 0; i < alaCarteList.size(); i++) {
@@ -276,7 +276,6 @@ public class Menu implements CustPrintable, Serializable {
 	 * @param item set item to be added inside the set item list (set menu list)
 	 */
 	public void addSetMenuItem(SetItem item) {
-		// TODO - implement Menu.addSetMenuItem
 		boolean search = false;
 		for (int i = 0; i < setMenuList.size(); i++) {
 			if (setMenuList.get(i).getSetID() == item.getSetID()) {
@@ -289,11 +288,11 @@ public class Menu implements CustPrintable, Serializable {
 		}
 		throw new UnsupportedOperationException();
 	}
+
 	/**
 	 * Print function to print the menu
 	 */
 	public void printer() {
-		// TODO -print all alacarte item and set item in one menu
 		System.out.println("Set Menu:");
 		System.out.println("===========================================================================");
 		for (int i = 0; i < setMenuList.size(); i++) {
