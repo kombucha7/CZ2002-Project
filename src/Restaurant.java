@@ -1,5 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.lang.reflect.Array;
 import java.time.Instant;
 import java.util.regex.Pattern;
 
@@ -10,7 +12,6 @@ public class Restaurant {
 	public static void main(String[] args) {
 		// TODO - implement Restaurant.main
 
-
 		OrderList restaOrderList = new OrderList();
 		TimeHandler handler = new TimeHandler();
 		RevenueReport restaReport = new RevenueReport();
@@ -19,7 +20,6 @@ public class Restaurant {
 		Menu restaMenu = ObjectReaderWriter.readMenu();
 		StaffList restaStaffList = ObjectReaderWriter.readStaffList();
 		MemberList restaMember = ObjectReaderWriter.readMemberList();
-		
 
 		int option;
 		Scanner sc = new Scanner(System.in);
@@ -81,6 +81,7 @@ public class Restaurant {
 						// System.out.println("\n");
 						Boolean actual = true;
 						String retain;
+						int sortFoodID = 0, foodRealID = 0;
 						System.out.println("Enter Food Name to create:");
 						sc.nextLine(); // Buffer
 						name = sc.nextLine();
@@ -125,12 +126,42 @@ public class Restaurant {
 							System.out.println("Enter Food Type (Main,Dessert,Drinks,Appetizer):");
 							userFoodType = foodType.valueOf(sc.nextLine());
 
-							foodIndex = restaMenu.getAlaCarteList().size() - 1;
-							foodID = restaMenu.getAlaCarteList().get(foodIndex).getFoodID() + 1;
+							if (userFoodType == foodType.Main) {
+								sortFoodID = 2000;
+							} else if (userFoodType == foodType.Drinks) {
+								sortFoodID = 3000;
+							} else if (userFoodType == foodType.Appetizer) {
+								sortFoodID = 4000;
+							} else if (userFoodType == foodType.Appetizer) {
+								sortFoodID = 5000;
+							}
+
+							for (int i = 0; i < restaMenu.getAlaCarteList().size(); i++) {
+								if (restaMenu.getAlaCarteList().get(i).getFoodID() < sortFoodID) {
+									foodRealID = restaMenu.getAlaCarteList().get(i).getFoodID();
+								}
+							}
+
+							foodID = foodRealID + 1;
 
 							AlaCarteItem newItem = new AlaCarteItem(name, price, description, userFoodType, foodID,
 									true);
 							restaMenu.getAlaCarteList().add(newItem);
+
+							// for (int index = 1; index < restaMenu.getAlaCarteList().size(); ++index) {
+							// int key = restaMenu.getAlaCarteList().get(index).getFoodID();
+							// int position = index - 1;
+							// // Shift larger values to the right
+							// while (position >= 0 && restaMenu.getAlaCarteList().get(position).getFoodID()
+							// > key) {
+							// restaMenu.getAlaCarteList().set(index +
+							// 1,restaMenu.getAlaCarteList().get(position));
+							// position--;
+							// }
+							// restaMenu.getAlaCarteList().set(position + 1,
+							// restaMenu.getAlaCarteList().get(index));
+							// }
+
 							System.out.printf(name + " of price $%.2f has been added into food type " + userFoodType,
 									price);
 						}
@@ -316,22 +347,17 @@ public class Restaurant {
 						tempsetname = sc.nextLine();
 
 						System.out.println("Enter new Set Price:");
-						while(true)
-						{
-							try
-							{
+						while (true) {
+							try {
 								tempprice = sc.nextDouble();
 								sc.nextLine();
 								break;
-							}
-							catch(InputMismatchException e )
-							{
+							} catch (InputMismatchException e) {
 								System.out.println("PLease enter a valid new Set Price:");
 								sc.nextLine();
 							}
 						}
-						
-						
+
 						System.out.println("Enter new Set description:");
 						tempdes = sc.nextLine();
 						tempSetID = restaMenu.getSetMenuList().size() + 1;
@@ -416,44 +442,35 @@ public class Restaurant {
 							}
 						}
 						System.out.println("Enter SetID to Update:");
-						while(true)
-						{
-							try
-							{
+						while (true) {
+							try {
 								tempSetID = sc.nextInt();
 								sc.nextLine();
 								break;
-							}
-							catch(InputMismatchException e )
-							{
+							} catch (InputMismatchException e) {
 								System.out.println("PLease enter a valid new Set Price:");
 								sc.nextLine();
 							}
 						}
-						
-						
+
 						boolean exist = false;
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
 							if (restaMenu.getSetMenuList().get(i).getSetID() == tempSetID) {
-								
+
 								System.out.println("Enter new name:");
 								tempsetname = sc.nextLine();
 
 								restaMenu.getSetMenuList().get(i).setName(tempsetname);
 
 								System.out.println("Enter new price:");
-								while(true)
-								{
-									try
-									{
+								while (true) {
+									try {
 										tempprice = sc.nextDouble();
 										sc.nextLine();
 										restaMenu.getSetMenuList().get(i).setPrice(tempprice);
 										exist = true;
 										break;
-									}
-									catch(InputMismatchException e )
-									{
+									} catch (InputMismatchException e) {
 										System.out.println("PLease enter a valid new Set Price:");
 										sc.nextLine();
 									}
@@ -620,20 +637,15 @@ public class Restaurant {
 							}
 						}
 						System.out.println("Enter SetID to delete:");
-						while(true)
-								{
-									try
-									{
-										tempSetID = sc.nextInt();
-										break;
-									}
-									catch(InputMismatchException e )
-									{
-										System.out.println("PLease enter a valid new Set Price:");
-										sc.nextLine();
-									}
-								}
-						
+						while (true) {
+							try {
+								tempSetID = sc.nextInt();
+								break;
+							} catch (InputMismatchException e) {
+								System.out.println("PLease enter a valid new Set Price:");
+								sc.nextLine();
+							}
+						}
 
 						for (int i = 0; i < restaMenu.getSetMenuList().size(); i++) {
 							if (restaMenu.getSetMenuList().get(i).getSetID() == tempSetID) {
@@ -724,21 +736,21 @@ public class Restaurant {
 
 			case 7: // Create reservation booking
 				System.out.println("Creating a new reservation");
-				int dateInt,timeInt;
-				String day,month,year,hours,minute;
+				int dateInt, timeInt;
+				String day, month, year, hours, minute;
 
 				while (true) {
 					try {
 						System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 						dateInt = sc.nextInt();
-						//String length = Integer.toString(dateInt);
+						// String length = Integer.toString(dateInt);
 						String dateInput = "" + dateInt;
 						day = dateInput.substring(0, 2);
 						month = dateInput.substring(2, 4);
 						year = dateInput.substring(4, 8);
 						System.out.println("Enter Time in the format (HHMM):");
 						timeInt = sc.nextInt();
-						//String length = Integer.toString(dateInt);
+						// String length = Integer.toString(dateInt);
 						String timeInput = "" + timeInt;
 						hours = timeInput.substring(0, 2);
 						minute = timeInput.substring(2, 4);
@@ -760,11 +772,13 @@ public class Restaurant {
 				int phoneNum = sc.nextInt();
 
 				while (String.valueOf(phoneNum).length() != 8) {
-					System.out.println("Invalid number. Re-enter"); phoneNum = sc.nextInt(); }
+					System.out.println("Invalid number. Re-enter");
+					phoneNum = sc.nextInt();
+				}
 
 				Instant inst1 = Instant.parse(year + "-" + month + "-" + day + "T" + hours + ":" + minute + ":00.00Z");
 
-				//Check if reservation is made in advance//
+				// Check if reservation is made in advance//
 				Reservation newReserve = new Reservation(inst1, pax, phoneNum);
 				if (!newReserve.checkIfInAdvance(handler.getInstant())) {
 					System.out.println("Reservation can only be made 1 hour in advance\n");
@@ -829,37 +843,37 @@ public class Restaurant {
 				while (true) {
 					try {
 						switch (checkInt) {
-							case 1:
-								System.out.println("Enter number of pax: ");
-								int pax11 = sc.nextInt();
-								while (pax11 < 1 || pax11 > 10) {
-									System.out.println("Invalid number of people. Please re-enter:");
-									pax11 = sc.nextInt();
-								}
-								int[] availableTables11 = restaTable.matchCurrentTable(pax11);
-								// get first available table considering reservation list
-								int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
+						case 1:
+							System.out.println("Enter number of pax: ");
+							int pax11 = sc.nextInt();
+							while (pax11 < 1 || pax11 > 10) {
+								System.out.println("Invalid number of people. Please re-enter:");
+								pax11 = sc.nextInt();
+							}
+							int[] availableTables11 = restaTable.matchCurrentTable(pax11);
+							// get first available table considering reservation list
+							int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
 
-								if (tableID11 == -1) {
-									System.out.println("No available table. Please wait.\n");
-									break;
-								}
-								restaTable.occupyTable(tableID11);
-								System.out.println("Table with ID of " + tableID11 + " occupied!");
-								System.out.println("\n");
+							if (tableID11 == -1) {
+								System.out.println("No available table. Please wait.\n");
 								break;
-							case 2:
-								System.out.println("Enter number used for reservation");
-								int phoneNo = sc.nextInt();
-								boolean foundReserve = restaReserve.checkReservation(phoneNo);
-								if (foundReserve) {
-									int tableNum = restaReserve.getTable(phoneNo);
-									restaReserve.removeReservation(phoneNo);
-									restaTable.occupyTable(tableNum);
-								} else {
-									System.out.println("Reservation not found");
-								}
-								break;
+							}
+							restaTable.occupyTable(tableID11);
+							System.out.println("Table with ID of " + tableID11 + " occupied!");
+							System.out.println("\n");
+							break;
+						case 2:
+							System.out.println("Enter number used for reservation");
+							int phoneNo = sc.nextInt();
+							boolean foundReserve = restaReserve.checkReservation(phoneNo);
+							if (foundReserve) {
+								int tableNum = restaReserve.getTable(phoneNo);
+								restaReserve.removeReservation(phoneNo);
+								restaTable.occupyTable(tableNum);
+							} else {
+								System.out.println("Reservation not found");
+							}
+							break;
 						}
 					} catch (InputMismatchException inputError) {
 						System.out.println("Please re-enter in the correct format");
@@ -902,7 +916,7 @@ public class Restaurant {
 				int advTiming = sc.nextInt();
 				handler.advanceTime(advTiming);
 
-				//for checking if reservation expired
+				// for checking if reservation expired
 				Instant time = handler.getInstant();
 				restaReserve.removeExpired(time);
 				break;
