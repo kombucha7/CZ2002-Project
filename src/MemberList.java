@@ -45,7 +45,6 @@ public class MemberList implements PersonManager, Serializable {
 		num = sc.nextInt();
 		Member tempMem = new Member(name, num);
 		memberList.add(tempMem);
-		sc.close();
 	}
 
 	/**

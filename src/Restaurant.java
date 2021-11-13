@@ -31,24 +31,24 @@ public class Restaurant {
 					+ "6. Add/Remove order item/s to/from order\n" + "7. Create reservation booking\n"
 					+ "8. Check reservation booking\n" + "9. Remove reservation booking\n"
 					+ "10. Check table availability\n" + "11. Assign customer to table\n" + "12. Print order invoice\n"
-					+ "13. Print sale revenue report by period (eg day or month)\n" + "14. Advance time(1 hour)\n"
-					+ "15. Show staff list\n" + "16. Exit");
-
+					+ "13. Print sale revenue report by period (eg day or month)\n" + "14. Advance time\n"
+					+ "15. Show staff list\n" + "16. Add new member\n" + "17. Exit");
+			System.out.println("Current Timing: " + handler.getInstant());
 			option = sc.nextInt();
 
 			// troubleshooting
-			while (option < 0 || option > 16) {
+			while (option < 0 || option > 17) {
 				System.out.println("Invalid option selected. Re-enter: ");
 				option = sc.nextInt();
 			}
 			// exit app
-			if (option == 16) {
+			if (option == 17) {
 				System.out.println("Exiting...");
 				break;
 			}
-			;
 
 			switch (option) {
+
 			case 1: // Create/Update/Remove menu item
 				int menuOption, choizes;
 				String name, description, newfoodname;
@@ -822,15 +822,21 @@ public class Restaurant {
 				break;
 
 			case 14: // Advance time by 1 hour
-				handler.advanceTime(60);
-				// add code to check reservations
+				System.out.println("Enter how long you want to advance time in minutes");
+				int advTiming = sc.nextInt();
+				handler.advanceTime(advTiming);
+
+				//for checking if reservation expired
 				Instant time = handler.getInstant();
 				restaReserve.removeExpired(time);
-				System.out.println("\n");
 				break;
 
 			case 15: // print staff list
 				restaStaffList.printList();
+				break;
+
+			case 16: // add member to list
+				restaMember.add_Person();
 				break;
 			}
 
