@@ -28,7 +28,7 @@ public class Menu implements CustPrintable, Serializable {
 	/**
 	 * Gets the Alacartelist
 	 * 
-	 * @param alaCarteList get alacarte object list
+	 * @return alaCarteList get alacarte object list
 	 */
 
 	public ArrayList<AlaCarteItem> getAlaCarteList() {
@@ -43,7 +43,10 @@ public class Menu implements CustPrintable, Serializable {
 	public void setAlaCarteList(ArrayList<AlaCarteItem> alaCarteList) {
 		this.alaCarteList = alaCarteList;
 	}
-
+	/**
+	 * SetMenulist contains all the set item in a list 
+	 * @return SetMenulist contains all the set item in a list 
+	*/
 	public ArrayList<SetItem> getSetMenuList() {
 		return this.setMenuList;
 	}
@@ -84,7 +87,7 @@ public class Menu implements CustPrintable, Serializable {
 	 * Update alacarte item price by using its foodID and price input
 	 * 
 	 * @param foodID foodID of the alacarte item
-	 * @param price  alacarte food name 
+	 * @param price  alacarte food price
 	 */
 	public void update_alaCartePrice(int foodID, double price) {
 		// TODO - implement Menu.update_alaCartePrice
@@ -286,7 +289,9 @@ public class Menu implements CustPrintable, Serializable {
 		}
 		throw new UnsupportedOperationException();
 	}
-
+	/**
+	 * Print function to print the menu
+	 */
 	public void printer() {
 		// TODO -print all alacarte item and set item in one menu
 		System.out.println("Set Menu:");
