@@ -240,7 +240,13 @@ public class OrderList implements ListPrinter, Serializable {
 	 * @param member  to decide whether to apply member discount or not
 	 */
 	public void generateInvoice(int orderID, boolean member) {
-		Invoice newinvoice = new Invoice(getOrderByOrderID(orderID), member);
+		Order temporder = getOrderByOrderID(orderID);
+		if(temporder == null)
+		{
+			System.out.println("Order Cannot be found");
+			return;
+		}
+		Invoice newinvoice = new Invoice(temporder, member);
 		newinvoice.printer();
 	}
 

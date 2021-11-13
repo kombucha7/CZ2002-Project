@@ -107,7 +107,7 @@ public class RevenueReport implements Serializable {
 		if (temporderlist.isEmpty())
 			System.out.println("No Sales in specified period");
 		else {
-			int total = 0;
+			double total = 0;
 			for (i = 0; i < temporderlist.size(); i++)
 				total += temporderlist.get(i).getTotalprice();
 			System.out.printf("Total Revenue: $%.2f\n", total);
