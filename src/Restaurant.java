@@ -1,17 +1,14 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Arrays;
-import java.lang.reflect.Array;
 import java.time.Instant;
-import java.util.regex.Pattern;
 
+/**
+ * main class for our RRPSS application. Acts as an interface for staff members
+ * to interact with.
+ */
 public class Restaurant {
 
-	// <<<<<<< Updated upstream
-
 	public static void main(String[] args) {
-		// TODO - implement Restaurant.main
-
 		OrderList restaOrderList = new OrderList();
 		TimeHandler handler = new TimeHandler();
 		RevenueReport restaReport = new RevenueReport();
