@@ -11,25 +11,52 @@ import java.util.Scanner;
  */
 public class OrderList implements ListPrinter, Serializable {
 
+	/**
+	 * ArrayList to store all orders
+	 */
 	private ArrayList<Order> orderList;
+
+	/**
+	 * static attribute orderID initialises as 1 every new order is assigned an
+	 * orderID based on this static attribute used to maintain a unique orderID for
+	 * every order
+	 */
 	private static int orderID = 1;
 
+	/**
+	 * used to construct a new orderList object constructs an ArrayList of orders
+	 * within
+	 */
 	public OrderList() {
 		orderList = new ArrayList<Order>();
 	}
 
+	/**
+	 * gets the arraylist of orders within orderlist object
+	 * 
+	 * @return orderList arraylist
+	 */
 	public ArrayList<Order> getOrderList() {
 		return this.orderList;
 	}
 
 	/**
+	 * overriddes the current order arraylist should not be used unless for
+	 * debugging purposes
 	 * 
-	 * @param orderList
+	 * @param orderList to override current arraylist
 	 */
 	public void setOrderList(ArrayList<Order> orderList) {
 		this.orderList = orderList;
 	}
 
+	/**
+	 * to delete an order in arraylist based on orderID mostly used for debugging
+	 * purposes only
+	 * 
+	 * @param orderID of order to be deleted
+	 * @return true if succesful, false if failed
+	 */
 	public boolean deleteOrder(int orderID) {
 		if (orderList.remove(orderID) != null)
 			return true;
@@ -38,10 +65,14 @@ public class OrderList implements ListPrinter, Serializable {
 	}
 
 	/**
+	 * function to add or delete items in the order choose add or delete then choose
+	 * set or alacarte item for adding item, specific item object has to be searched
+	 * for in menu object via itemID for deletion of item, itemID is searched for in
+	 * arrayLists and deleted if it matches specified ID
 	 * 
-	 * @param orderID
-	 * @param menulist
-	 * @return
+	 * @param orderID  of order to be updated
+	 * @param menulist menu object for food object to be retrieved from
+	 * @return true if succesful, false if failed
 	 */
 
 	public boolean updateOrder(int orderID, Menu menulist) {
@@ -153,12 +184,30 @@ public class OrderList implements ListPrinter, Serializable {
 		return true;
 	}
 
+	/**
+	 * creates a new order object and adds it to the order ArrayList used static
+	 * attribute orderID as orderID for objects and increments it afterwards so that
+	 * each orderID is unique
+	 * 
+	 * @param staffID   of staff that served this order
+	 * @param date      date and time the order is created
+	 * @param ordertype enum orderType(dine-in or takeout)
+	 * @param tableID   tableID of table where order is seated
+	 * @return orderID of order created
+	 */
 	public int addOrder(int staffID, Instant date, orderType ordertype, int tableID) {
 		Order tempOrder = new Order(orderID++, staffID, date, ordertype, tableID);
 		orderList.add(tempOrder);
 		return orderID - 1;
 	}
 
+	/**
+	 * adds order into revenue report object order to be added based on orderID
+	 * 
+	 * @param revport revenue report object where order is added to
+	 * @param orderID of order to be added
+	 * @return true if succesful, false if failed
+	 */
 	public boolean updateArchive(RevenueReport revport, int orderID) {
 		Order temporder = getOrderByOrderID(orderID);
 		if (temporder != null) {
@@ -168,19 +217,27 @@ public class OrderList implements ListPrinter, Serializable {
 			return false;
 	}
 
+	/**
+	 * implemented function from ListPrinter interface prints all orderIDs in
+	 * orderlist that have yet to be completed condition is based on orderCompleted
+	 * flag in order
+	 */
 	public void printList() {
 		System.out.println("Active Order:");
 		for (int i = 0; i < orderList.size(); i++) {
-			if (orderList.get(i) != null) {
+			if (orderList.get(i) != null && !orderList.get(i).getOrderCompleted()) {
 				System.out.printf("Order Number: %d\n", orderList.get(i).getorderID());
 			}
 		}
 	}
 
 	/**
+	 * creates new invoice object from order object order object is searched for
+	 * with getOrderByOrderID function then calls printer function for said invoice
+	 * object to generate the invoice for this order
 	 * 
-	 * @param orderID
-	 * @param member
+	 * @param orderID of order to be added
+	 * @param member  to decide whether to apply member discount or not
 	 */
 	public void generateInvoice(int orderID, boolean member) {
 		Invoice newinvoice = new Invoice(getOrderByOrderID(orderID), member);
@@ -188,8 +245,10 @@ public class OrderList implements ListPrinter, Serializable {
 	}
 
 	/**
+	 * Uses orderID to search for a specific order
 	 * 
-	 * @param orderID
+	 * @param orderID to be found
+	 * @return order if found, else returns null
 	 */
 	public Order getOrderByOrderID(int orderID) {
 		for (int i = 0; i < orderList.size(); i++) {
@@ -200,6 +259,12 @@ public class OrderList implements ListPrinter, Serializable {
 		return null;
 	}
 
+	/**
+	 * Uses tableID to search for an active order with matching tableID
+	 * 
+	 * @param tableID to search
+	 * @return order if found, else return null
+	 */
 	public Order getOrderByTableID(int tableID) {
 		for (int i = 0; i < orderList.size(); i++) {
 			if (orderList.get(i).getTableID() == tableID) {
@@ -213,6 +278,12 @@ public class OrderList implements ListPrinter, Serializable {
 		return null;
 	}
 
+	/**
+	 * returns the table occupied by an order
+	 * 
+	 * @param orderID to be used for searching
+	 * @return the tableID if found, else returns -1
+	 */
 	public int getTableIDByOrderID(int orderID) {
 		Order temporder = getOrderByOrderID(orderID);
 		if (temporder != null) {
