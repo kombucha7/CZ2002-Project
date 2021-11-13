@@ -865,7 +865,7 @@ public class Restaurant {
 								int tableID11 = restaReserve.checkCurrentReserved(availableTables11, handler.getInstant());
 
 								if (tableID11 == -1) {
-									System.out.println("No available table. Please wait.\n");
+									System.out.println("No available table. Please wait.");
 									break;
 								}
 								restaTable.occupyTable(tableID11);
