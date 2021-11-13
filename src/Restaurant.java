@@ -896,7 +896,7 @@ public class Restaurant {
 				Boolean memberStat12 = restaMember.checkMember(sc.nextInt()); // check for member or ask for member
 				int tableID12 = restaOrderList.getTableIDByOrderID(orderID12);
 				System.out.println("\n=========================================");
-				System.out.println("Current Time:" + handler.getInstant());
+				System.out.printf("Time: %s\t\tTable %d\n", handler.getInstant(),tableID12);
 				restaOrderList.generateInvoice(orderID12, memberStat12);
 				restaTable.emptyTable(tableID12);
 				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderID12));
