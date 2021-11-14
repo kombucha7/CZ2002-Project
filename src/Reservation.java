@@ -81,8 +81,10 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * Checks if reservation has been made in advance
-	 * We only allow people who call at least 1 hour in advance to book
+	 * Checks if reservation has been made in advance.
+	 * We only allow people who call at least 1 hour in advance to book.
+	 * Uses the time Instant passed in as well as the object's date
+	 * to find difference
 	 * @param time current instant of time
 	 * @return false if not in advance, true if in advance
 	 */
@@ -96,9 +98,10 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * Checks whether or not reservation has been expired
+	 * Checks whether or not reservation has been expired.
 	 * Once reservation is 15 minutes older from reservation date
-	 * remove from the reservation list
+	 * remove from the reservation list.
+	 * Uses difference in time Instant passed in and object's date
 	 * @param time to compare against reservation
 	 * @return true if reservation is expired, false if not
 	 */
