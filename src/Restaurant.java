@@ -837,12 +837,13 @@ public class Restaurant {
 					}
 				}
 				restaReserve.removeReservation(phoneNum);
+				System.out.println(" ");
 				break;
 
 			case 10: // Check table availability
 				System.out.println("Number of tables available: " + restaTable.getEmpty() + "\n");
 				restaTable.printList();
-				System.out.println("");
+				System.out.println(" ");
 				break;
 
 			case 11: // Assign customer to table
@@ -888,7 +889,7 @@ public class Restaurant {
 					}
 					break;
 				}
-				System.out.println("");
+				System.out.println(" ");
 				break;
 			case 12: // Print order invoice
 				System.out.println("Please enter order ID: ");
@@ -901,7 +902,7 @@ public class Restaurant {
 				restaOrderList.generateInvoice(orderID12, memberStat12);
 				restaTable.emptyTable(tableID12);
 				restaReport.addToArchive(restaOrderList.getOrderByOrderID(orderID12));
-				System.out.println("");
+				System.out.println(" ");
 				break;
 
 			case 13: // Print sale revenue report by period (eg day or month)
@@ -919,7 +920,7 @@ public class Restaurant {
 				restYear = date13.substring(4, 8);
 				fin = restYear + "-" + restMonth + "-" + restDay + "T00:00:00Z";
 				restaReport.periodRevenue(Instant.parse(ini), Instant.parse(fin));
-				System.out.println("");
+				System.out.println(" ");
 				break;
 
 			case 14: // Advance time by 1 hour
@@ -930,14 +931,17 @@ public class Restaurant {
 				// for checking if reservation expired
 				Instant time = handler.getInstant();
 				restaReserve.removeExpired(time);
+				System.out.println(" ");
 				break;
 
 			case 15: // print staff list
 				restaStaffList.printList();
+				System.out.println(" ");
 				break;
 
 			case 16: // add member to list
 				restaMember.add_Person();
+				System.out.println(" ");
 				break;
 			}
 
