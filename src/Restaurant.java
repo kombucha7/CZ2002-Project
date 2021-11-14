@@ -739,24 +739,21 @@ public class Restaurant {
 
 			case 7: // Create reservation booking
 				System.out.println("Creating a new reservation");
-				int dateInt, timeInt;
-				String day, month, year, hours, minute;
+				int dateInt;
+				String day, month, year, hours, minute,timeStr;
 
 				while (true) {
 					try {
 						System.out.println("Enter Date in the format (DDMMYYYY):"); // truncate D/M/Y
 						dateInt = sc.nextInt();
-						// String length = Integer.toString(dateInt);
 						String dateInput = "" + dateInt;
 						day = dateInput.substring(0, 2);
 						month = dateInput.substring(2, 4);
 						year = dateInput.substring(4, 8);
 						System.out.println("Enter Time in the format (HHMM):");
-						timeInt = sc.nextInt();
-						// String length = Integer.toString(dateInt);
-						String timeInput = "" + timeInt;
-						hours = timeInput.substring(0, 2);
-						minute = timeInput.substring(2, 4);
+						timeStr = sc.next();
+						hours = timeStr.substring(0, 2);
+						minute = timeStr.substring(2, 4);
 						break;
 
 					} catch (InputMismatchException | StringIndexOutOfBoundsException inputError) {
