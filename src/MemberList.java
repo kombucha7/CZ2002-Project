@@ -31,6 +31,11 @@ public class MemberList implements PersonManager, Serializable {
 				Scanner sc = new Scanner(System.in);
 				System.out.println("Please enter member name: ");
 				String name = sc.next();
+				for (int i=0; i<name.length(); i++) {
+					if (Character.isDigit(name.charAt(0))) {
+						throw new InputMismatchException();
+					}
+				}
 				System.out.println("Please enter member phone number: (8 Digits)");
 				int num = sc.nextInt();
 				String numStr = "" + num;
