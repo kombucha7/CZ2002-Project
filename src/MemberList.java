@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -25,15 +26,23 @@ public class MemberList implements PersonManager, Serializable {
 	 * Function for adding a member Uses scanner to parse for parameters
 	 */
 	public void add_Person() {
-		Scanner sc = new Scanner(System.in);
-		String name;
-		int num;
-		System.out.println("Please enter member name: ");
-		name = sc.next();
-		System.out.println("Please enter member phone number: ");
-		num = sc.nextInt();
-		Member tempMem = new Member(name, num);
-		memberList.add(tempMem);
+		while (true) {
+			try {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("Please enter member name: ");
+				String name = sc.next();
+				System.out.println("Please enter member phone number: (8 Digits)");
+				int num = sc.nextInt();
+				String numStr = "" + num;
+				if (numStr.length() != 8) { throw new InputMismatchException();}
+				Member tempMem = new Member(name, num);
+				memberList.add(tempMem);
+				System.out.println(name + " has been added to the memberList!\n");
+				break;
+			} catch (InputMismatchException inputError) {
+				System.out.println("Please re-enter input");
+			}
+		}
 	}
 
 	/**
