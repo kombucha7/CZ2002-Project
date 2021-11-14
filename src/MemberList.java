@@ -32,7 +32,7 @@ public class MemberList implements PersonManager, Serializable {
 				System.out.println("Please enter member name: ");
 				String name = sc.next();
 				for (int i=0; i<name.length(); i++) {
-					if (Character.isDigit(name.charAt(0))) {
+					if (Character.isDigit(name.charAt(i))) {
 						throw new InputMismatchException();
 					}
 				}
